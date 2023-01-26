@@ -5,6 +5,6 @@
     <meta charset="utf-8">
 </head>
 <body>   
-    Tim test page
+    Julius test page
 </body>
 </html>
