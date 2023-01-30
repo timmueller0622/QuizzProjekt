@@ -23,15 +23,12 @@
         </form>
         <?php
             require '../connectToDatabase.php';
+            $query = $conn->query("select * from player");
+            $rows = $query->fetchAll();
+            echo $rows;
             if (isset($_POST['login'])){
                 $name = $_POST['name'];
                 $pass = $_POST['pass'];
-                $query = $conn->query("select * from player");
-                $rows = $query->fetchAll();
-                foreach($rows as $row){
-                    echo $row['playerid'];
-                }
-
                 //echo "Falsche Daten!";
             }
             /*$sql = oci_parse($conn, 'select * from admin.test');
