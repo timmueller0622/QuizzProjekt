@@ -1,6 +1,5 @@
 <?php
     session_start();
-    require '../connectToDatabase.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,6 +25,7 @@
             <p align="center"><input type="submit" name="login" value="login"></a></button></p>
         </form>
         <?php
+            require '../connectToDatabase.php';
             if (isset($_POST['login'])){
                 $name = $_POST['name'];
                 $pass = $_POST['pass'];
