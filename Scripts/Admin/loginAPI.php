@@ -23,14 +23,18 @@
         </form>
         <?php
             require '../connectToDatabase.php';
-            $query = $conn->query("select * from player");
-            $rows = $query->fetchAll();
-            print_r($rows['playerid']);
-            echo $rows['email'];
             if (isset($_POST['login'])){
                 $name = $_POST['name'];
                 $pass = $_POST['pass'];
-                //echo "Falsche Daten!";
+                $sql = "SELECT * FROM player WHERE Username = '" . $name . "'";
+                foreach($conn->query($sql) as $r){
+                    if ($r['PASSWORD'] == $pass){
+                        echo "success";
+                        //$_SESSION["username"] = $name;
+                        //header('Location: playerAnzeigen .php');
+                    }
+                }
+                echo "Falsche Daten!";
             }
             /*$sql = oci_parse($conn, 'select * from admin.test');
             oci_execute($sql);
