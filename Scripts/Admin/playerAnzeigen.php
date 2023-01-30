@@ -21,7 +21,7 @@
             require 'navi.php';
             require '../connectToDatabase.php';
             $s = "<table align =\"center\" border= \"1\" cellpadding=\"10\" cellspacing=\"0\"><thead><tr>";
-            foreach($pdo->query('SELECT * FROM nutzer') as $r) {
+            foreach($pdo->query('SELECT * FROM player') as $r) {
                 for ($i=0; $i < sizeof(array_keys($r)); $i++) { 
                     if (is_numeric(array_keys($r)[$i]))
                         continue;
