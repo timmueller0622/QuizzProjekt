@@ -8,7 +8,7 @@
     class ResetUser{
 
         public static function sendResetEmail($emailinput) : void{
-            mail($emailinput, "Quizapp reset Mail test", "ResetTestMail", "From: Marc Pape <Marc.Pape@edu.bib.de>");
+            mail($emailinput, "Quizapp reset Mail test", "ResetTestMail", "From: Michael Nettersheim <Michael.Nettersheim@bib.de>");
         }
 
     }
