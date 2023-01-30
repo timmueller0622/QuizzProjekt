@@ -13,7 +13,7 @@
             $sql = 'SELECT * FROM Player WHERE PlayerID =' . $userID . ';';
             $currentUser = $conn->query($sql);
 
-            if($currentUser['UserPassword'] == $oldpasswd){
+            if($currentUser['USERPASSWORD'] == $oldpasswd){
                 $conn->query('UPDATE TABLE Player SET UserPassword = "' . $newpasswd . '" WHERE PlayerID = '. $userID . ';');
                 return true;
             }
@@ -27,7 +27,7 @@
             $sql = 'SELECT * FROM Player WHERE PlayerID =' . $userID . ';';
             $currentUser = $conn->query($sql);
 
-            if($currentUser['UserPassword'] == $passwd){
+            if($currentUser['USERPASSWORD'] == $passwd){
                 $conn->query('UPDATE TABLE Player SET UserName = "' . $newname . '" WHERE PlayerID = '. $userID . ';');
                 return true;
             }
@@ -42,7 +42,7 @@
             $sql = 'SELECT * FROM Player WHERE PlayerID =' . $userID . ';';
             $currentUser = $conn->query($sql);
 
-            if($currentUser['UserPassword'] == $passwd){
+            if($currentUser['USERPASSWORD'] == $passwd){
                 $conn->query('UPDATE TABLE Player SET Email = "' . $newemail . '" WHERE PlayerID = '. $userID . ';');
                 return true;
             }
