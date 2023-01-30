@@ -1,6 +1,7 @@
 <?php
     session_start();
     require '../connectToDatabase.php';
+    echo $conn;
 ?>
 <!DOCTYPE html>
 <html>
