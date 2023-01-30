@@ -27,6 +27,7 @@
         </form>
         <?php
             require 'connectToDatabase.php';
+            echo $POST_['login'];
             if (isset($_POST['login'])){
                 echo "test";
                 $name = $_POST['name'];
