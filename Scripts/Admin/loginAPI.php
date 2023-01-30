@@ -28,9 +28,9 @@
                 $pass = $_POST['pass'];
                 $sql = "SELECT * FROM player WHERE Username = '" . $name . "'";
                 foreach($conn->query($sql) as $r){
+                    echo $r['Passwort'];
                     if ($r['Passwort'] == $pass){
                         $_SESSION["username"] = $name;
-                        echo "success!";
                         //header('Location: playerAnzeigen .php');
                     }
                 }
