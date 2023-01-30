@@ -1,9 +1,6 @@
 <?php
-    echo "teststart<br>";
     session_start();
-    echo "\ntestsession<br>";
     require '../connectToDatabase.php';
-    echo "\ntestconnect";
     if(isset($_GET['id'])){
         $sql = "DELETE FROM nutzer WHERE ID = " . $_GET['id'];
         $pdo->query($sql);
@@ -46,6 +43,10 @@
                 }
                 echo "Falsche Daten!";
             }
+            /*$sql = oci_parse($conn, 'select * from admin.test');
+            oci_execute($sql);
+            while ($row = oci_fetch_assoc($sql)) {
+            echo $row['BEZEICHNUNG'] . "<br>";*/
         ?>
     </body>
 </html>
