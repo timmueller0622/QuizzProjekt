@@ -28,6 +28,7 @@
         <?php
             require 'connectToDatabase.php';
             if (isset($_POST['login'])){
+                echo "test";
                 $name = $_POST['name'];
                 $pass = $_POST['pass'];
                 $sql = oci_parse($conn, 'select * from player WHERE username = ' . $name);
