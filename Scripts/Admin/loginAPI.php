@@ -26,15 +26,11 @@
             if (isset($_POST['login'])){
                 $name = $_POST['name'];
                 $pass = $_POST['pass'];
-                $sql = "SELECT * FROM player WHERE Username = '" . $name . "'";
+                $sql = "SELECT * FROM admin.test";
                 foreach($conn->query($sql) as $r){
-                    echo $r['Passwort'];
-                    if ($r['Passwort'] == $pass){
-                        $_SESSION["username"] = $name;
-                        //header('Location: playerAnzeigen .php');
-                    }
+                    echo $r['Bezeichnung'];
                 }
-                echo "Falsche Daten!";
+                //echo "Falsche Daten!";
             }
             /*$sql = oci_parse($conn, 'select * from admin.test');
             oci_execute($sql);
