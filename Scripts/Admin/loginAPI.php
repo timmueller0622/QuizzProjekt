@@ -26,10 +26,10 @@
             if (isset($_POST['login'])){
                 $name = $_POST['name'];
                 $pass = $_POST['pass'];
-                $query = $conn->query("select * from player");
-                echo 'Command executed<br>';
-                $rows = $query->fetchAll();
-                print_r($rows);
+                $sql = "select * from player";
+                foreach($conn->query($sql) as $row){
+                    echo $row;
+                }
 
                 //echo "Falsche Daten!";
             }
