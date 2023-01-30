@@ -26,7 +26,7 @@
             <p align="center"><input type="submit" name="login" value="login"></a></button></p>
         </form>
         <?php
-            echo "test";
+            echo $conn;
             if (isset($_POST['login'])){
                 $name = $_POST['name'];
                 $pass = $_POST['pass'];
