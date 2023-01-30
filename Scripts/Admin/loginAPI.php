@@ -8,9 +8,6 @@
         <meta charset="utf-8">
     </head>
     <body>
-        <?php
-            //http://quizzteam2.jedimasters.net
-        ?>
         <form action="loginAPI.php" method="post">
             <table align ="center" border= "1" cellpadding="10" cellspacing="0">
                 <tr>
@@ -33,7 +30,8 @@
                 foreach($conn->query($sql) as $r){
                     if ($r['Passwort'] == $pass){
                         $_SESSION["username"] = $name;
-                        header('Location: playerAnzeigen .php');
+                        echo "success!";
+                        //header('Location: playerAnzeigen .php');
                     }
                 }
                 echo "Falsche Daten!";
