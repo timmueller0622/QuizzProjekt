@@ -26,8 +26,9 @@
             if (isset($_POST['login'])){
                 $name = $_POST['name'];
                 $pass = $_POST['pass'];
-                $sql = "select * from player";
-                foreach($conn->query($sql) as $row){
+                $query = $conn->query("select * from player");
+                $rows = $query->fetchAll();
+                foreach($rows as $row){
                     echo $row['playerid'];
                 }
 
