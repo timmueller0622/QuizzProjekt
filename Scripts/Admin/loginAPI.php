@@ -1,7 +1,7 @@
 <?php
-    echo "teststart";
+    echo "teststart<br>";
     session_start();
-    echo "\ntestsession";
+    echo "\ntestsession<br>";
     require '../connectToDatabase.php';
     echo "\ntestconnect";
     if(isset($_GET['id'])){
