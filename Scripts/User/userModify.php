@@ -9,6 +9,7 @@
     class ModifyUser{
 
         public static function modifyUserPasswd($userID, $oldpasswd, $newpasswd) : bool{
+            require '../connectToDatabase.php';
             $sql = 'SELECT * FROM Player WHERE PlayerID =' . $userID . ';';
             $currentUser = $conn->query($sql);
 
@@ -22,6 +23,7 @@
         }
         
         public static function modifyUserUsername($userID, $passwd, $newname) : bool{
+            require '../connectToDatabase.php';
             $sql = 'SELECT * FROM Player WHERE PlayerID =' . $userID . ';';
             $currentUser = $conn->query($sql);
 
@@ -36,6 +38,7 @@
 
         
         public static function modifyUserEmail($userID, $passwd, $newemail) : bool{
+            require '../connectToDatabase.php';
             $sql = 'SELECT * FROM Player WHERE PlayerID =' . $userID . ';';
             $currentUser = $conn->query($sql);
 
