@@ -12,7 +12,4 @@
         }
 
     }
-
-
-    ResetUser::sendResetEmail("marc.pape@edu.bib.de");
 ?>
