@@ -28,7 +28,7 @@
                 $pass = $_POST['pass'];
                 $sql = "select * from player";
                 foreach($conn->query($sql) as $row){
-                    echo $row;
+                    echo $row['playerid'];
                 }
 
                 //echo "Falsche Daten!";
