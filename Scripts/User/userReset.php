@@ -7,9 +7,11 @@
 
     class ResetUser{
 
-        public static function sendResetEmail($emailinput) : bool{
-            return mail($emailinput, "Quizapp reset Mail test", "ResetTestMail", "From: Michael Nettersheim <Michael.Nettersheim@bib.de>");
+        public static function sendResetEmail($emailinput){
+            mail($emailinput, "Quizapp reset Mail test", "ResetTestMail", "From: Michael Nettersheim <Michael.Nettersheim@bib.de>");
         }
 
     }
+
+    ResetUser::sendResetEmail("marc.pape@edu.bib.de");
 ?>
