@@ -26,8 +26,7 @@
             <p align="center"><input type="submit" name="login" value="login"></a></button></p>
         </form>
         <?php
-            require 'connectToDatabase.php';
-            echo "tester";
+            echo "test";
             if (isset($_POST['login'])){
                 $name = $_POST['name'];
                 $pass = $_POST['pass'];
