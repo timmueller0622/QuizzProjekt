@@ -1,7 +1,7 @@
 <?php
     session_start();
-    //require "../User/userReset.php";
-    //echo ResetUser::sendResetEmail("marc.pape@edu.bib.de");
+    require "../User/userReset.php";
+    ResetUser::sendResetEmail("marc.pape@edu.bib.de");
 ?>
 <!DOCTYPE html>
 <html>
