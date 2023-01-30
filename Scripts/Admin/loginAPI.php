@@ -1,10 +1,7 @@
 <?php
     session_start();
     require '../connectToDatabase.php';
-    if(isset($_GET['id'])){
-        $sql = "DELETE FROM nutzer WHERE ID = " . $_GET['id'];
-        $pdo->query($sql);
-    } 
+    echo $conn;
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,9 +11,9 @@
     </head>
     <body>
         <?php
-            //http://localhost/php/
+            //http://quizzteam2.jedimasters.net
         ?>
-        <form action="nutzerlogin.php" method="post">
+        <form action="loginAPI.php" method="post">
             <table align ="center" border= "1" cellpadding="10" cellspacing="0">
                 <tr>
                     <td>Nutzername:</td>
@@ -30,15 +27,15 @@
             <p align="center"><input type="submit" name="login" value="login"></a></button></p>
         </form>
         <?php
-            require 'connect.php';
+            echo $conn;
             if (isset($_POST['login'])){
                 $name = $_POST['name'];
                 $pass = $_POST['pass'];
-                $sql = "SELECT * FROM nutzer WHERE Username = '" . $name . "'";
-                foreach($pdo->query($sql) as $r){
+                $sql = "SELECT * FROM player WHERE Username = '" . $name . "'";
+                foreach($conn->query($sql) as $r){
                     if ($r['Passwort'] == $pass){
                         $_SESSION["username"] = $name;
-                        header('Location: nutzeranzeigen.php');
+                        header('Location: playerAnzeigen .php');
                     }
                 }
                 echo "Falsche Daten!";
