@@ -1,9 +1,9 @@
 <?php
 	session_start();
 	if (!isset($_SESSION["username"]))
-		header('Location: nutzerlogin.php');
+		header('Location: loginAPI.php');
 	if (isset ($_POST['sub'])){
-		require 'connect.php';
+		require 'connectToDatabase.php';
 		$sql = "INSERT INTO nutzer (";
 		$vals = array();
         foreach($pdo->query("SELECT * FROM nutzer") as $r){
@@ -31,14 +31,14 @@
         }
 		echo $sql;
 		$pdo->query($sql);
-		header('Location: nutzeranzeigen.php');
+		header('Location: playerAnzeigen.php');
 	}
 ?>
 
 <!doctype html>
 <html>
 	<head>
-		<title>Nutzer erstellen</title>
+		<title>Player hinzufügen</title>
 		<meta charset="utf-8">
 		<link href="layout.css" rel="stylesheet">
 	</head>
@@ -46,7 +46,7 @@
 		<form method="post">
 		<?php
 			require 'navi.php';
-			require 'connect.php';
+			require 'connectToDatabase.php';
             $s = "";
             $s .= "<table align =\"center\" border= \"1\" cellpadding=\"10\" cellspacing=\"0\">";
             $s .= "<thead><tr><th>Data</th><th>Wert</th></tr></tr></thead><tbody>";

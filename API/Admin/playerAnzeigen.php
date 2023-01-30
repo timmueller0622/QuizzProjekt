@@ -1,8 +1,8 @@
 <?php
     session_start();
-    require 'connect.php';
+    require '../connectToDatabase.php';
     if (!isset($_SESSION["username"])){
-        header('Location: nutzerlogin.php');
+        header('Location: loginAPI.php');
     }
     if(isset($_GET['id'])){
         $sql = "DELETE FROM nutzer WHERE ID = " . $_GET['id'];
@@ -19,7 +19,7 @@
         <?php
             //http://localhost/php/
             require 'navi.php';
-            require 'connect.php';
+            require '../connectToDatabase.php';
             $s = "<table align =\"center\" border= \"1\" cellpadding=\"10\" cellspacing=\"0\"><thead><tr>";
             foreach($pdo->query('SELECT * FROM nutzer') as $r) {
                 for ($i=0; $i < sizeof(array_keys($r)); $i++) { 
@@ -43,8 +43,8 @@
                         continue;
                     $s .= "<td>" . array_values($r)[$i] . "</td>";
                 }
-                $s .= "<td><a href=\"nutzernanzeigen.php?id=" . $r['ID'] . "\">Delete</a></td>";
-                $s .= "<td><a href=\"nutzerbearbeiten.php?id=" . $r['ID'] . "\">Modify</a></td>";
+                $s .= "<td><a href=\"playerAnzeigen.php?id=" . $r['ID'] . "\">Delete</a></td>";
+                $s .= "<td><a href=\"playerBearbeiten.php?id=" . $r['ID'] . "\">Modify</a></td>";
                 $s .= "</tr>";
             }
             $s .= "</tbody></table>";

@@ -1,4 +1,4 @@
 <?php
     //connect.php
-    $pdo = new PDO('mysql:host=localhost;dbname=bbm2h21aml_db1','root','');
+    $pdo = new PDO('oracle:host=quizzteam2.jedimasters.net;dbname=Team2','root','');
 ?>

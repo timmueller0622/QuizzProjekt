@@ -1,6 +1,7 @@
 <?php
+    echo "test";
     session_start();
-    require 'connect.php';
+    require '../connectToDatabase.php';
     if(isset($_GET['id'])){
         $sql = "DELETE FROM nutzer WHERE ID = " . $_GET['id'];
         $pdo->query($sql);

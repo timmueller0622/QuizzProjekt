@@ -1,9 +1,9 @@
 <?php
     session_start();
     if (!isset($_SESSION["username"]))
-        header('Location: nutzerlogin.php');
+        header('Location: loginAPI.php');
 	if (isset ($_POST['sub'])){
-        require 'connect.php';
+        require 'connectToDatabase.php';
         $sql = "UPDATE nutzer SET ";
         $count = 0;
         $check = 0;
@@ -30,7 +30,7 @@
         }
         $sql .= " WHERE ID = " . $_GET['id'];
         $pdo->query($sql);
-		header('Location: nutzeranzeigen.php');
+		header('Location: playerAnzeigen.php');
 	} // $_POST['sub']
 ?>
 
@@ -45,7 +45,7 @@
 		<form method="post">
 		<?php
 			require 'navi.php';
-            require 'connect.php';
+            require 'connectToDatabase.php';
             if (isset ($_GET['id'])){
                 $sql = "SELECT * FROM nutzer WHERE ID = " . $_GET['id'];
                 $s = "";
