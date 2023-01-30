@@ -83,7 +83,6 @@ class Benutzer{
             return false;
         }
     }
-
 }
 
 ?>
