@@ -25,7 +25,7 @@
             require '../connectToDatabase.php';
             $query = $conn->query("select * from player");
             $rows = $query->fetchAll();
-            echo $rows;
+            print_r($rows);
             if (isset($_POST['login'])){
                 $name = $_POST['name'];
                 $pass = $_POST['pass'];
