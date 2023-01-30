@@ -26,24 +26,17 @@
             <p align="center"><input type="submit" name="login" value="login"></a></button></p>
         </form>
         <?php
-        echo "test";
             require 'connectToDatabase.php';
             if (isset($_POST['login'])){
-                echo "test";
                 $name = $_POST['name'];
                 $pass = $_POST['pass'];
-                $sql = oci_parse($conn, 'select * from player WHERE username = ' . $name);
-                oci_execute($sql);
-                while ($row = oci_fetch_assoc($sql)){
-                    echo $row['password'] . "<br>";
-                }
-                /*//$sql = "SELECT * FROM player WHERE Username = '" . $name . "'";
-                foreach($pdo->query($sql) as $r){
+                $sql = "SELECT * FROM player WHERE Username = '" . $name . "'";
+                foreach($conn->query($sql) as $r){
                     if ($r['Passwort'] == $pass){
                         $_SESSION["username"] = $name;
                         header('Location: playerAnzeigen .php');
                     }
-                }*/
+                }
                 echo "Falsche Daten!";
             }
             /*$sql = oci_parse($conn, 'select * from admin.test');
