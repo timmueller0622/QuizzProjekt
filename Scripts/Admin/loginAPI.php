@@ -26,10 +26,11 @@
             if (isset($_POST['login'])){
                 $name = $_POST['name'];
                 $pass = $_POST['pass'];
-                $sql = "SELECT * FROM admin.test";
-                foreach($conn->query($sql) as $r){
-                    echo $r['Bezeichnung'];
-                }
+                $query = $conn->query("select * from admin.test");
+                echo 'Command executed<br>';
+                $rows = $query->fetchAll();
+                print_r($rows);
+
                 //echo "Falsche Daten!";
             }
             /*$sql = oci_parse($conn, 'select * from admin.test');
