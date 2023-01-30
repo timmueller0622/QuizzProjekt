@@ -8,10 +8,8 @@
     class ResetUser{
 
         public static function sendResetEmail($emailinput){
-            mail($emailinput, "Quizapp reset Mail test", "ResetTestMail", "From: Michael Nettersheim <Michael.Nettersheim@bib.de>");
+            mail($emailinput, "Quizapp reset Mail test", "ResetTestMail", "From: Tim Mueller <Tim.Mueller@edu.bib.de>");
         }
 
     }
-
-    ResetUser::sendResetEmail("marc.pape@edu.bib.de");
 ?>
