@@ -29,17 +29,12 @@
                 $sql = "SELECT * FROM player WHERE Username = '" . $name . "'";
                 foreach($conn->query($sql) as $r){
                     if ($r['USERPASSWORD'] == $pass){
-                        echo "success";
-                        //$_SESSION["username"] = $name;
-                        //header('Location: playerAnzeigen .php');
+                        $_SESSION["username"] = $name;
+                        header('Location: playerAnzeigen.php');
                     }
                 }
                 echo "Falsche Daten!";
             }
-            /*$sql = oci_parse($conn, 'select * from admin.test');
-            oci_execute($sql);
-            while ($row = oci_fetch_assoc($sql)) {
-            echo $row['BEZEICHNUNG'] . "<br>";*/
         ?>
     </body>
 </html>
