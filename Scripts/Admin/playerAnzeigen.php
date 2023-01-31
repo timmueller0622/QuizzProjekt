@@ -5,7 +5,7 @@
         header('Location: loginAPI.php');
     }
     if(isset($_GET['id'])){
-        $sql = "DELETE FROM nutzer WHERE ID = " . $_GET['id'];
+        $sql = "DELETE FROM player WHERE ID = " . $_GET['id'];
         $pdo->query($sql);
     }
 ?>
@@ -21,7 +21,7 @@
             require 'navi.php';
             require '../connectToDatabase.php';
             $s = "<table align =\"center\" border= \"1\" cellpadding=\"10\" cellspacing=\"0\"><thead><tr>";
-            foreach($pdo->query('SELECT * FROM player') as $r) {
+            foreach($conn->query('SELECT * FROM player') as $r) {
                 for ($i=0; $i < sizeof(array_keys($r)); $i++) { 
                     if (is_numeric(array_keys($r)[$i]))
                         continue;
@@ -32,11 +32,11 @@
                 break;
             }
             $s .= "</tr></thead><tbody>";
-            $sql = "SELECT * FROM nutzer";
+            $sql = "SELECT * FROM player";
             if (isset($_GET['orderby'])){
                 $sql .= " ORDER BY " . $_GET['orderby'];
             }
-            foreach($pdo->query($sql) as $r) {
+            foreach($conn->query($sql) as $r) {
                 $s .= "<tr>";
                 for ($i=0; $i < sizeof(array_map('htmlentities', $r)); $i++) {
                     if (is_numeric(array_keys($r)[$i]))
