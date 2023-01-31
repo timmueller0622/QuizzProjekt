@@ -47,11 +47,11 @@
 			require 'navi.php';
             require '../connectToDatabase.php';
             if (isset ($_GET['id'])){
-                $sql = "SELECT * FROM nutzer WHERE ID = " . $_GET['id'];
+                $sql = "SELECT * FROM player WHERE PLAYERID = " . $_GET['id'];
                 $s = "";
                 $s .= "<table align =\"center\" border= \"1\" cellpadding=\"10\" cellspacing=\"0\">";
                 $s .= "<thead><tr><th>Data</th><th>Wert</th><th>Modifizierung</th></tr></tr></thead><tbody>";
-                foreach($pdo->query($sql) as $r){
+                foreach($conn->query($sql) as $r){
                     for ($i=2; $i < sizeof(array_keys($r)); $i++) {
                         if (is_numeric(array_keys($r)[$i]))
                             continue;

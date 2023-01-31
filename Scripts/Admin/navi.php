@@ -4,6 +4,6 @@
     echo '<div align="center">
     <a href="playerAnzeigen.php">Alle Player</a> |
     <a href="playerHinzufuegen.php">Neuer Player</a> | 
-    <a href="playerModifizieren.php">Logout</a>
+    <a href="logoutAPI.php">Logout</a>
     </div><hr>';
 ?>
