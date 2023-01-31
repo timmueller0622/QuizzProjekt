@@ -1,5 +1,7 @@
 <?php
 
+echo "categoryscript : test";
+
 //class Category{
     public static function getRandomCategory() : string{
         //require '../../connectToDatabase.php';
