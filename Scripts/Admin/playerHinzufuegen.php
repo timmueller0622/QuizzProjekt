@@ -14,7 +14,7 @@
 					$sql .= ", ";
             }
 			$sql .= ") VALUES (";
-			for ($i=2; $i < sizeof(array_keys($r)); $i++) {
+			for ($i=0; $i < sizeof(array_keys($r)); $i++) {
                 if (is_numeric(array_keys($r)[$i]))
                     continue;
 				if ($i == 0){
