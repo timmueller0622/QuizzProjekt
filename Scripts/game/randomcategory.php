@@ -5,6 +5,8 @@ require 'choosecategory/categoryscript.php';
 $out = "test";
 //$out = Category::getRandomCategory();
 
+echo $out2;
+/*
 echo 
 '<!DOCTYPE html>
 <html lang="en">
@@ -16,9 +18,9 @@ echo
 <body> 
 Random Category: ' . $out;
 
-echo $out2;
+
 
 echo '</body>
-</html>';
+</html>';*/
 
 ?>
