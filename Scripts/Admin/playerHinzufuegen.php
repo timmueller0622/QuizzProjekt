@@ -26,7 +26,7 @@ use function PHPSTORM_META\type;
 				}
 				else{
 					if (isset($_POST[array_keys($r)[$i]]))
-						$sql .= "\"" . $_POST[array_keys($r)[$i]] . "\"";
+						$sql .= "'" . $_POST[array_keys($r)[$i]] . "'";
 					else
 						$sql .= "NULL";
 					if ($i < sizeof(array_keys($r))-2)
