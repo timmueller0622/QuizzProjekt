@@ -7,40 +7,18 @@ use function PHPSTORM_META\type;
 		header('Location: loginAPI.php');
 	if (isset ($_POST['sub'])){
 		require '../connectToDatabase.php';
-		$sql = "INSERT INTO player (";
+		$sql = "INSERT INTO player (PLAYERID, USERNAME, EMAIL, USERPASSWORD, SESSIONKEY, SESSIONTIME) VALUES ( ?, ?, ?, ?, ?, ?)";
+		$id = $conn->query("SELECT count(playerid) FROM player")->fetchAll()[0][0];
+		$username = $_POST['USERNAME'];
+		$email = $_POST['EMAIL'];
+		$userpassword = $_POST['USERPASSWORD'];
+		$sessionkey = null;
+		$sessiontime = null;
 		$data = array();
-        foreach($conn->query("SELECT * FROM player") as $r){
-            for ($i=0; $i < sizeof(array_keys($r)); $i++) {
-                if (is_numeric(array_keys($r)[$i]))
-                    continue;
-                $sql .= array_keys($r)[$i];
-				if ($i < sizeof(array_keys($r))-2)
-					$sql .= ", ";
-            }
-			$sql .= ") VALUES (";
-			for ($i=0; $i < sizeof(array_keys($r)); $i++) {
-                if (is_numeric(array_keys($r)[$i]))
-                    continue;
-				if ($i == 0){
-					$pcount = $conn->query("SELECT count(playerid) FROM player")->fetchAll()[0][0];
-					$sql .= $pcount . ", ";
-				}
-				else{
-					if (isset($_POST[array_keys($r)[$i]]))
-						$sql .= "'" . $_POST[array_keys($r)[$i]] . "'Ä";
-					else
-						$sql .= "NULL";
-					if ($i < sizeof(array_keys($r))-2)
-							$sql .= ", ";
-                	
-				}
-            }
-			$sql .= ");";
-			break;
-        }
 		echo $sql;
 		try {
-			$conn->prepare($sql);
+			$smst = $conn->prepare($sql);
+			$smst->execute([$id, $username, $email, $userpassword, $sessionkey, $sessiontime]);
 		} catch(Exception $e) {
 			echo $e;
 		}
