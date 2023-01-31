@@ -43,7 +43,7 @@ use function PHPSTORM_META\type;
 		} catch(Exception $e) {
 			echo $e;
 		}
-		header('Location: playerAnzeigen.php');
+		//header('Location: playerAnzeigen.php');
 	}
 ?>
 
