@@ -7,7 +7,7 @@ use function PHPSTORM_META\type;
 		header('Location: loginAPI.php');
 	if (isset ($_POST['sub'])){
 		require '../connectToDatabase.php';
-		$sql = "INSERT INTO player (";
+		$sql = "INSERT ALL INTO player (";
         foreach($conn->query("SELECT * FROM player") as $r){
             for ($i=0; $i < sizeof(array_keys($r)); $i++) {
                 if (is_numeric(array_keys($r)[$i]))
@@ -34,7 +34,7 @@ use function PHPSTORM_META\type;
                 	
 				}
             }
-			$sql .= ");";
+			$sql .= ") SELECT * FROM DUAL;";
 			break;
         }
 		echo $sql;
