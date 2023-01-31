@@ -19,7 +19,7 @@
                     continue;
 				if ($i == 0){
 					echo "test1<br>";
-					$pcount = $conn->query("SELECT count(playerid) FROM player");
+					$pcount = $conn->query("SELECT count(playerid) FROM player")->fetchAll();
 					echo "test2<br>";
 					print_r($pcount);
 					echo "test3<br>";
