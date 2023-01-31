@@ -39,7 +39,7 @@ use function PHPSTORM_META\type;
         }
 		echo $sql;
 		try {
-			$conn->prepare($sql)->execute();
+			$conn->prepare($sql);
 		} catch(Exception $e) {
 			echo $e;
 		}
