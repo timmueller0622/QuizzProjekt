@@ -9,7 +9,7 @@ use function PHPSTORM_META\type;
 		require '../connectToDatabase.php';
 		$sql = "INSERT INTO player (";
         foreach($conn->query("SELECT * FROM player") as $r){
-            for ($i=0; $i < sizeof(array_keys($r))-4; $i++) {
+            for ($i=0; $i < sizeof(array_keys($r)); $i++) {
                 if (is_numeric(array_keys($r)[$i]))
                     continue;
                 $sql .= array_keys($r)[$i];
@@ -17,7 +17,7 @@ use function PHPSTORM_META\type;
 					$sql .= ", ";
             }
 			$sql .= ") VALUES (";
-			for ($i=0; $i < sizeof(array_keys($r))-4; $i++) {
+			for ($i=0; $i < sizeof(array_keys($r)); $i++) {
                 if (is_numeric(array_keys($r)[$i]))
                     continue;
 				if ($i == 0){
@@ -26,16 +26,20 @@ use function PHPSTORM_META\type;
 					$sql .= $pcount[0][0] . ", ";
 				}
 				else{
-                	$sql .= "\"" . $_POST[array_keys($r)[$i]] . "\"";
+					if (isset($_POST[array_keys($r)[$i]]))
+						$sql .= "\"" . $_POST[array_keys($r)[$i]] . "\"";
+					else
+						$sql .= "NULL";
 					if ($i < sizeof(array_keys($r))-2)
-						$sql .= ", ";
+							$sql .= ", ";
+                	
 				}
             }
 			$sql .= ")";
 			break;
         }
 		echo $sql;
-		$conn->query($sql);
+		//$conn->query($sql);
 		//header('Location: playerAnzeigen.php');
 	}
 ?>
