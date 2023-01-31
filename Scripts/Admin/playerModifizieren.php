@@ -3,11 +3,11 @@
     if (!isset($_SESSION["username"]))
         header('Location: loginAPI.php');
 	if (isset ($_POST['sub'])){
-        require 'connectToDatabase.php';
+        require '../connectToDatabase.php';
         $sql = "UPDATE nutzer SET ";
         $count = 0;
         $check = 0;
-        foreach($pdo->query("SELECT * FROM nutzer WHERE ID = " . $_GET['id']) as $r){
+        foreach($conn->query("SELECT * FROM player WHERE PLAYERID = " . $_GET['id']) as $r){
             for ($j=2; $j < sizeof(array_keys($r)); $j++) { 
                 if (is_numeric(array_keys($r)[$j]))
                     continue;
@@ -29,7 +29,7 @@
             }
         }
         $sql .= " WHERE ID = " . $_GET['id'];
-        $pdo->query($sql);
+        $conn->query($sql);
 		header('Location: playerAnzeigen.php');
 	} // $_POST['sub']
 ?>

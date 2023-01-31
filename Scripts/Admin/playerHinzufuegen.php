@@ -15,14 +15,13 @@ use function PHPSTORM_META\type;
 		$sessionkey = null;
 		$sessiontime = null;
 		$data = array();
-		echo $sql;
 		try {
 			$smst = $conn->prepare($sql);
 			$smst->execute([$id, $username, $email, $userpassword, $sessionkey, $sessiontime]);
 		} catch(Exception $e) {
 			echo $e;
 		}
-		//header('Location: playerAnzeigen.php');
+		header('Location: playerAnzeigen.php');
 	}
 ?>
 

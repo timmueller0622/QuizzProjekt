@@ -43,8 +43,8 @@
                         continue;
                     $s .= "<td>" . array_values($r)[$i] . "</td>";
                 }
-                $s .= "<td><a href=\"playerAnzeigen.php?id=" . $r['ID'] . "\">Delete</a></td>";
-                $s .= "<td><a href=\"playerBearbeiten.php?id=" . $r['ID'] . "\">Modify</a></td>";
+                $s .= "<td><a href=\"playerAnzeigen.php?id=" . $r['PLAYERID'] . "\">Delete</a></td>";
+                $s .= "<td><a href=\"playerBearbeiten.php?id=" . $r['PLAYERID'] . "\">Modify</a></td>";
                 $s .= "</tr>";
             }
             $s .= "</tbody></table>";
