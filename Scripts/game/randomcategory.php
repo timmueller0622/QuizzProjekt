@@ -10,11 +10,11 @@ echo
 </head><body>';
 
 /*Call this Script for API Request*/
-        require 'choosecategory/categoryscript.php';
-        $out = Category::getRandomCategory();
+    require 'choosecategory/categoryscript.php';
+    $out = Category::getRandomCategory();
     
-        echo "Random Category: " . $out;
-;
+echo "Random Category: " . $out;
+
 echo "</body></html>";
 
 ?>
