@@ -1,12 +1,8 @@
 <?php
 
 /*Call this Script for API Request*/
-try{
-    inculde 'choosecategory/categoryscript.php';
-}
-catch(Exception $e){
-    echo $e;
-}
+
+//require 'choosecategory/categoryscript.php';
 
 $out = "test";
 //$out = Category::getRandomCategory();
