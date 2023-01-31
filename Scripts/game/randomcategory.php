@@ -1,10 +1,15 @@
 <?php
 
 /*Call this Script for API Request*/
-require "choosecategory/categoryscript.php";
+try{
+    inculde 'choosecategory/categoryscript.php';
+}
+catch(Exception $e){
+    echo $e;
+}
 
 $out = "test";
-$out = Category::getRandomCategory();
+//$out = Category::getRandomCategory();
 
 echo 
 '<!DOCTYPE html>

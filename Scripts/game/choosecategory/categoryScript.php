@@ -1,5 +1,6 @@
 <?php
-class Category{
+
+//class Category{
     public static function getRandomCategory() : string{
         //require '../../connectToDatabase.php';
         //echo "succsess connectToDatabase";
@@ -20,17 +21,17 @@ class Category{
     }
 
     public static function getAllCategories(){
-        require '../../connectToDatabase.php';
+        /*require '../../connectToDatabase.php';
 
         $toReturn = array();
 
         foreach($conn->query("SELECT * FROM Genre") as $entry){
             $toReturn += $entry;
-        }
+        }*/
 
-        return $toReturn;
+        return /*$toReturn*/ "test";
     }
 
-}
+//}
 
 ?>
