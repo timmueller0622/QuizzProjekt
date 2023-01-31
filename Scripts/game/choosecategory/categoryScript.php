@@ -4,7 +4,7 @@ class Category{
         require '../../connectToDatabase.php';
         echo "succsess connectToDatabase";
         
-        $GenreArray = array();
+        /*$GenreArray = array();
         $pos = 0;
 
         foreach($conn->query("SELECT * FROM Genre") as $row){
@@ -14,9 +14,9 @@ class Category{
 
         }
 
-        $categoryToReturn = $GenreArray[rand(0, sizeof($GenreArray))]['GenreDescriptor'];
+        $categoryToReturn = $GenreArray[rand(0, sizeof($GenreArray))]['GenreDescriptor'];*/
 
-        return $categoryToReturn;
+        return /*$categoryToReturn*/ "test";
     }
 
     public static function getAllCategories(){
