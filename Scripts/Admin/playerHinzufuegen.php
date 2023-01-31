@@ -7,7 +7,7 @@ use function PHPSTORM_META\type;
 		header('Location: loginAPI.php');
 	if (isset ($_POST['sub'])){
 		require '../connectToDatabase.php';
-		$sql = "INSERT ALL INTO player (";
+		$sql = "INSERT INTO player (";
         foreach($conn->query("SELECT * FROM player") as $r){
             for ($i=0; $i < sizeof(array_keys($r)); $i++) {
                 if (is_numeric(array_keys($r)[$i]))
@@ -22,7 +22,6 @@ use function PHPSTORM_META\type;
                     continue;
 				if ($i == 0){
 					$pcount = $conn->query("SELECT count(playerid) FROM player")->fetchAll();
-					echo gettype($pcount[0][0]);
 					$sql .= $pcount[0][0] . ", ";
 				}
 				else{
@@ -35,7 +34,7 @@ use function PHPSTORM_META\type;
                 	
 				}
             }
-			$sql .= ") SELECT * FROM DUAL;";
+			$sql .= ");";
 			break;
         }
 		echo $sql;
