@@ -18,7 +18,7 @@
     </head>
     <body>
         <?php
-            //http://localhost/php/
+            // http://quizzteam2.jedimasters.net/Scripts
             require 'navi.php';
             require '../connectToDatabase.php';
             $s = "<table align =\"center\" border= \"1\" cellpadding=\"10\" cellspacing=\"0\"><thead><tr>";
@@ -45,7 +45,7 @@
                     $s .= "<td>" . array_values($r)[$i] . "</td>";
                 }
                 $s .= "<td><a href=\"playerAnzeigen.php?id=" . $r['PLAYERID'] . "\">Delete</a></td>";
-                $s .= "<td><a href=\"playerBearbeiten.php?id=" . $r['PLAYERID'] . "\">Modify</a></td>";
+                $s .= "<td><a href=\"playerModifizieren.php?id=" . $r['PLAYERID'] . "\">Modify</a></td>";
                 $s .= "</tr>";
             }
             $s .= "</tbody></table>";

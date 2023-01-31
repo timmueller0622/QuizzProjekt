@@ -16,8 +16,8 @@ use function PHPSTORM_META\type;
 		$sessiontime = null;
 		$data = array();
 		try {
-			$smst = $conn->prepare($sql);
-			$smst->execute([$id, $username, $email, $userpassword, $sessionkey, $sessiontime]);
+			$stmt = $conn->prepare($sql);
+			$stmt->execute([$id, $username, $email, $userpassword, $sessionkey, $sessiontime]);
 		} catch(Exception $e) {
 			echo $e;
 		}
