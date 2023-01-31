@@ -38,7 +38,11 @@ use function PHPSTORM_META\type;
 			break;
         }
 		echo $sql;
-		$conn->query($sql);
+		try {
+			$conn->query($sql);
+		} catch(Exception $e) {
+			echo $e;
+		}
 		header('Location: playerAnzeigen.php');
 	}
 ?>
