@@ -3,7 +3,7 @@
 	if (!isset($_SESSION["username"]))
 		header('Location: loginAPI.php');
 	if (isset ($_POST['sub'])){
-		require 'connectToDatabase.php';
+		require '../connectToDatabase.php';
 		$sql = "INSERT INTO player (";
         foreach($conn->query("SELECT * FROM player") as $r){
             for ($i=0; $i < sizeof(array_keys($r)); $i++) {
