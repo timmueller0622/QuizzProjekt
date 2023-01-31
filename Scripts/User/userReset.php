@@ -1,9 +1,4 @@
 <?php 
-    session_start();
-    require '../connectToDatabase.php';
-    if (!isset($_SESSION["username"])){
-        header('Location: ../Admin/loginAPI.php');
-    }
 
     class ResetUser{
 

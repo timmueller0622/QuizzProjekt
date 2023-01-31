@@ -1,10 +1,4 @@
 <?php 
-    session_start();
-    require '../connectToDatabase.php';
-    if (!isset($_SESSION["username"])){
-        header('Location: ../Admin/loginAPI.php');
-    }
-
     /*Klasse, ueber welche auf die verschiedenen Eigenschaften der User-Datensaetze zugegriffen wird.*/
     class ModifyUser{
 
