@@ -18,8 +18,11 @@
                 if (is_numeric(array_keys($r)[$i]))
                     continue;
 				if ($i == 0){
-					$pcount = $conn->query("select count(playerid) from player");
+					echo "test1<br>";
+					$pcount = $conn->query("SELECT count(playerid) FROM player");
+					echo "test2<br>";
 					echo $pcount;
+					echo "test3<br>";
 					$sql .= "NULL, ";
 				}
 				else{
