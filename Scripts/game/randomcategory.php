@@ -2,7 +2,7 @@
 
 /*Call this Script for API Request*/
 try{
-require '/choosecategory/categoryscript.php';
+    inculde 'choosecategory/categoryscript.php';
 }
 catch(Exception $e){
     echo $e;
