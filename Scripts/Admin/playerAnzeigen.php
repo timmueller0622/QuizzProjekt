@@ -5,8 +5,9 @@
         header('Location: loginAPI.php');
     }
     if(isset($_GET['id'])){
-        $sql = "DELETE FROM player WHERE ID = " . $_GET['id'];
-        $conn->query($sql);
+        $sql = "DELETE FROM player WHERE PLAYERID=?";
+        $stmt= $conn->prepare($sql);
+        $stmt->execute([$_GET['id']]);
     }
 ?>
 <!DOCTYPE html>
