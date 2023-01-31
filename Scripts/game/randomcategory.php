@@ -11,7 +11,7 @@ echo
 
 /*Call this Script for API Request*/
         require 'choosecategory/categoryscript.php';
-        $out : string = "test"//Category::getRandomCategory();
+        $out = $Category::getRandomCategory();
     
         echo "Random Category: " . $out;
 ;
