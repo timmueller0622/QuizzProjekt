@@ -45,7 +45,7 @@
 		<form method="post">
 		<?php
 			require 'navi.php';
-            require 'connectToDatabase.php';
+            require '../connectToDatabase.php';
             if (isset ($_GET['id'])){
                 $sql = "SELECT * FROM nutzer WHERE ID = " . $_GET['id'];
                 $s = "";
