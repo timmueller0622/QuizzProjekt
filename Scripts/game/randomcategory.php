@@ -2,8 +2,7 @@
 
 /*Call this Script for API Request*/
 
-    //require 'choosecategory/categoryscript.php';
-    echo "chooseCategory link succsessfully established";
+    require 'choosecategory/categoryscript.php';
 
     $out = Category::getRandomCategory();
 
