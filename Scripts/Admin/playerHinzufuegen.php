@@ -35,7 +35,7 @@
 			break;
         }
 		echo $sql;
-		$conn->query($sql);
+		//$conn->query($sql);
 		header('Location: playerAnzeigen.php');
 	}
 ?>
