@@ -47,7 +47,7 @@
 		<?php
 			echo "test1<br>";
 			require 'navi.php';
-			require 'connectToDatabase.php';
+			require '../connectToDatabase.php';
 			echo "test2<br>";
             $s = "";
             $s .= "<table align =\"center\" border= \"1\" cellpadding=\"10\" cellspacing=\"0\">";
