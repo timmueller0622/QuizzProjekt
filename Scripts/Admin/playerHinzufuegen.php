@@ -23,10 +23,7 @@ use function PHPSTORM_META\type;
 				if ($i == 0){
 					echo "test1<br>";
 					$pcount = $conn->query("SELECT count(playerid) FROM player")->fetchAll();
-					echo "test2<br>";
-					print_r(type($pcount[0][0]));
-					echo "test3<br>";
-					$sql .= "NULL, ";
+					$sql .= $pcount[0][0] . ", ";
 				}
 				else{
                 	$sql .= "\"" . $_POST[array_keys($r)[$i]] . "\"";
