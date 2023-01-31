@@ -1,12 +1,14 @@
 <?php
+
+use function PHPSTORM_META\type;
+
 	session_start();
 	if (!isset($_SESSION["username"]))
 		header('Location: loginAPI.php');
 	if (isset ($_POST['sub'])){
-		require 'connectToDatabase.php';
-		$sql = "INSERT INTO nutzer (";
-		$vals = array();
-        foreach($pdo->query("SELECT * FROM nutzer") as $r){
+		require '../connectToDatabase.php';
+		$sql = "INSERT INTO player (";
+        foreach($conn->query("SELECT * FROM player") as $r){
             for ($i=0; $i < sizeof(array_keys($r)); $i++) {
                 if (is_numeric(array_keys($r)[$i]))
                     continue;
@@ -18,20 +20,30 @@
 			for ($i=0; $i < sizeof(array_keys($r)); $i++) {
                 if (is_numeric(array_keys($r)[$i]))
                     continue;
-				if ($i == 0)
-					$sql .= "NULL, ";
+				if ($i == 0){
+					$pcount = $conn->query("SELECT count(playerid) FROM player")->fetchAll();
+					$sql .= $pcount[0][0] . ", ";
+				}
 				else{
-                	$sql .= "\"" . $_POST[array_keys($r)[$i]] . "\"";
+					if (isset($_POST[array_keys($r)[$i]]))
+						$sql .= "'" . $_POST[array_keys($r)[$i]] . "'";
+					else
+						$sql .= "NULL";
 					if ($i < sizeof(array_keys($r))-2)
-						$sql .= ", ";
+							$sql .= ", ";
+                	
 				}
             }
-			$sql .= ")";
+			$sql .= ");";
 			break;
         }
 		echo $sql;
-		$pdo->query($sql);
-		header('Location: playerAnzeigen.php');
+		try {
+			$conn->query($sql);
+		} catch(Exception $e) {
+			echo $e;
+		}
+		//header('Location: playerAnzeigen.php');
 	}
 ?>
 
@@ -46,12 +58,12 @@
 		<form method="post">
 		<?php
 			require 'navi.php';
-			require 'connectToDatabase.php';
+			require '../connectToDatabase.php';
             $s = "";
             $s .= "<table align =\"center\" border= \"1\" cellpadding=\"10\" cellspacing=\"0\">";
             $s .= "<thead><tr><th>Data</th><th>Wert</th></tr></tr></thead><tbody>";
-            foreach($pdo->query("SELECT * FROM nutzer") as $r){
-                for ($i=2; $i < sizeof(array_keys($r)); $i++) {
+            foreach($conn->query("SELECT * FROM player") as $r){
+                for ($i=2; $i < sizeof(array_keys($r))-4; $i++) {
                     if (is_numeric(array_keys($r)[$i]))
                         continue;
                     $s .= "<tr><td>" . array_keys($r)[$i] . "</td>";
