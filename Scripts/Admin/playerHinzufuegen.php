@@ -36,7 +36,7 @@
         }
 		echo $sql;
 		//$conn->query($sql);
-		header('Location: playerAnzeigen.php');
+		//header('Location: playerAnzeigen.php');
 	}
 ?>
 
