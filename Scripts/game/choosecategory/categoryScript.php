@@ -1,8 +1,8 @@
 <?php
 
 class Category{
-
     public static function getRandomCategory() : string{
+        echo "testFunction";
         require '../../connectToDatabase.php';
         echo "succsess connectToDatabase";
         
@@ -32,8 +32,6 @@ class Category{
 
         return $toReturn;
     }
-
-
 
 }
 
