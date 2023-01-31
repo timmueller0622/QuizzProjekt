@@ -22,6 +22,7 @@ use function PHPSTORM_META\type;
                     continue;
 				if ($i == 0){
 					$pcount = $conn->query("SELECT count(playerid) FROM player")->fetchAll();
+					echo gettype($pcount[0][0]);
 					$sql .= $pcount[0][0] . ", ";
 				}
 				else{
