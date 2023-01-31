@@ -13,7 +13,7 @@ echo
 ';
 
 /*Call this Script for API Request*/
-
+/*
     try{
         require 'choosecategory/categoryscript';
 
@@ -26,7 +26,7 @@ echo
     }
 
 
-
+*/
 echo "</body></html>";
 
 ?>
