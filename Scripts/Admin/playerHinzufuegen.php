@@ -26,7 +26,7 @@ use function PHPSTORM_META\type;
 				}
 				else{
 					if (isset($_POST[array_keys($r)[$i]]))
-						$sql .= "'" . $_POST[array_keys($r)[$i]] . "'";
+						$sql .= "'" . $_POST[array_keys($r)[$i]] . "'Ä";
 					else
 						$sql .= "NULL";
 					if ($i < sizeof(array_keys($r))-2)
@@ -39,7 +39,7 @@ use function PHPSTORM_META\type;
         }
 		echo $sql;
 		try {
-			$conn->query($sql);
+			$conn->prepare($sql)->execute();
 		} catch(Exception $e) {
 			echo $e;
 		}
