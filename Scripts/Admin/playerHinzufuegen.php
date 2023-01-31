@@ -9,7 +9,7 @@ use function PHPSTORM_META\type;
 		require '../connectToDatabase.php';
 		$sql = "INSERT INTO player (";
         foreach($conn->query("SELECT * FROM player") as $r){
-            for ($i=0; $i < sizeof(array_keys($r)); $i++) {
+            for ($i=0; $i < sizeof(array_keys($r))-4; $i++) {
                 if (is_numeric(array_keys($r)[$i]))
                     continue;
                 $sql .= array_keys($r)[$i];
@@ -17,7 +17,7 @@ use function PHPSTORM_META\type;
 					$sql .= ", ";
             }
 			$sql .= ") VALUES (";
-			for ($i=0; $i < sizeof(array_keys($r)); $i++) {
+			for ($i=0; $i < sizeof(array_keys($r))-4; $i++) {
                 if (is_numeric(array_keys($r)[$i]))
                     continue;
 				if ($i == 0){
@@ -35,8 +35,8 @@ use function PHPSTORM_META\type;
 			break;
         }
 		echo $sql;
-		$conn->query($sql);
-		header('Location: playerAnzeigen.php');
+		//$conn->query($sql);
+		//header('Location: playerAnzeigen.php');
 	}
 ?>
 
@@ -56,7 +56,7 @@ use function PHPSTORM_META\type;
             $s .= "<table align =\"center\" border= \"1\" cellpadding=\"10\" cellspacing=\"0\">";
             $s .= "<thead><tr><th>Data</th><th>Wert</th></tr></tr></thead><tbody>";
             foreach($conn->query("SELECT * FROM player") as $r){
-                for ($i=2; $i < sizeof(array_keys($r)); $i++) {
+                for ($i=2; $i < sizeof(array_keys($r))-4; $i++) {
                     if (is_numeric(array_keys($r)[$i]))
                         continue;
                     $s .= "<tr><td>" . array_keys($r)[$i] . "</td>";
