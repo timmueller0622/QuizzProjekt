@@ -1,8 +1,8 @@
 <?php
 class Category{
     public static function getRandomCategory() : string{
-        require '../../connectToDatabase.php';
-        echo "succsess connectToDatabase";
+        //require '../../connectToDatabase.php';
+        //echo "succsess connectToDatabase";
         
         /*$GenreArray = array();
         $pos = 0;
