@@ -4,9 +4,9 @@
 		header('Location: loginAPI.php');
 	if (isset ($_POST['sub'])){
 		require 'connectToDatabase.php';
-		$sql = "INSERT INTO nutzer (";
+		$sql = "INSERT INTO player (";
 		$vals = array();
-        foreach($pdo->query("SELECT * FROM nutzer") as $r){
+        foreach($conn->query("SELECT * FROM player") as $r){
             for ($i=0; $i < sizeof(array_keys($r)); $i++) {
                 if (is_numeric(array_keys($r)[$i]))
                     continue;
@@ -30,7 +30,7 @@
 			break;
         }
 		echo $sql;
-		$pdo->query($sql);
+		$conn->query($sql);
 		header('Location: playerAnzeigen.php');
 	}
 ?>
@@ -50,7 +50,7 @@
             $s = "";
             $s .= "<table align =\"center\" border= \"1\" cellpadding=\"10\" cellspacing=\"0\">";
             $s .= "<thead><tr><th>Data</th><th>Wert</th></tr></tr></thead><tbody>";
-            foreach($pdo->query("SELECT * FROM nutzer") as $r){
+            foreach($conn->query("SELECT * FROM player") as $r){
                 for ($i=2; $i < sizeof(array_keys($r)); $i++) {
                     if (is_numeric(array_keys($r)[$i]))
                         continue;
