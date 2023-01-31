@@ -13,20 +13,12 @@ echo
 ';
 
 /*Call this Script for API Request*/
-/*
-    try{
-        require 'choosecategory/categoryscript';
+        //require 'choosecategory/categoryscript';
 
-        $out = Category::getRandomCategory();
+        //$out = Category::getRandomCategory();
     
-        echo "Random Category: " . $out;
-    }
-    catch(Exception e){
-        echo "error";
-    }
-
-
-*/
+        echo "Random Category: " //. $out;
+;
 echo "</body></html>";
 
 ?>
