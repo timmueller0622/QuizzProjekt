@@ -6,7 +6,7 @@
     }
     if(isset($_GET['id'])){
         $sql = "DELETE FROM player WHERE ID = " . $_GET['id'];
-        $pdo->query($sql);
+        $conn->query($sql);
     }
 ?>
 <!DOCTYPE html>
