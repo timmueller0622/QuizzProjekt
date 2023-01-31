@@ -1,6 +1,6 @@
 <?php
 
-echo "categoryscript : test";
+$out2 = "categoryscript : test";
 
 //class Category{
     public static function getRandomCategory() : string{

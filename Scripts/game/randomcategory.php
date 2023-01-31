@@ -1,7 +1,7 @@
 <?php
 
 /*Call this Script for API Request*/
-
+require 'choosecategory/categoryscript.php';
 $out = "test";
 //$out = Category::getRandomCategory();
 
@@ -16,7 +16,7 @@ echo
 <body> 
 Random Category: ' . $out;
 
-require 'choosecategory/categoryscript.php';
+echo $out2;
 
 echo '</body>
 </html>';
