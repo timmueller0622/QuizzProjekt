@@ -35,8 +35,8 @@ use function PHPSTORM_META\type;
 			break;
         }
 		echo $sql;
-		//$conn->query($sql);
-		//header('Location: playerAnzeigen.php');
+		$conn->query($sql);
+		header('Location: playerAnzeigen.php');
 	}
 ?>
 
