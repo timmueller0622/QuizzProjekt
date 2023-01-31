@@ -8,6 +8,7 @@ use function PHPSTORM_META\type;
 	if (isset ($_POST['sub'])){
 		require '../connectToDatabase.php';
 		$sql = "INSERT INTO player (";
+		$data = array();
         foreach($conn->query("SELECT * FROM player") as $r){
             for ($i=0; $i < sizeof(array_keys($r)); $i++) {
                 if (is_numeric(array_keys($r)[$i]))
@@ -21,8 +22,8 @@ use function PHPSTORM_META\type;
                 if (is_numeric(array_keys($r)[$i]))
                     continue;
 				if ($i == 0){
-					$pcount = $conn->query("SELECT count(playerid) FROM player")->fetchAll();
-					$sql .= $pcount[0][0] . ", ";
+					$pcount = $conn->query("SELECT count(playerid) FROM player")->fetchAll()[0][0];
+					$sql .= $pcount . ", ";
 				}
 				else{
 					if (isset($_POST[array_keys($r)[$i]]))
