@@ -2,9 +2,15 @@
 
 /*Call this Script for API Request*/
 
-    require 'choosecategory/categoryscript';
+    try{
+        require 'choosecategory/categoryscript';
 
-    $out = Category::getRandomCategory();
+        $out = Category::getRandomCategory();
+    
+        echo "Random Category: " . $out;
+    }
+    catch(Exception e){
+        echo e;
+    }
 
-    echo "Random Category: " . $out;
 ?>
