@@ -21,7 +21,7 @@
 					echo "test1<br>";
 					$pcount = $conn->query("SELECT count(playerid) FROM player");
 					echo "test2<br>";
-					echo $pcount;
+					print_r($pcount);
 					echo "test3<br>";
 					$sql .= "NULL, ";
 				}
