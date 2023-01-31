@@ -21,7 +21,6 @@ use function PHPSTORM_META\type;
                 if (is_numeric(array_keys($r)[$i]))
                     continue;
 				if ($i == 0){
-					echo "test1<br>";
 					$pcount = $conn->query("SELECT count(playerid) FROM player")->fetchAll();
 					$sql .= $pcount[0][0] . ", ";
 				}
@@ -35,7 +34,7 @@ use function PHPSTORM_META\type;
                 	
 				}
             }
-			$sql .= ")";
+			$sql .= ");";
 			break;
         }
 		echo $sql;
