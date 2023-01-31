@@ -1,4 +1,7 @@
 <?php
+
+use function PHPSTORM_META\type;
+
 	session_start();
 	if (!isset($_SESSION["username"]))
 		header('Location: loginAPI.php');
@@ -21,7 +24,7 @@
 					echo "test1<br>";
 					$pcount = $conn->query("SELECT count(playerid) FROM player")->fetchAll();
 					echo "test2<br>";
-					print_r($pcount[0][0]);
+					print_r(type($pcount[0][0]));
 					echo "test3<br>";
 					$sql .= "NULL, ";
 				}
