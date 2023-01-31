@@ -1,6 +1,4 @@
 <?php
-        echo "categoryScriptLoaded.";
-
 class Category{
     public static function getRandomCategory() : string{
         require '../../connectToDatabase.php';
