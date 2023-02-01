@@ -16,7 +16,8 @@ class Category{
 
         }
 
-        $categoryToReturn = $GenreArray[rand(0, sizeof($GenreArray))]['GenreDescriptor'];*/
+        $randomNumber = rand(0, sizeof($GenreArray));
+        $categoryToReturn = $GenreArray[$randomNumber];*/
 
         //return $categoryToReturn;
         return "test";
