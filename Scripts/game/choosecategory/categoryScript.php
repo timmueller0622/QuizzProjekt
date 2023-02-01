@@ -1,7 +1,7 @@
 <?php
 
 $out2 = "categoryscript : test";
-
+/*TestÄnderung*/
 //class Category{
     public static function getRandomCategory() : string{
         //require '../../connectToDatabase.php';
