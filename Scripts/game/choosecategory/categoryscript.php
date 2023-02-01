@@ -2,7 +2,7 @@
 
 class Category{
 
-    public static function getRandomCategory() : string{
+    static function getRandomCategory() : string{
         require '../../connectToDatabase.php';
         
         $GenreArray = array();
@@ -23,7 +23,7 @@ class Category{
         return "Methodenaufruf erfolgreich";//$categoryToReturn;
     }
 /*
-    public static function getAllCategories(){
+    static function getAllCategories(){
         require '../../connectToDatabase.php';
 
         $toReturn = array();
