@@ -7,9 +7,9 @@ class Category{
         echo "succsess connectToDatabase";
         
         $GenreArray = array();
-        /*$pos = 0;
+        $pos = 0;
 
-        foreach($conn->query("SELECT * FROM Genre") as $row){
+        /*foreach($conn->query("SELECT * FROM Genre") as $row){
             
             $GenreArray[$pos] += $row;
             $pos++;
