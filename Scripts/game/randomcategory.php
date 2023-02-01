@@ -2,7 +2,7 @@
 
 /*Call this Script for API Request*/
 require 'choosecategory/categoryscript.php';
-$out = "test"/*Category::getRandomCategory()*/;
+$out = Category::getRandomCategory();
 
 echo 
 '<!DOCTYPE html>
