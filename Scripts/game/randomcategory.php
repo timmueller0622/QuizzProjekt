@@ -2,6 +2,7 @@
 
 /*Call this Script for API Request*/
 require 'choosecategory/categoryscript.php';
+require_once 'choosecategory/categoryscript.php/Category';
 $out = Category::getRandomCategory();
 
 echo 
