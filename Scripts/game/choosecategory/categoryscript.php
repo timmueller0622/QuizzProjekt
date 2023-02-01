@@ -3,7 +3,7 @@
 class Category{
 
     public static function getRandomCategory() : string{
-        require '../../connectToDatabase.php';
+        //require '../../connectToDatabase.php';
         echo "succsess connectToDatabase";
         
         $GenreArray = array();
