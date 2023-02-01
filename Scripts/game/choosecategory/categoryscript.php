@@ -16,7 +16,7 @@ class Category{
 
         }
 
-        $randomNumber : int = rand(0, sizeof($GenreArray));
+    $randomNumber : int = rand(0, /*sizeof($GenreArray)*/4);
         //$categoryToReturn = $GenreArray[$randomNumber];*/
 
         //return $categoryToReturn;
