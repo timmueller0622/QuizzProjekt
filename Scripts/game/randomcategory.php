@@ -2,8 +2,9 @@
 
 /*Call this Script for API Request*/
 require 'choosecategory/categoryscript.php';
-require_once 'choosecategory/categoryscript.php/Category';
-$out = Category::getRandomCategory();
+
+Category::getRandomCategory();
+$out = "aufruf erfolgreich aber nicht speicherung";
 
 echo 
 '<!DOCTYPE html>
