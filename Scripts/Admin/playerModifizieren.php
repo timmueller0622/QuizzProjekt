@@ -15,7 +15,7 @@ if (isset($_POST['sub'])) {
     echo $username . $email . $userpassword;
     echo $sql;
     $stmt = $conn->prepare($sql);
-    echo $sql;
+    print_r($stmt);
     try{
         $stmt->execute([$username, $email, $userpassword, $_GET['id']]);
     } catch(Exception $e){
