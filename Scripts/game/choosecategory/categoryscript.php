@@ -21,7 +21,7 @@ class Category{
         $randomNumber = rand($min, $max);
         $categoryToReturn = $GenreArray[$randomNumber];
 
-        return "test"//$categoryToReturn;
+        return "test";//$categoryToReturn;
     }
 /*
     public static function getAllCategories(){
