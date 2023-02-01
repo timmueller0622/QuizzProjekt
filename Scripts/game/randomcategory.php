@@ -3,8 +3,8 @@
 /*Call this Script for API Request*/
 require 'choosecategory/categoryscript.php';
 
-getRandomCategory();
-$out = "aufruf erfolgreich aber nicht speicherung";
+
+$out = categoryscript::Category::getRandomCategory();
 
 echo 
 '<!DOCTYPE html>
