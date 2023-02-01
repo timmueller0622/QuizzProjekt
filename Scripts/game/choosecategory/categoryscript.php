@@ -1,7 +1,7 @@
 <?php
 
-$out2 = "categoryscript : test";
 class Category{
+
     public static function getRandomCategory() : string{
         require '../../connectToDatabase.php';
         echo "succsess connectToDatabase";
@@ -16,11 +16,15 @@ class Category{
 
         }
 
-        $categoryToReturn = $GenreArray[rand(0, sizeof($GenreArray))]['GenreDescriptor'];*/
+        $min : int = 0;
+        $max : int = 3;/*sizeof($GenreArray)*/
+        $randomNumber : int = rand($min, $max);
+        //$categoryToReturn = $GenreArray[$randomNumber];*/
 
-        return $categoryToReturn;
+        //return $categoryToReturn;
+        return "test";
     }
-
+/*
     public static function getAllCategories(){
         require '../../connectToDatabase.php';
 
@@ -29,10 +33,11 @@ class Category{
         foreach($conn->query("SELECT * FROM Genre") as $entry){
             $toReturn += $entry;
         }*/
-
+/*
         return $toReturn;
     }
 
+*/
 }
 
 ?>
