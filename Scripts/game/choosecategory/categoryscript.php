@@ -9,14 +9,14 @@ class Category{
         $GenreArray = array();
         $pos = 0;
 
-        /*foreach($conn->query("SELECT * FROM Genre") as $row){
+        foreach($conn->query("SELECT * FROM Genre") as $row){
             
-            $GenreArray[$pos] += $row;
-            $pos++;
+            //$GenreArray[$pos] += $row;
+            //$pos++;
 
         }
 
-        $categoryToReturn = $GenreArray[rand(0, sizeof($GenreArray))]['GenreDescriptor'];*/
+        //$categoryToReturn = $GenreArray[rand(0, sizeof($GenreArray))]['GenreDescriptor'];*/
 
         //return $categoryToReturn;
         return "test";
