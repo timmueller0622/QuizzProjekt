@@ -3,7 +3,9 @@
     if (!isset($_SESSION["username"]))
         header('Location: loginAPI.php');
 	if (isset ($_POST['sub'])){
+        echo "test1<br>";
         require '../connectToDatabase.php';
+        echo "test2<br>";
         $sql = "UPDATE player SET ";
         $count = 0;
         $check = 0;
@@ -15,6 +17,7 @@
                     $count++;
             }
         }
+        echo "test3<br>";
         foreach($conn->query("SELECT * FROM nutzer WHERE ID = " . $_GET['id']) as $r){
             for ($i=2; $i < sizeof(array_keys($r)); $i++) {
                 if (is_numeric(array_keys($r)[$i]))
@@ -28,6 +31,7 @@
                 }
             }
         }
+        echo "test4<br>";
         echo $sql;
         $sql .= " WHERE ID = " . $_GET['id'];
         //$conn->query($sql);
