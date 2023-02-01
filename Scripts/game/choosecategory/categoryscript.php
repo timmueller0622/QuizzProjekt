@@ -11,8 +11,8 @@ class Category{
 
         foreach($conn->query("SELECT * FROM Genre") as $row){
             
-            //$GenreArray[$pos] += $row;
-            //$pos++;
+            $GenreArray[$pos] += $row;
+            $pos++;
 
         }
 
