@@ -19,7 +19,7 @@ class Category{
         $min = 0;
         $max = 3;/*sizeof($GenreArray)*/
         $randomNumber = rand($min, $max);
-        $categoryToReturn = $GenreArray[$randomNumber];*/
+        $categoryToReturn = $GenreArray[$randomNumber];
 
         //return $categoryToReturn;
         return "test";
