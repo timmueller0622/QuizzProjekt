@@ -3,19 +3,22 @@ session_start();
 if (!isset($_SESSION["username"]))
     header('Location: loginAPI.php');
 if (isset($_POST['sub'])) {
-    echo "test1<br>";
     require '../connectToDatabase.php';
-    echo "test2<br>";
-    $sql = "UPDATE player SET username=? email=? passwd=? WHERE ID = " . $_GET['id'];
+    $sql = "UPDATE player SET username=?, email=?, userpassword=? WHERE playerid=?";
     $count = 0;
     $check = 0;
     $username = $_POST['USERNAME'];
     $email = $_POST['EMAIL'];
     $userpassword = $_POST['USERPASSWORD'];
+    echo $username . $email . $userpassword;
     $stmt = $conn->prepare($sql);
-    $stmt->execute([$username, $email, $userpassword]);
+    try{
+        $stmt->execute([$username, $email, $userpassword, $_GET['id']]);
+    } catch(Exception $e){
+        echo $e;
+    }
     echo $sql;
-    //header('Location: playerAnzeigen.php');
+    header('Location: playerAnzeigen.php');
 } // $_POST['sub']
 ?>
 
