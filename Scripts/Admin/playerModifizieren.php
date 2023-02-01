@@ -12,7 +12,7 @@ if (isset($_POST['sub'])) {
     $username = $_POST['USERNAME'];
     $email = $_POST['EMAIL'];
     $userpassword = $_POST['USERPASSWORD'];
-    echo $username . $email . $userpassword
+    echo $username . $email . $userpassword;
     echo $sql;
     $stmt = $conn->prepare($sql);
     echo $sql;
