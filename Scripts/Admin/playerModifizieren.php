@@ -4,7 +4,7 @@
         header('Location: loginAPI.php');
 	if (isset ($_POST['sub'])){
         require '../connectToDatabase.php';
-        $sql = "UPDATE nutzer SET ";
+        $sql = "UPDATE player SET ";
         $count = 0;
         $check = 0;
         foreach($conn->query("SELECT * FROM player WHERE PLAYERID = " . $_GET['id']) as $r){
@@ -15,7 +15,7 @@
                     $count++;
             }
         }
-        foreach($pdo->query("SELECT * FROM nutzer WHERE ID = " . $_GET['id']) as $r){
+        foreach($conn->query("SELECT * FROM nutzer WHERE ID = " . $_GET['id']) as $r){
             for ($i=2; $i < sizeof(array_keys($r)); $i++) {
                 if (is_numeric(array_keys($r)[$i]))
                     continue;
@@ -28,9 +28,10 @@
                 }
             }
         }
+        echo $sql;
         $sql .= " WHERE ID = " . $_GET['id'];
-        $conn->query($sql);
-		header('Location: playerAnzeigen.php');
+        //$conn->query($sql);
+		//header('Location: playerAnzeigen.php');
 	} // $_POST['sub']
 ?>
 
@@ -52,7 +53,7 @@
                 $s .= "<table align =\"center\" border= \"1\" cellpadding=\"10\" cellspacing=\"0\">";
                 $s .= "<thead><tr><th>Data</th><th>Wert</th><th>Modifizierung</th></tr></tr></thead><tbody>";
                 foreach($conn->query($sql) as $r){
-                    for ($i=2; $i < sizeof(array_keys($r)); $i++) {
+                    for ($i=2; $i < sizeof(array_keys($r))-4; $i++) {
                         if (is_numeric(array_keys($r)[$i]))
                             continue;
                         $s .= "<tr><td>" . array_keys($r)[$i] . "</td>";
