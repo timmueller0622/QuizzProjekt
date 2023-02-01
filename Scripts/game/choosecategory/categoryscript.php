@@ -4,9 +4,9 @@ class Category{
 
     public static function getRandomCategory() : string{
         require '../../connectToDatabase.php';
-        /*echo "succsess connectToDatabase";
+        echo "succsess connectToDatabase";
         
-        $GenreArray = array();
+        /*$GenreArray = array();
         $pos = 0;
 
         foreach($conn->query("SELECT * FROM Genre") as $row){
