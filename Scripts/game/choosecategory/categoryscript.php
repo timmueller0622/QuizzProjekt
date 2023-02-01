@@ -1,5 +1,5 @@
 <?php
-
+/*
 $out2 = "categoryscript : test";
 class Category{
     public static function getRandomCategory() : string{
@@ -17,7 +17,7 @@ class Category{
         }
 
         $categoryToReturn = $GenreArray[rand(0, sizeof($GenreArray))]['GenreDescriptor'];*/
-
+/*
         return $categoryToReturn;
     }
 
@@ -29,10 +29,10 @@ class Category{
         foreach($conn->query("SELECT * FROM Genre") as $entry){
             $toReturn += $entry;
         }*/
-
+/*
         return $toReturn;
     }
 
 }
-
+*/
 ?>
