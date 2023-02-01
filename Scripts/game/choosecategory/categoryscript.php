@@ -1,7 +1,7 @@
 <?php
 
 class Category{
-    /*
+
     public static function getRandomCategory() : string{
         require '../../connectToDatabase.php';
         echo "succsess connectToDatabase";
@@ -17,10 +17,10 @@ class Category{
         }
 
         $categoryToReturn = $GenreArray[rand(0, sizeof($GenreArray))]['GenreDescriptor'];*/
-/*
+
         return $categoryToReturn;
     }
-
+/*
     public static function getAllCategories(){
         require '../../connectToDatabase.php';
 
