@@ -16,7 +16,11 @@ if (isset($_POST['sub'])) {
     echo $sql;
     $stmt = $conn->prepare($sql);
     echo $sql;
-    $stmt->execute([$username, $email, $userpassword]);
+    try{
+        $stmt->execute([$username, $email, $userpassword]);
+    } catch(Exception $e){
+        echo $e;
+    }
     echo $sql;
     //header('Location: playerAnzeigen.php');
 } // $_POST['sub']
