@@ -1,13 +1,12 @@
 <?php
 
 $out2 = "categoryscript : test";
-/*TestÄnderung*/
-//class Category{
+class Category{
     public static function getRandomCategory() : string{
-        //require '../../connectToDatabase.php';
-        //echo "succsess connectToDatabase";
+        require '../../connectToDatabase.php';
+        echo "succsess connectToDatabase";
         
-        /*$GenreArray = array();
+        $GenreArray = array();
         $pos = 0;
 
         foreach($conn->query("SELECT * FROM Genre") as $row){
@@ -19,11 +18,11 @@ $out2 = "categoryscript : test";
 
         $categoryToReturn = $GenreArray[rand(0, sizeof($GenreArray))]['GenreDescriptor'];*/
 
-        return /*$categoryToReturn*/ "test";
+        return $categoryToReturn;
     }
 
     public static function getAllCategories(){
-        /*require '../../connectToDatabase.php';
+        require '../../connectToDatabase.php';
 
         $toReturn = array();
 
@@ -31,9 +30,9 @@ $out2 = "categoryscript : test";
             $toReturn += $entry;
         }*/
 
-        return /*$toReturn*/ "test";
+        return $toReturn;
     }
 
-//}
+}
 
 ?>
