@@ -18,11 +18,14 @@
             }
         }
         echo "test3<br>";
-        foreach($conn->query("SELECT * FROM nutzer WHERE ID = " . $_GET['id']) as $r){
+        foreach($conn->query("SELECT * FROM player WHERE PLAYERID = " . $_GET['id']) as $r){
+            echo "test4<br>";
             for ($i=2; $i < sizeof(array_keys($r)); $i++) {
+                echo "test5<br>";
                 if (is_numeric(array_keys($r)[$i]))
                     continue;
                 if (!empty($_POST[array_keys($r)[$i]])){
+                    echo "test6<br>";
                     $sql .= array_keys($r)[$i] . " = \"" . $_POST[array_keys($r)[$i]] . "\"";
                     if ($check < $count-1){
                         $sql .= ", ";
@@ -31,7 +34,6 @@
                 }
             }
         }
-        echo "test4<br>";
         echo $sql;
         $sql .= " WHERE ID = " . $_GET['id'];
         //$conn->query($sql);
