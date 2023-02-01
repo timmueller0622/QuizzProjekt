@@ -12,7 +12,9 @@ if (isset($_POST['sub'])) {
     $username = $_POST['USERNAME'];
     $email = $_POST['EMAIL'];
     $userpassword = $_POST['USERPASSWORD'];
+    echo $sql;
     $stmt = $conn->prepare($sql);
+    echo $sql;
     $stmt->execute([$username, $email, $userpassword]);
     echo $sql;
     //header('Location: playerAnzeigen.php');
