@@ -6,8 +6,8 @@ class Category{
         require '../../connectToDatabase.php';
         echo "succsess connectToDatabase";
         
-        /*$GenreArray = array();
-        $pos = 0;
+        $GenreArray = array();
+        /*$pos = 0;
 
         foreach($conn->query("SELECT * FROM Genre") as $row){
             
