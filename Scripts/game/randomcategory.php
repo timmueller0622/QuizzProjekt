@@ -3,7 +3,7 @@
 /*Call this Script for API Request*/
 require 'choosecategory/categoryscript.php';
 
-Category::getRandomCategory();
+getRandomCategory();
 $out = "aufruf erfolgreich aber nicht speicherung";
 
 echo 
