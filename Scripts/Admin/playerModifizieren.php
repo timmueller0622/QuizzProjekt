@@ -18,7 +18,7 @@
             }
         }
         echo "test3<br>";
-        foreach($conn->query("SELECT * FROM nutzer WHERE ID = " . $_GET['id']) as $r){
+        foreach($conn->query("SELECT * FROM player WHERE ID = " . $_GET['id']) as $r){
             echo "test4<br>";
             for ($i=2; $i < sizeof(array_keys($r)); $i++) {
                 echo "test5<br>";
