@@ -4,7 +4,6 @@ class Category{
 
     public static function getRandomCategory() : string{
         require '../../connectToDatabase.php';
-        echo "succsess connectToDatabase";
         
         $GenreArray = array();
         $pos = 0;
@@ -21,7 +20,7 @@ class Category{
         $randomNumber = rand($min, $max);
         $categoryToReturn = $GenreArray[$randomNumber];
 
-        return "test";//$categoryToReturn;
+        return "Methodenaufruf erfolgreich";//$categoryToReturn;
     }
 /*
     public static function getAllCategories(){
