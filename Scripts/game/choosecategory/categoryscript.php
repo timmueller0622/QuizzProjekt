@@ -18,7 +18,7 @@ class Category{
 
         $min = 0;
         $max = 3;/*sizeof($GenreArray)*/
-        $randomNumber = 1; //rand($min, $max);
+        $randomNumber = rand($min, $max);
         //$categoryToReturn = $GenreArray[$randomNumber];*/
 
         //return $categoryToReturn;
