@@ -6,7 +6,7 @@ if (isset($_POST['sub'])) {
     echo "test1<br>";
     require '../connectToDatabase.php';
     echo "test2<br>";
-    $sql = "UPDATE player SET username=? email=? passwd=? WHERE PLAYERID = " . $_GET['id'];
+    $sql = "UPDATE player SET username=? email=? userpassword=? WHERE PLAYERID = " . $_GET['id'];
     $count = 0;
     $check = 0;
     $username = $_POST['USERNAME'];
