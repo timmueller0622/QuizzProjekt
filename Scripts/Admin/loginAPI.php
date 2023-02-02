@@ -49,9 +49,9 @@ session_start();
 
     function proofLoginData($passwd, $username){
             require '../connectToDatabase.php';
-            $dataToProof = $conn -> query("SELECT * WHERE username = '" . $username . "'");
+            $dataToProof = $conn -> query("SELECT * FROM player WHERE username = '" . $username . "'");
             if($dataToProof['USERPASSWORD'] == $passwd){
-                return $dataToProof['PLAYERID'];
+                return true;
             }
             else{ return false;}
         }
