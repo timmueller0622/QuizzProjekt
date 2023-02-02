@@ -5,7 +5,7 @@
     require 'genrescript.php';
     $genres = Genre::getAllGenres();
     foreach($genres as $current){
-        echo "<br>" . $current . "<br/>";
+        echo $current . "<br>";
     }
 
 ?>
