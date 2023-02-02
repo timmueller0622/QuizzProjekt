@@ -51,7 +51,12 @@ if (isset($_GET['id'])) {
         $s .= "</tr>";
     }
     $s .= "</tbody></table>";
+
+    require '../game/choosecategory/categoryscript.php';
     echo $s;
+
+    
+    echo getRandomCategory();
     ?>
 </body>
 
