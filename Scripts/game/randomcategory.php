@@ -4,7 +4,7 @@
 
 try{
     require 'choosecategory/categoryscript.php';
-    $out = static::Category::getRandomCategory();
+    $out = Category::getRandomCategory();
 
     echo 
     '<!DOCTYPE html>
