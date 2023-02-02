@@ -34,6 +34,7 @@ class Genre{
         require '../connectToDatabase.php';
         $fromDatabase = array();
         foreach ($conn->query("SELECT * FROM QUESTIONDATA WHERE GENRE = " . $genreID . " AND DIFFICULTY = " . $difficultyID) as $entry) {
+            print_r($entry);
             $fromDatabase[] .= $entry;
         }
 
