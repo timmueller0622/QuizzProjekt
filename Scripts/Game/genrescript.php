@@ -34,9 +34,9 @@ class Genre{
         require '../connectToDatabase.php';
         $fromDatabase = array();
         foreach ($conn->query("SELECT * FROM QUESTIONDATA WHERE GENRE = " . $genreID . " AND DIFFICULTY = " . $difficultyID) as $entry) {
-            $fromDatabase[] .= $entry[0] . " ; " . $entry[1] . ";" . $entry[2] . ";";
+            $fromDatabase[] .= $entry[0] . " ; " . $entry[1] . ";" . $entry[2] . ";" . $entry[3] . ";";
         }
-        print_r($fromDatabase);
+        //print_r($fromDatabase);
 
         $min = 0;
         $max = count($fromDatabase)-1;
