@@ -10,9 +10,10 @@ class Category{
             $GenreArray[] .= $row['GENREDESCRIPTOR'];
         }
         $min = 0;
-        $max = count($GenreArray);
+        $max = count($GenreArray)-1;
         $randomNumber = rand($min, $max);
         $categoryToReturn = $GenreArray[$randomNumber];
+        //print_r($GenreArray);
         return $categoryToReturn;
     }
     
