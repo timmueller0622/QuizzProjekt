@@ -14,8 +14,6 @@ class Category{
         $randomNumber = rand($min, $max);
         //echo "random works";
         $categoryToReturn = $GenreArray[$randomNumber];
-        echo "category to return works: " . $categoryToReturn;
-        echo $categoryToReturn;
         return $categoryToReturn;
     }
     
