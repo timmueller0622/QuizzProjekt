@@ -42,7 +42,7 @@ session_start();
         require '../connectToDatabase.php';
         $dataToProof = $conn->query("SELECT * WHERE username = " . $username . ";");
         if ($dataToProof['USERPASSWORD'] == $passwd) {
-            return $dataToProof['PLAYERID'];
+            return true;
         } else {
             return false;
         }
