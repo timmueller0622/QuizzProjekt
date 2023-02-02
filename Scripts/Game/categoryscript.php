@@ -3,14 +3,15 @@
 class Category{
     static function getRandomCategory()
     {
-            require '../connectToDatabase.php';
+        require '../connectToDatabase.php';
 
         $GenreArray = array();
-        echo "test3";
+        echo "before loop";
         foreach ($conn->query("SELECT * FROM GENRE;") as $row) {
-            echo "test4";
+            echo "inloop";
             $GenreArray[] .= $row;
         }
+        echo "after loop";
         $min = 0;
         $max = count($GenreArray);
         $randomNumber = rand($min, $max);
