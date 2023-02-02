@@ -15,6 +15,8 @@
     </head>
     <body> 
     Random Category: ' . $out;
+
+    print_r($out);
     
     echo '</body></html>';
 
