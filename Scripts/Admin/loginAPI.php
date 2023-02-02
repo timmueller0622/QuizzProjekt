@@ -55,6 +55,7 @@ session_start();
             //$dataToProof = $conn->query("SELECT * FROM player WHERE Username = '" . $username . "'");
             foreach($conn->query("SELECT * FROM player WHERE Username = '" . $username . "'") as $r){
                 print_r($r);
+                echo $r;
             }
             if($dataToProof['USERPASSWORD'] == $passwd){
                 return true;
