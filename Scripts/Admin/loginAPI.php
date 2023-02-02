@@ -28,33 +28,26 @@ session_start();
     if (isset($_POST['login'])) {
         $name = $_POST['name'];
         $pass = $_POST['pass'];
-
-        if (proofLoginData($pass, $name)) {
-            $_SESSION["username"] = $name;
-            echo "Richtige Daten!";
-            //header('Location: playerAnzeigen.php');
-        } else {
-            echo "Falsche Daten!";
-        }
-    }
-
-    function proofLoginData($passwd, $username)
-    {
-        try{
-            require '../connectToDatabase.php';
-            echo $username;
-            $dataToProof = $conn->query("SELECT * FROM player WHERE username = " . $username);
-            print_r($dataToProof);
-            if ($dataToProof['USERPASSWORD'] == $passwd) {
-                return true;
-            } else {
-                return false;
+        $sql = "SELECT * FROM player WHERE Username = '" . $name . "'";
+        foreach ($conn->query($sql) as $r) {
+            if ($r['USERPASSWORD'] == $pass) {
+                $_SESSION["username"] = $name;
+                header('Location: playerAnzeigen.php');
             }
-        } catch (Exception $e){
-            echo $e;
         }
+        echo "Falsche Daten!";
+
         
     }
+
+    function proofLoginData($passwd, $username){
+            require '../connectToDatabase.php';
+            $dataToProof = $conn -> query("SELECT * WHERE username = " . $username . ";");
+            if($dataToProof['USERPASSWORD'] == $passwd){
+                return $dataToProof['PLAYERID'];
+            }
+            else{ return false;}
+        }
     ?>
 </body>
 
