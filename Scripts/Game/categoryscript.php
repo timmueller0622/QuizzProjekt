@@ -6,7 +6,7 @@ class Category{
         echo "test1";
         try{
             echo "test1+";
-            require '../../connectToDatabase.php';
+            require '../connectToDatabase.php';
             echo "test1++";
         } catch (Exception $e){
             print_r($e);
