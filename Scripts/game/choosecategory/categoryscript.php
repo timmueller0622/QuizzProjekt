@@ -3,7 +3,11 @@
 function getRandomCategory()
 {
     echo "test1";
-    require '../../connectToDatabase.php';
+    try{   
+        require '../../connectToDatabase.php';
+    } catch (Exception $e){
+        print_r($e);
+    }
     echo "test2";
     $GenreArray = array();
     echo "test3";
