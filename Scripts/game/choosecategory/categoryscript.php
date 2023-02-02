@@ -16,7 +16,7 @@ class Category{
         $randomNumber = rand($min, $max);
         $categoryToReturn = $GenreArray[$randomNumber]['GENREDESCRIPTOR'];
 
-        return $categoryToReturn;//$categoryToReturn;
+        //return $categoryToReturn;
         
     }
 /*
