@@ -36,7 +36,7 @@ class Genre{
         foreach ($conn->query("SELECT * FROM QUESTIONDATA WHERE GENRE = " . $genreID . " AND DIFFICULTY = " . $difficultyID) as $entry) {
             $fromDatabase[] .= $entry;
         }
-        print_r($entry);
+        print_r($fromDatabase);
 
         $min = 0;
         $max = count($fromDatabase)-1;
