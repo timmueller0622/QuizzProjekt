@@ -32,9 +32,9 @@ class Genre{
 
     static function getRandomQuestionFromGenre($genreID, $difficultyID){
         require '../connectToDatabase.php';
-        $fromDatabase;
+        $fromDatabase = array();
         foreach ($conn->query("SELECT * FROM QUESTIONDATA WHERE GENRE = " . $genreID . " AND DIFFICULTY = " . $difficultyID) as $entry) {
-            $fromDatabase .= $entry;
+            $fromDatabase[] .= $entry;
         }
         print_r($entry);
 
