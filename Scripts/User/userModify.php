@@ -13,7 +13,7 @@ class ModifyUser
         echo "test3";
         if ($currentUser['USERPASSWORD'] == $oldpasswd) {
             echo "test4";
-            $stmt = $conn->prepare('UPDATE TABLE Player SET UserPassword = ? WHERE PlayerID = ?');
+            $stmt = $conn->prepare('UPDATE player SET userpassword = ? WHERE playerid = ?');
             $stmt->execute([$newpasswd, $userID]);
             return true;
         } else {
