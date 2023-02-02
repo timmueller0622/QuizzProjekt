@@ -5,9 +5,11 @@ class LoginUser
     public static function proofLoginData($passwd, $username)
     {
         try {
-            echo "test";
+            echo "test1";
             require '../connectToDatabase.php';
+            echo "test2";
             $dataToProof = $conn->query("SELECT * FROM player WHERE username = '" . $username . "'")->fetchAll()[0];
+            echo "test3";
             if ($dataToProof['USERPASSWORD'] == $passwd) {
                 return $dataToProof['PLAYERID'];
             } else {
