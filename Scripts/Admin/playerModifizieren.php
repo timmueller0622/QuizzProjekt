@@ -14,7 +14,7 @@ if (isset($_POST['sub'])) {
         echo "modified";
     }
     else 
-    echo "error";
+        echo "error";
 
 
 
