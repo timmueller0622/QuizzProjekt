@@ -6,6 +6,11 @@ if (isset($_POST['sub'])) {
 	require '../connectToDatabase.php';
 	$sql = "INSERT INTO player (PLAYERID, USERNAME, EMAIL, USERPASSWORD, SESSIONKEY, SESSIONTIME) VALUES ( ?, ?, ?, ?, ?, ?)";
 	$id = $conn->query("SELECT count(playerid) FROM player")->fetchAll()[0][0];
+	foreach ($conn->query("SELECT * FROM player") as $r){
+		while ($r['PLAYERID'] == $id)
+			$id++;
+	}
+	echo $id;
 	$username = $_POST['USERNAME'];
 	$email = $_POST['EMAIL'];
 	$userpassword = $_POST['USERPASSWORD'];
