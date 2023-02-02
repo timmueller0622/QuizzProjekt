@@ -35,7 +35,7 @@ class Genre{
         echo "Database works.";
         $fromDatabase = array();
         echo "fromdatabase initialisation works.";
-        foreach ($conn->query("SELECT * FROM QUESTIONDATA WHERE GENREID = " . $genreID . " AND DIFFICULTYID = " . $difficultyID) as $entry) {
+        foreach ($conn->query("SELECT * FROM QUESTIONDATA WHERE GENRE = " . $genreID . " AND DIFFICULTY = " . $difficultyID) as $entry) {
             echo "loop call";
             $fromDatabase[] .= $entry;
             echo "loop save";
