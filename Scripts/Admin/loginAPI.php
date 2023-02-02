@@ -52,12 +52,8 @@ session_start();
         try{
             require '../connectToDatabase.php';
             echo "test2";
-            //$dataToProof = $conn->query("SELECT * FROM player WHERE Username = '" . $username . "'");
-            foreach($conn->query("SELECT * FROM player WHERE Username = '" . $username . "'") as $r){
-                print_r($r);
-                echo $r;
-                echo "test";
-            }
+            $dataToProof = $conn->query("SELECT * FROM player WHERE Username = '" . $username . "'");
+            print_r($dataToProof->fetchAll());
             if($dataToProof['USERPASSWORD'] == $passwd){
                 return true;
             }
