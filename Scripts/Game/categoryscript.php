@@ -7,7 +7,7 @@ class Category{
 
         $GenreArray = array();
         echo "before loop";
-        foreach ($conn->query("SELECT * FROM GENRE;") as $row) {
+        foreach ($conn->query("SELECT * FROM GENRE") as $row) {
             echo "inloop";
             $GenreArray[] .= $row;
         }
