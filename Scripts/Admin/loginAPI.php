@@ -31,7 +31,7 @@ session_start();
 
         if (proofLoginData($pass, $name)){
             $_SESSION["username"] = $name;
-            header('Location:playerAnzeigen.php');
+            //header('Location:playerAnzeigen.php');
         }
         else
             echo "Falsche Daten!";
