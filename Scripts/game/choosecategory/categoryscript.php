@@ -2,7 +2,7 @@
 
 class Category{
 
-    static function getRandomCategory(){
+    function getRandomCategory(){
 
         require '../../connectToDatabase.php';
         $GenreArray = array();
