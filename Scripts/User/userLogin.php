@@ -14,6 +14,7 @@ class LoginUser
                 echo "test4";
                 return $dataToProof['PLAYERID'];
             } else {
+                echo "test5";
                 return false;
             }
         } catch (Exception $e) {
