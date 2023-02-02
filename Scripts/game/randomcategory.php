@@ -4,9 +4,7 @@
 
 try{
     require 'choosecategory/categoryscript.php';
-    //$out = Category::getRandomCategory();
-    $out = "test";
-    print_r($out);
+    $out = Category::getRandomCategory();
 
     echo 
     '<!DOCTYPE html>
@@ -18,8 +16,6 @@ try{
     </head>
     <body> 
     Random Category: ' . $out;
-    
-    
     
     echo '</body>
     </html>';
