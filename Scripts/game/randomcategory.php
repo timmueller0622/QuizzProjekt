@@ -2,7 +2,6 @@
 
 /*Call this Script for API Request*/
 
-try{
     require 'choosecategory/categoryscript.php';
     $script = new Category();
     $out = $script->getRandomCategory();
@@ -18,10 +17,6 @@ try{
     <body> 
     Random Category: ' . $out;
     
-    echo '</body>
-    </html>';
-} catch (Exception $e){
-    echo $e;
-}
+    echo '</body></html>';
 
 ?>
