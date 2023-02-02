@@ -16,6 +16,7 @@ class Category{
         //echo "random works";
         print_r($GenreArray);
         $categoryToReturn = $GenreArray[$randomNumber];
+        print_r($categoryToReturn);
         return $categoryToReturn;
     }
     
