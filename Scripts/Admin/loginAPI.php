@@ -30,7 +30,7 @@ session_start();
         $pass = $_POST['pass'];
 
         if (!LoginUser::proofLoginData($pass, $name)){
-            echo "Falsche Daten!";
+            echo LoginUser::echoWrongLoginData($pass, $name);
         }
         else
             $_SESSION["username"] = $name;
