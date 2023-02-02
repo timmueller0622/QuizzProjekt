@@ -24,14 +24,14 @@ session_start();
         <p align="center"><input type="submit" name="login" value="login"></a></button></p>
     </form>
     <?php
-    require '../connectToDatabase.php';
+    require '../User/userLogin.php';
     if (isset($_POST['login'])) {
         $name = $_POST['name'];
         $pass = $_POST['pass'];
 
-        if (proofLoginData($pass, $name)){
+        if (LoginUser::proofLoginData($pass, $name)){
             $_SESSION["username"] = $name;
-            //header('Location:playerAnzeigen.php');
+            header('Location:playerAnzeigen.php');
         }
         else
             echo "Falsche Daten!";
@@ -47,11 +47,9 @@ session_start();
         
     }
 
-    function proofLoginData($passwd, $username){
-        echo "test1" . $username;
+    /*function proofLoginData($passwd, $username){
         try{
             require '../connectToDatabase.php';
-            echo "test2";
             $dataToProof = $conn->query("SELECT * FROM player WHERE Username = '" . $username . "'")->fetchAll()[0];
             print_r($dataToProof['USERPASSWORD'] . " " . $passwd);
             if($dataToProof['USERPASSWORD'] == $passwd){
@@ -61,9 +59,8 @@ session_start();
         } catch (Exception $e){
             echo $e;
         }
-        echo "test3";
             
-    }
+    }*/
     ?>
 </body>
 

@@ -3,11 +3,13 @@
     class LoginUser{
         public static function proofLoginData($passwd, $username){
             require '../connectToDatabase.php';
-            $dataToProof = $conn -> query("SELECT * WHERE username = " . $username . ";");
+            $dataToProof = $conn->query("SELECT * WHERE username = " . $username . ";")->fetchAll()[0];
             if($dataToProof['USERPASSWORD'] == $passwd){
                 return $dataToProof['PLAYERID'];
             }
-            else{ return false;}
+            else { 
+                return false;
+            }
         }
         public static function echoWrongLoginData($inputPasswd, $inputUsername) : void{
             echo "<font color='red'> Logindaten ungültig. Es wurde versucht sich mit </font><font color='red'>" 
