@@ -4,7 +4,7 @@
 
         require '../../connectToDatabase.php';
         $GenreArray = array();
-        foreach($conn->query("SELECT * FROM GENRE") as $row){
+        foreach($conn->query("SELECT * FROM GENRE;") as $row){
             
             $GenreArray[] .= $row;
 
@@ -23,7 +23,7 @@
 
         $toReturn = array();
 
-        foreach($conn->query("SELECT * FROM Genre") as $entry){
+        foreach($conn->query("SELECT * FROM Genre;") as $entry){
             $toReturn += $entry;
         }
 
