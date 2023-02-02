@@ -28,7 +28,7 @@ session_start();
     if (isset($_POST['login'])) {
         $name = $_POST['name'];
         $pass = $_POST['pass'];
-
+        echo LoginUser::proofLoginData($pass, $name);
         if (LoginUser::proofLoginData($pass, $name) == 0){
             echo "Falsche Daten!";
         }
