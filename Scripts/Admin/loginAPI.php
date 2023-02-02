@@ -41,6 +41,7 @@ session_start();
     {
         require '../connectToDatabase.php';
         $dataToProof = $conn->query("SELECT * WHERE username = " . $username . ";");
+        print_r($dataToProof);
         if ($dataToProof['USERPASSWORD'] == $passwd) {
             return true;
         } else {
