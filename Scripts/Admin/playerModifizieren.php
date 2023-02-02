@@ -5,8 +5,16 @@ if (!isset($_SESSION["username"]))
 if (isset($_POST['sub'])) {
     require '../User/userModify.php';
     require '../connectToDatabase.php';
-    $pass = $_POST['USERPASSWORD'];
-    //if (ModifyUser::modifyUserUsername($_GET['id']), $_POST['USERPASSWORD'], )
+    $oldpass = $conn->query('SELECT * FROM player WHERE playerid = ' . $_GET['id'])->fetchAll()[0]['USERPASSWORD'];
+    echo $oldpass;
+    if (ModifyUser::modifyUserUsername($_GET['id'], $oldpass, $_POST['USERPASSWORD']) &&
+        ModifyUser::modifyUserUsername($_GET['id'], $oldpass, $_POST['USERNAME']) &&
+        ModifyUser::modifyUserEmail($_GET['id'], $oldpass, $_POST['EMAIL']))
+    {
+        echo "modified";
+    }
+    else 
+    echo "error";
 
 
 
