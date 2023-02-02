@@ -54,7 +54,7 @@ session_start();
             echo "test2";
             $dataToProof = $conn->query("SELECT * FROM player WHERE Username = '" . $username . "'");
             print_r($dataToProof->fetchAll());
-            if($dataToProof[0]['USERPASSWORD'] == $passwd){
+            if($dataToProof->fetchAll()['USERPASSWORD'] == $passwd){
                 return true;
             }
             else{ return false;}
