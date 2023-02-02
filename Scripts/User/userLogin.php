@@ -11,6 +11,7 @@ class LoginUser
             $dataToProof = $conn->query("SELECT * FROM player WHERE username = '" . $username . "'")->fetchAll()[0];
             echo "test3" . $dataToProof['USERPASSWORD'];
             if ($dataToProof['USERPASSWORD'] == $passwd) {
+                echo "test4";
                 return $dataToProof['PLAYERID'];
             } else {
                 return false;
