@@ -19,7 +19,7 @@ if (!isset($_SESSION["username"])) {
     echo "<div align='center'>Choose Genre</div>";
     $s = "<table align =\"center\" border= \"1\" cellpadding=\"10\" cellspacing=\"0\"><thead><tr>";
     foreach ($conn->query('SELECT * FROM genre') as $r) {
-        for ($i = sizeof(array_keys($r)); $i > 0; $i--) {
+        for ($i = sizeof(array_keys($r)); $i >= 0; $i--) {
             if (is_numeric(array_keys($r)[$i]))
                 continue;
             $s .= "<th>" . array_keys($r)[$i] . "</a></th>";
