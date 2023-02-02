@@ -11,8 +11,5 @@
             $conn -> query("INSERT INTO PLAYER (ID, USERNAME, USERPASSWORD, EMAIL) values (" . $IDForInsert . ";" 
             . $username . ";" . $passwd . ";" . $email . ";" . ");");
         }
-
-
-
     }
 ?>
