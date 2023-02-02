@@ -2,9 +2,9 @@
 /*Klasse, ueber welche auf die verschiedenen Eigenschaften der User-Datensaetze zugegriffen wird.*/
 class ModifyUser
 {
-
     public static function modifyUserPasswd($userID, $oldpasswd, $newpasswd): bool
     {
+        echo "test ctd";
         require '../connectToDatabase.php';
         echo "test1";
         $sql = 'SELECT * FROM Player WHERE PlayerID = '. $userID;
