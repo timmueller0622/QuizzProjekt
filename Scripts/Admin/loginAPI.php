@@ -28,14 +28,13 @@ session_start();
     if (isset($_POST['login'])) {
         $name = $_POST['name'];
         $pass = $_POST['pass'];
-        echo LoginUser::proofLoginData($pass, $name);
-        /*if (LoginUser::proofLoginData($pass, $name) == 0){
+        if (LoginUser::proofLoginData($pass, $name) == false){
             echo "Falsche Daten!";
         }
         else{
             $_SESSION["username"] = $name;
             header('Location:playerAnzeigen.php');
-        }*/
+        }
             
             
 
