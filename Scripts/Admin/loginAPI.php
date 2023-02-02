@@ -32,9 +32,11 @@ session_start();
         if (!LoginUser::proofLoginData($pass, $name)){
             echo "Falsche Daten!";
         }
-        else
+        else{
             $_SESSION["username"] = $name;
             header('Location:playerAnzeigen.php');
+        }
+            
             
 
         /*$sql = "SELECT * FROM player WHERE Username = '" . $name . "'";
