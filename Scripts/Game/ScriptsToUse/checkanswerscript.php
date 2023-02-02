@@ -3,7 +3,7 @@
 class Answer{
 
     public static function proofAnswerAndSave($answerID) : void {
-        require '../connectToDatabase.php';
+        require '../../connectToDatabase.php';
 
         $QuestionAnswerdRight = $conn -> query("SELECT IsRight FROM AnswerData WHERE AnswerID = " . $answerID . ";");
         if($QuestionAnswerdRight == 1){
