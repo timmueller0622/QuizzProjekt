@@ -3,7 +3,12 @@ session_start();
 if (!isset($_SESSION["username"]))
 	header('Location: loginAPI.php');
 if (isset($_POST['sub'])) {
-	require '../connectToDatabase.php';
+	require '../User/userRegister.php';
+	$username = $_POST['USERNAME'];
+	$email = $_POST['EMAIL'];
+	$userpassword = $_POST['USERPASSWORD'];
+	RegisterUser::createNewUser($username, $userpassword, $email);
+	/*require '../connectToDatabase.php';
 	$sql = "INSERT INTO player (PLAYERID, USERNAME, EMAIL, USERPASSWORD, SESSIONKEY, SESSIONTIME) VALUES ( ?, ?, ?, ?, ?, ?)";
 	$id = $conn->query("SELECT count(playerid) FROM player")->fetchAll()[0][0];
 	foreach ($conn->query("SELECT * FROM player") as $r){
@@ -23,19 +28,16 @@ if (isset($_POST['sub'])) {
 	} catch (Exception $e) {
 		echo $e;
 	}
-	header('Location: playerAnzeigen.php');
+	header('Location: playerAnzeigen.php');*/
 }
 ?>
-
 <!doctype html>
 <html>
-
 <head>
 	<title>Player hinzufügen</title>
 	<meta charset="utf-8">
 	<link href="layout.css" rel="stylesheet">
 </head>
-
 <body>
 	<form method="post">
 		<?php
@@ -59,5 +61,4 @@ if (isset($_POST['sub'])) {
 		?>
 	</form>
 </body>
-
 </html>

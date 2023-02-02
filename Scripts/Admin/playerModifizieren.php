@@ -44,7 +44,7 @@ if (isset($_POST['sub'])) {
                     $s .= "<td>" . array_values($r)[$i] . "</td>";
                     $s .= "<td><input name=\"" . array_keys($r)[$i] . "\"></td></tr>";
                 }
-                $s .= "<td></td><td></td><td><input type=\"submit\" name=\"sub\" value=\"Speichern\"></td>";
+                $s .= '<td></td><td></td><td><input type="submit" name="sub" value="Speichern"></td>';
             }
             $s .= "</tbody></table>";
             echo $s;

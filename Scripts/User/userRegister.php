@@ -1,15 +1,24 @@
-<?php 
+<?php
 
-    class RegisterUser{
+class RegisterUser
+{
 
-        public static function createNewUser($username,$passwd,$email){
-            require '../connectToDatabase.php';
-            if($username == null || $passwd == null || $email == null){
-                throw new BadMethodCallException("Uebergebene Argumente ungueltig.");
-            }
-            $IDForInsert = $conn->query("SELECT Count(PLAYERID) FROM PLAYER;");
-            $conn -> query("INSERT INTO PLAYER (ID, USERNAME, USERPASSWORD, EMAIL) values (" . $IDForInsert . ";" 
-            . $username . ";" . $passwd . ";" . $email . ";" . ");");
+    public static function createNewUser($username, $passwd, $email)
+    {
+        require '../connectToDatabase.php';
+        $sql = "INSERT INTO player (PLAYERID, USERNAME, EMAIL, USERPASSWORD, SESSIONKEY, SESSIONTIME) VALUES ( ?, ?, ?, ?, ?, ?)";
+        if ($username == null || $passwd == null || $email == null) {
+            throw new BadMethodCallException("Uebergebene Argumente ungueltig.");
         }
+        $id = $conn->query("SELECT count(playerid) FROM player")->fetchAll()[0][0];
+        foreach ($conn->query("SELECT * FROM player") as $r){
+            while ($r['PLAYERID'] == $id)
+                $id++;
+        }
+	    $sessionkey = null;
+	    $sessiontime = null;
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$id, $username, $email, $passwd, $sessionkey, $sessiontime]);
     }
+}
 ?>

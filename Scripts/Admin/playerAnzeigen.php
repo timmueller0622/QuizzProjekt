@@ -12,7 +12,6 @@ if (isset($_GET['id'])) {
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Player anzeigen</title>
     <meta charset="utf-8">
@@ -51,12 +50,7 @@ if (isset($_GET['id'])) {
         $s .= "</tr>";
     }
     $s .= "</tbody></table>";
-
-    require '../Game/categoryscript.php';
     echo $s;
-
-    
-    echo Category::getRandomCategory();
     ?>
 </body>
 
