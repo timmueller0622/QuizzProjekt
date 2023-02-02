@@ -52,7 +52,7 @@ if (isset($_GET['id'])) {
     }
     $s .= "</tbody></table>";
 
-    require '../Game/ScriptsToUse/categoryscript.php';
+    require '../Game/categoryscript.php';
     echo $s;
 
     
