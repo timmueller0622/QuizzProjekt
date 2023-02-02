@@ -13,7 +13,7 @@ class Category{
         $max = count($GenreArray)-1;
         $randomNumber = rand($min, $max);
         $categoryToReturn = $GenreArray[$randomNumber];
-        print_r($GenreArray);
+        //print_r($GenreArray);
         return $categoryToReturn;
     }
     
