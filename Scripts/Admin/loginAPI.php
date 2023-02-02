@@ -34,6 +34,7 @@ session_start();
             header('Location:playerAnzeigen.php');
         }
         else
+            echo "Falsche Daten!";
 
         /*$sql = "SELECT * FROM player WHERE Username = '" . $name . "'";
         foreach ($conn->query($sql) as $r) {
@@ -42,7 +43,6 @@ session_start();
                 header('Location: playerAnzeigen.php');
             }
         }*/
-        echo "Falsche Daten!";
 
         
     }
@@ -59,7 +59,7 @@ session_start();
             echo $e;
         }
             
-        }
+    }
     ?>
 </body>
 
