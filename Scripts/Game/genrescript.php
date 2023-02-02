@@ -1,7 +1,7 @@
 <?php
 
-class Category{
-    static function getRandomCategory()
+class Genre{
+    static function getRandomGenre()
     {
         require '../connectToDatabase.php';
 
@@ -17,13 +17,13 @@ class Category{
         return $categoryToReturn;
     }
     
-    static function getAllCategories()
+    static function getAllGenres()
     {
         require '../../connectToDatabase.php';
     
         $toReturn = array();
     
-        foreach ($conn->query("SELECT * FROM Genre;") as $entry) {
+        foreach ($conn->query("SELECT * FROM GENRE") as $entry) {
             $toReturn += $entry;
         }
     

@@ -5,10 +5,10 @@ class Answer{
     public static function proofAnswerAndSave($answerID) : void {
         require '../../connectToDatabase.php';
 
-        $QuestionAnswerdRight = $conn -> query("SELECT IsRight FROM AnswerData WHERE AnswerID = " . $answerID . ";");
+        $QuestionAnswerdRight = $conn -> query("SELECT ISRIGHT FROM ANSWERDATA WHERE ANSWERID = " . $answerID);
         if($QuestionAnswerdRight == 1){
             /* true -> 1 in database*/
-            $conn -> query("UPDATE TABLE Question SET Question.AnsweredCorrectly = 1 WHERE QuestionDataID in 
+            $conn -> query("UPDATE TABLE QUESTION SET QUESTION.AnsweredCorrectly = 1 WHERE QuestionDataID in 
                             ( SELECT QuestionDataID FROM QuestionData JOIN AnswerData 
                                 ON QuestionData.QuestionDataID = AnswerData.Question WHERE AnswerData.AnswerID = " . $answerID .");");
         }
