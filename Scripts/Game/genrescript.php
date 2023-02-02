@@ -34,7 +34,7 @@ class Genre{
         require '../connectToDatabase.php';
         $fromDatabase = array();
         foreach ($conn->query("SELECT * FROM QUESTIONDATA WHERE GENRE = " . $genreID . " AND DIFFICULTY = " . $difficultyID) as $entry) {
-            $fromDatabase[] .= $entry[2];
+            $fromDatabase[] .= $entry[0];
         }
         print_r($fromDatabase);
 
