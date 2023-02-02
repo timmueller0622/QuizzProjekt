@@ -1,7 +1,5 @@
 <?php
 
-class Category{
-
     function getRandomCategory(){
 
         require '../../connectToDatabase.php';
@@ -33,4 +31,3 @@ class Category{
     }
 
 */
-}

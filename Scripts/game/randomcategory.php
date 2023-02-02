@@ -3,8 +3,7 @@
 /*Call this Script for API Request*/
 
     require 'choosecategory/categoryscript.php';
-    $script = new Category();
-    $out = $script->getRandomCategory();
+    $out = getRandomCategory();
 
     echo 
     '<!DOCTYPE html>
