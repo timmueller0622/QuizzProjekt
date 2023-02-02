@@ -6,8 +6,7 @@
     $genres = Genre::getAllGenres();
     print_r($genres);
     foreach($genres as $current){
-        print_r($current);
-        echo $current['GENREDESCRIPTOR'];
+        echo $current;
     }
 
 ?>
