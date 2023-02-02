@@ -18,12 +18,12 @@ if (isset($_POST['sub'])) {
 	$sessiontime = null;
 	$data = array();
 	try {
-		//$stmt = $conn->prepare($sql);
-		//$stmt->execute([$id, $username, $email, $userpassword, $sessionkey, $sessiontime]);
+		$stmt = $conn->prepare($sql);
+		$stmt->execute([$id, $username, $email, $userpassword, $sessionkey, $sessiontime]);
 	} catch (Exception $e) {
 		echo $e;
 	}
-	//header('Location: playerAnzeigen.php');
+	header('Location: playerAnzeigen.php');
 }
 ?>
 
