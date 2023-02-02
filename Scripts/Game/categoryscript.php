@@ -14,7 +14,7 @@ class Category{
         $randomNumber = rand($min, $max);
         //echo "random works";
         $categoryToReturn = $GenreArray[$randomNumber];
-        return $categoryToReturn;
+        return $categoryToReturn['Genredescriptor'];
     }
     
     static function getAllCategories()
