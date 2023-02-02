@@ -29,12 +29,13 @@ session_start();
         $name = $_POST['name'];
         $pass = $_POST['pass'];
 
-        if (LoginUser::proofLoginData($pass, $name)){
-            $_SESSION["username"] = $name;
-            header('Location:playerAnzeigen.php');
+        if (!LoginUser::proofLoginData($pass, $name)){
+            echo "Falsche Daten!";
         }
         else
-            echo "Falsche Daten!";
+            $_SESSION["username"] = $name;
+            header('Location:playerAnzeigen.php');
+            
 
         /*$sql = "SELECT * FROM player WHERE Username = '" . $name . "'";
         foreach ($conn->query($sql) as $r) {

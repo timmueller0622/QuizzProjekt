@@ -3,7 +3,7 @@
     class LoginUser{
         public static function proofLoginData($passwd, $username){
             require '../connectToDatabase.php';
-            $dataToProof = $conn->query("SELECT * WHERE username = " . $username . ";")->fetchAll()[0];
+            $dataToProof = $conn->query("SELECT * FROM player WHERE username = '" . $username . "'")->fetchAll()[0];
             if($dataToProof['USERPASSWORD'] == $passwd){
                 return $dataToProof['PLAYERID'];
             }
