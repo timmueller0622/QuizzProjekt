@@ -7,7 +7,7 @@ if (isset($_POST['sub'])) {
     require '../connectToDatabase.php';
     $oldpass = $conn->query('SELECT * FROM player WHERE playerid = ' . $_GET['id'])->fetchAll()[0]['USERPASSWORD'];
     echo $oldpass;
-    if (ModifyUser::modifyUserUsername($_GET['id'], $oldpass, $_POST['USERPASSWORD']) &&
+    if (ModifyUser::modifyUserPasswd($_GET['id'], $oldpass, $_POST['USERPASSWORD']) &&
         ModifyUser::modifyUserUsername($_GET['id'], $oldpass, $_POST['USERNAME']) &&
         ModifyUser::modifyUserEmail($_GET['id'], $oldpass, $_POST['EMAIL']))
     {
