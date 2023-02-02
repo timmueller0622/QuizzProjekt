@@ -1,6 +1,5 @@
 <?php
 //connect.php
-echo "found ctd";
 $tns = "quizzapp_high";
 $user = "quizzteam2";
 $password = "QuizzApp9755";
