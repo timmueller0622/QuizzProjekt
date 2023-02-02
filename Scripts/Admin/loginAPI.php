@@ -48,7 +48,7 @@ session_start();
     }
 
     function proofLoginData($passwd, $username){
-        echo "test1";
+        echo "test1" . $username;
         try{
             require '../connectToDatabase.php';
             echo "test2";
