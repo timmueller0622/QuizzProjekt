@@ -5,6 +5,7 @@
 try{
     require 'choosecategory/categoryscript.php';
     $out = Category::getRandomCategory();
+    print_r($out);
 
     echo 
     '<!DOCTYPE html>
