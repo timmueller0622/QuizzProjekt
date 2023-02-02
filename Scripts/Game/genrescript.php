@@ -41,6 +41,8 @@ class Genre{
         $max = count($fromDatabase)-1;
         $randomNumber = rand($min, $max);
 
+        print_r($fromDatabase);
+
         $toReturn = $fromDatabase[$randomNumber];
         
         print_r($toReturn);
