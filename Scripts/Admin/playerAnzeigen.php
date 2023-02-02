@@ -12,12 +12,10 @@ if (isset($_GET['id'])) {
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Player anzeigen</title>
     <meta charset="utf-8">
 </head>
-
 <body>
     <?php
     // http://quizzteam2.jedimasters.net/Scripts
@@ -51,13 +49,7 @@ if (isset($_GET['id'])) {
         $s .= "</tr>";
     }
     $s .= "</tbody></table>";
-
-    require '../Game/categoryscript.php';
     echo $s;
-
-    
-    echo Category::getRandomCategory();
     ?>
 </body>
-
 </html>
