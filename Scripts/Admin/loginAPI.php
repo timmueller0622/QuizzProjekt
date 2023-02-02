@@ -40,14 +40,19 @@ session_start();
 
     function proofLoginData($passwd, $username)
     {
-        require '../connectToDatabase.php';
-        $dataToProof = $conn->query("SELECT * WHERE username = " . $username . ";");
-        print_r($dataToProof);
-        if ($dataToProof['USERPASSWORD'] == $passwd) {
-            return true;
-        } else {
-            return false;
+        try{
+            require '../connectToDatabase.php';
+            $dataToProof = $conn->query("SELECT * FROM player WHERE username = " . $username);
+            print_r($dataToProof);
+            if ($dataToProof['USERPASSWORD'] == $passwd) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e){
+            echo $e;
         }
+        
     }
     ?>
 </body>
