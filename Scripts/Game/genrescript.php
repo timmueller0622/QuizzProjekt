@@ -19,7 +19,7 @@ class Genre{
     
     static function getAllGenres()
     {
-        require '../../connectToDatabase.php';
+        require '../connectToDatabase.php';
     
         $toReturn = array();
     
