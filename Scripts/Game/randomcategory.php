@@ -2,8 +2,8 @@
 
 /*Call this Script for API Request*/
 
-    require 'choosecategory/categoryscript.php';
-    $out = getRandomCategory();
+    require 'ScriptsToUse/categoryscript.php';
+    $out = Category::getRandomCategory();
 
     echo 
     '<!DOCTYPE html>
