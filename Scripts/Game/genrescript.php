@@ -29,5 +29,22 @@ class Genre{
     
         return $toReturn;
     }
+
+    static function getRandomQuestionFromGenre($genreID, $difficultyID){
+        require '../connectToDatabase.php';
+        $fromDatabase = array();
+    
+        foreach ($conn->query("SELECT * FROM QUESTIONDATA WHERE GENREID = " . $genreID . " AND DIFFICULTYID = " . $difficultyID) as $entry) {
+            $fromDatabase[] .= $entry;
+        }
+
+        $min = 0;
+        $max = count($fromDatabase)-1;
+        $randomNumber = rand($min, $max);
+
+        $toReturn = $fromDatabase[$randomNumber];
+    
+        return $toReturn;
+    }
 }
 ?>
