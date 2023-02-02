@@ -17,17 +17,17 @@
         return $categoryToReturn;
         
     }
-/*
-    static function getAllCategories(){
+
+    function getAllCategories(){
         require '../../connectToDatabase.php';
 
         $toReturn = array();
 
         foreach($conn->query("SELECT * FROM Genre") as $entry){
             $toReturn += $entry;
-        }*/
-/*
+        }
+
         return $toReturn;
     }
 
-*/
+
