@@ -21,8 +21,12 @@ class RegisterUser
         echo "test 3 " . $id . $username . $email . $passwd;
 	    $sessionkey = null;
 	    $sessiontime = null;
-        $stmt = $conn->prepare($sql);
-        $stmt->execute([$id, $username, $email, $passwd, $sessionkey, $sessiontime]);
+        try {
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$id, $username, $email, $passwd, $sessionkey, $sessiontime]);
+        } catch (Exception $e) {
+            echo $e;
+        }
         echo "test 4";
     }
 }
