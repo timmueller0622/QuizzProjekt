@@ -7,6 +7,7 @@ class Category{
 
         $GenreArray = array();
         foreach ($conn->query("SELECT * FROM GENRE") as $row) {
+            print_r($row);
             $GenreArray[] .= $row;
         }
         $min = 0;
