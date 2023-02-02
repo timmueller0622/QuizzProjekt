@@ -48,6 +48,7 @@ session_start();
     }
 
     function proofLoginData($passwd, $username){
+        echo "test";
         try{
             require '../connectToDatabase.php';
             $dataToProof = $conn -> query("SELECT * FROM player WHERE username = '" . $username . "'");
