@@ -4,7 +4,8 @@
 
 try{
     require 'choosecategory/categoryscript.php';
-    $out = Category::getRandomCategory();
+    //$out = Category::getRandomCategory();
+    $out = "test";
     print_r($out);
 
     echo 
