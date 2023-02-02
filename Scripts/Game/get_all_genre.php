@@ -3,9 +3,11 @@
 /*Call this Script for API Request*/
 
     require 'genrescript.php';
-    foreach(Genre::getAllGenres() as $entry){
-        print_r($entry);
-        echo $entry['GENREDESCRIPTOR'];
+    $genres = Genre::getAllGenres();
+    print_r($genres);
+    foreach($genres as $current){
+        print_r($current);
+        echo $current['GENREDESCRIPTOR'];
     }
 
 ?>
