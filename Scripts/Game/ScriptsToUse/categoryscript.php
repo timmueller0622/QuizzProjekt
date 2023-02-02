@@ -4,8 +4,10 @@ class Category{
     static function getRandomCategory()
     {
         echo "test1";
-        try{   
+        try{
+            echo "test1+";
             require '../../connectToDatabase.php';
+            echo "test1++";
         } catch (Exception $e){
             print_r($e);
         }
