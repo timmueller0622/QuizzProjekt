@@ -5,6 +5,8 @@ if (!isset($_SESSION["username"])) {
     header('Location: loginAPI.php');
 }
 if (isset($_GET['id'])) {
+    if ($_GET['id'] == 0)
+        return;
     $sql = "DELETE FROM player WHERE PLAYERID=?";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$_GET['id']]);
