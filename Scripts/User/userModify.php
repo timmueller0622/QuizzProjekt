@@ -22,7 +22,7 @@ class ModifyUser
         $sql = 'SELECT * FROM Player WHERE PlayerID =' . $userID;
         $currentUser = $conn->query($sql)->fetchAll()[0];
         if ($currentUser['USERPASSWORD'] == $passwd) {
-            $stmt = $conn->prepare('UPDATE Player SET UserName = ? WHERE PlayerID = ?');
+            $stmt = $conn->prepare('UPDATE player SET username = ? WHERE playerid = ?');
             $stmt->execute([$newname, $userID]);
             return true;
         } else {
