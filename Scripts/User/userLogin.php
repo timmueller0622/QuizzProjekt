@@ -9,7 +9,7 @@ class LoginUser
             require '../connectToDatabase.php';
             echo "test2" . $passwd;
             $dataToProof = $conn->query("SELECT * FROM player WHERE username = '" . $username . "'")->fetchAll()[0];
-            echo "test3";
+            echo "test3" . $dataToProof['USERPASSWORD'];
             if ($dataToProof['USERPASSWORD'] == $passwd) {
                 return $dataToProof['PLAYERID'];
             } else {
