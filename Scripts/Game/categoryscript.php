@@ -12,8 +12,9 @@ class Category{
         $min = 0;
         $max = count($GenreArray);
         $randomNumber = rand($min, $max);
-        echo "random works";
+        //echo "random works";
         $categoryToReturn = $GenreArray[$randomNumber]['GENREDESCRIPTOR'];
+        echo "category to return works: " . $categoryToReturn;
         echo $categoryToReturn;
         return $categoryToReturn;
     }
