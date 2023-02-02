@@ -4,6 +4,7 @@
 
     require 'genrescript.php';
     foreach(Genre::getAllGenres() as $entry){
+        print_r($entry);
         echo $entry['GENREDESCRIPTOR'];
     }
 
