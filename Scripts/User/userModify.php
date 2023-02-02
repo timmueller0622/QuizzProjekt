@@ -29,6 +29,7 @@ class ModifyUser
             return false;
         }
     }
+    
     public static function modifyUserEmail($userID, $passwd, $newemail): bool
     {
         require '../connectToDatabase.php';

@@ -6,37 +6,14 @@ if (isset($_POST['sub'])) {
     require '../User/userModify.php';
     require '../connectToDatabase.php';
     $oldpass = $conn->query('SELECT * FROM player WHERE playerid = ' . $_GET['id'])->fetchAll()[0]['USERPASSWORD'];
-    echo $oldpass;
     if (ModifyUser::modifyUserEmail($_GET['id'], $oldpass, $_POST['EMAIL']) &&
         ModifyUser::modifyUserUsername($_GET['id'], $oldpass, $_POST['USERNAME']) &&
         ModifyUser::modifyUserPasswd($_GET['id'], $oldpass, $_POST['USERPASSWORD']))
     {
-        echo "modified";
+        header('Location:playerAnzeigen.php');
     }
     else 
         echo "error";
-
-
-
-
-    /*require '../connectToDatabase.php';
-    $sql = "UPDATE player SET username=?, email=?, userpassword=? WHERE playerid=?";
-    $count = 0;
-    $check = 0;
-    $username = "";
-    if (isset($_POST['USERNAME']))
-        $username = $_POST['USERNAME'];
-    $email = $_POST['EMAIL'];
-    $userpassword = $_POST['USERPASSWORD'];
-    echo $username . $email . $userpassword;
-    $stmt = $conn->prepare($sql);
-    try{
-        $stmt->execute([$username, $email, $userpassword, $_GET['id']]);
-    } catch(Exception $e){
-        echo $e;
-    }
-    echo $sql;
-    header('Location: playerAnzeigen.php');*/
 } // $_POST['sub']
 ?>
 
