@@ -1,26 +1,20 @@
 <?php
 
-class Category{
-
-    static function getRandomCategory(){
+    function getRandomCategory(){
 
         require '../../connectToDatabase.php';
         $GenreArray = array();
-        $pos = 0;
-        foreach($conn->query("SELECT * FROM Genre") as $row){
+        foreach($conn->query("SELECT * FROM GENRE") as $row){
             
-            $GenreArray[$pos] += $row;
-            $pos++;
+            $GenreArray[] .= $row;
 
         }
         $min = 0;
-        $max = 3;/*sizeof($GenreArray)*/
+        $max = count($GenreArray);
         $randomNumber = rand($min, $max);
-        //$categoryToReturn = $GenreArray($randomNumber);
+        $categoryToReturn = $GenreArray[$randomNumber]['GENREDESCRIPTOR'];
 
-        return "Methodenaufruf erfolgreich";//$categoryToReturn;
-        
-            echo $e;
+        return $categoryToReturn;
         
     }
 /*
@@ -37,4 +31,3 @@ class Category{
     }
 
 */
-}
