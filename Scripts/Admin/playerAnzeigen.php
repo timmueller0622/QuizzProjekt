@@ -52,11 +52,11 @@ if (isset($_GET['id'])) {
     }
     $s .= "</tbody></table>";
 
-    require '../game/choosecategory/categoryscript.php';
+    require '../Game/ScriptsToUse/categoryscript.php';
     echo $s;
 
     
-    echo getRandomCategory();
+    echo Category::getRandomCategory();
     ?>
 </body>
 

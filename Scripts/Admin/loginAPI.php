@@ -35,34 +35,7 @@ session_start();
             $_SESSION["username"] = $name;
             header('Location:playerAnzeigen.php');
         }
-            
-            
-
-        /*$sql = "SELECT * FROM player WHERE Username = '" . $name . "'";
-        foreach ($conn->query($sql) as $r) {
-            if ($r['USERPASSWORD'] == $pass) {
-                $_SESSION["username"] = $name;
-                header('Location: playerAnzeigen.php');
-            }
-        }*/
-
-        
     }
-
-    /*function proofLoginData($passwd, $username){
-        try{
-            require '../connectToDatabase.php';
-            $dataToProof = $conn->query("SELECT * FROM player WHERE Username = '" . $username . "'")->fetchAll()[0];
-            print_r($dataToProof['USERPASSWORD'] . " " . $passwd);
-            if($dataToProof['USERPASSWORD'] == $passwd){
-                return true;
-            }
-            else{ return false;}
-        } catch (Exception $e){
-            echo $e;
-        }
-            
-    }*/
     ?>
 </body>
 

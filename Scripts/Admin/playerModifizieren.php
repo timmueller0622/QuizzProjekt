@@ -3,7 +3,15 @@ session_start();
 if (!isset($_SESSION["username"]))
     header('Location: loginAPI.php');
 if (isset($_POST['sub'])) {
+    require '../User/userModify.php';
     require '../connectToDatabase.php';
+    $pass = $_POST['USERPASSWORD'];
+    //if (ModifyUser::modifyUserUsername($_GET['id']), $_POST['USERPASSWORD'], )
+
+
+
+
+    /*require '../connectToDatabase.php';
     $sql = "UPDATE player SET username=?, email=?, userpassword=? WHERE playerid=?";
     $count = 0;
     $check = 0;
@@ -20,7 +28,7 @@ if (isset($_POST['sub'])) {
         echo $e;
     }
     echo $sql;
-    header('Location: playerAnzeigen.php');
+    header('Location: playerAnzeigen.php');*/
 } // $_POST['sub']
 ?>
 
