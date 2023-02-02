@@ -7,7 +7,9 @@ if (isset($_POST['sub'])) {
     $sql = "UPDATE player SET username=?, email=?, userpassword=? WHERE playerid=?";
     $count = 0;
     $check = 0;
-    $username = $_POST['USERNAME'];
+    $username = "";
+    if (isset($_POST['USERNAME']))
+        $username = $_POST['USERNAME'];
     $email = $_POST['EMAIL'];
     $userpassword = $_POST['USERPASSWORD'];
     echo $username . $email . $userpassword;
