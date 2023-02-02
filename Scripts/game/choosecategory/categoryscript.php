@@ -20,8 +20,6 @@ class Category{
 
         return "Methodenaufruf erfolgreich";//$categoryToReturn;
         
-            echo $e;
-        
     }
 /*
     static function getAllCategories(){
