@@ -3,15 +3,8 @@
 class Category{
     static function getRandomCategory()
     {
-        echo "test1";
-        try{
-            echo "test1+";
             require '../connectToDatabase.php';
-            echo "test1++";
-        } catch (Exception $e){
-            print_r($e);
-        }
-        echo "test2";
+
         $GenreArray = array();
         echo "test3";
         foreach ($conn->query("SELECT * FROM GENRE;") as $row) {
