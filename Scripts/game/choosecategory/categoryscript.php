@@ -6,11 +6,9 @@ class Category{
 
         require '../../connectToDatabase.php';
         $GenreArray = array();
-        $pos = 0;
         foreach($conn->query("SELECT * FROM GENRE") as $row){
             
-            $GenreArray[$pos] += $row;
-            $pos++;
+            $GenreArray[] .= $row;
 
         }
         $min = 0;
