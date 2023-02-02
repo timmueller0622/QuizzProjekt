@@ -18,7 +18,7 @@ class RegisterUser
             while ($r['PLAYERID'] == $id)
                 $id++;
         }
-        echo "test 3";
+        echo "test 3 " . $id . $username . $email . $passwd;
 	    $sessionkey = null;
 	    $sessiontime = null;
         $stmt = $conn->prepare($sql);
