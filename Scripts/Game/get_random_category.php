@@ -14,7 +14,9 @@
         <title>randomcategory</title>
     </head>
     <body> 
-    Random Category: ' . $out['GENREDESCRIPTOR'];
+    Random Category: ' . $out;
+
+    print_r($out);
     
     echo '</body></html>';
 
