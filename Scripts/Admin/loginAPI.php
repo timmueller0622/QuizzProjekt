@@ -30,7 +30,7 @@ session_start();
         $pass = $_POST['pass'];
         $sql = "SELECT * FROM player WHERE Username = '" . $name . "'";
         foreach ($conn->query($sql) as $r) {
-            if ($r['USERPASSWORD'] == $pass) {
+            if ($r['USERNAME'] == $name && $r['USERPASSWORD'] == $pass) {
                 $_SESSION["username"] = $name;
                 header('Location: playerAnzeigen.php');
             }
