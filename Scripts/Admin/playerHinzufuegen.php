@@ -8,27 +8,7 @@ if (isset($_POST['sub'])) {
 	$email = $_POST['EMAIL'];
 	$userpassword = $_POST['USERPASSWORD'];
 	RegisterUser::createNewUser($username, $userpassword, $email);
-	/*require '../connectToDatabase.php';
-	$sql = "INSERT INTO player (PLAYERID, USERNAME, EMAIL, USERPASSWORD, SESSIONKEY, SESSIONTIME) VALUES ( ?, ?, ?, ?, ?, ?)";
-	$id = $conn->query("SELECT count(playerid) FROM player")->fetchAll()[0][0];
-	foreach ($conn->query("SELECT * FROM player") as $r){
-		while ($r['PLAYERID'] == $id)
-			$id++;
-	}
-	echo $id;
-	$username = $_POST['USERNAME'];
-	$email = $_POST['EMAIL'];
-	$userpassword = $_POST['USERPASSWORD'];
-	$sessionkey = null;
-	$sessiontime = null;
-	$data = array();
-	try {
-		$stmt = $conn->prepare($sql);
-		$stmt->execute([$id, $username, $email, $userpassword, $sessionkey, $sessiontime]);
-	} catch (Exception $e) {
-		echo $e;
-	}
-	header('Location: playerAnzeigen.php');*/
+	header('Location:playerAnzeigen.php');
 }
 ?>
 <!doctype html>
