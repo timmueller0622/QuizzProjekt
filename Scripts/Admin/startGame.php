@@ -16,8 +16,8 @@ if (!isset($_SESSION["username"])) {
     // http://quizzteam2.jedimasters.net/Scripts
     require 'navi.php';
     require '../connectToDatabase.php';
-    echo "<div align='center'>Choose Genre</div>";
-    $s = "<table align =\"center\" border= \"1\" cellpadding=\"10\" cellspacing=\"0\"><thead><tr>";
+    $s = "<div align='center'>Choose Genre: ";
+    $s .= "<table align =\"center\" border= \"1\" cellpadding=\"10\" cellspacing=\"0\"><thead><tr>";
     foreach ($conn->query('SELECT * FROM genre') as $r) {
         for ($i = 0; $i < sizeof(array_keys($r)); $i++) {
             if (is_numeric(array_keys($r)[$i]))
@@ -36,7 +36,7 @@ if (!isset($_SESSION["username"])) {
         }
         $s .= "</tr>";
     }
-    $s .= "</tbody></table>";
+    $s .= "</tbody></table></div>";
     echo $s;
     ?>
 </body>
