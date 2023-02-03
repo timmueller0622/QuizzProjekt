@@ -2,29 +2,25 @@
 
 class Answer{
 
-    public static function proofAnswerAndSave($answerID) : void {
-        require '../../connectToDatabase.php';
+    public static function check_answer_is_correct($answerID){
+        require '../connectToDatabase.php';
 
-        $QuestionAnswerdRight = $conn -> query("SELECT ISRIGHT FROM ANSWERDATA WHERE ANSWERID = " . $answerID);
+        $QuestionAnswerdRight = $conn -> query("SELECT ISRIGHT FROM ANSWERDATA WHERE ANSWERID = " . $answerID)->fetchAll()[0];
         if($QuestionAnswerdRight == 1){
-            /* true -> 1 in database*/
-            $conn -> query("UPDATE TABLE QUESTION SET QUESTION.AnsweredCorrectly = 1 WHERE QuestionDataID in 
-                            ( SELECT QuestionDataID FROM QuestionData JOIN AnswerData 
-                                ON QuestionData.QuestionDataID = AnswerData.Question WHERE AnswerData.AnswerID = " . $answerID .");");
+            /* true equals 1 in database*/
+            /*$conn -> query("UPDATE TABLE QUESTION SET QUESTION.AnsweredCorrectly = 1 WHERE QuestionDataID in 
+                            ( SELECT QUESTIONDATAID FROM QUESTIONDATA JOIN ANSWERDATA 
+                                ON QUESTIONDATA.QUESTIONDATAID = ANSWERDATA.QUESTION WHERE ANSWERDATA.ANSWERID = " . $answerID .")");*/
+            return true;
         }
         else{
-            /* false -> 0 in database*/
-            $conn -> query("UPDATE TABLE Question SET Question.AnsweredCorrectly = 0 WHERE QuestionDataID in 
-                            ( SELECT QuestionDataID FROM QuestionData JOIN AnswerData 
-                                ON QuestionData.QuestionDataID = AnswerData.Question WHERE AnswerData.AnswerID = " . $answerID .");");
+            /* false equals 0 in database*/
+            /*$conn -> query("UPDATE TABLE QUESTION SET QUESTION.AnsweredCorrectly = 0 WHERE QuestionDataID in 
+                            ( SELECT QUESTIONDATAID FROM QUESTIONDATA JOIN ANSWERDATA 
+                                ON QUESTIONDATA.QUESTIONDATAID = ANSWERDATA.QUESTION WHERE ANSWERDATA.ANSWERID = " . $answerID .")");*/
+            return false;
         }
 
-    }
-
-    public static function getAnswersOfQuestion($questionID){
-        require '../connectToDatabase.php';
-        $toReturn = array($conn -> query("SELECT * FROM Question WHERE QuestionID =" . $questionID . ";"));
-        return $toReturn;
     }
 
 }
