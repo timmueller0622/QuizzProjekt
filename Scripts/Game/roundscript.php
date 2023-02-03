@@ -16,7 +16,7 @@ class Round{
         //require '../connectToDatabase';
         echo "require works<br>";
         $back = array();
-        echo "back works";
+        echo "back works<br>";
         echo "vor Prepare <br>";
         $toExecute = $conn -> prepare("SELECT COUNT(ROUNDID) FROM ROUND");
         echo "nach dem Prepare <br>";
