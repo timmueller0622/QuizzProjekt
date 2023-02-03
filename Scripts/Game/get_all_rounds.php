@@ -10,6 +10,9 @@
         $output .= $current . "<br>";
     }
 
+    if($output == ""){
+        $output = "Keine Runden gefunden.";
+    }
     echo $output;
 
 ?>
