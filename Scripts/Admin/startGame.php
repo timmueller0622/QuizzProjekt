@@ -23,6 +23,7 @@ if (!isset($_SESSION["username"])) {
     $genres = $conn->query("SELECT genredescriptor FROM genre")->fetchAll();
     print_r($genres);
     for ($i = 0; $i < sizeof($genres); $i++) {
+        echo "test";
         $s .= "<option value=\"" . $genres[$i]['GENREDESCRIPTOR'] . "\">" .  array_values($r)[$i] . "</option>";
     }
     $s .= "</select></div>";
