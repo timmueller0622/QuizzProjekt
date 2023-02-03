@@ -23,8 +23,8 @@ if (!isset($_SESSION["username"])) {
     $s .= "<select name='genre' id='genre'>";
     $genres = Genre::getAllGenres();
     foreach($genres as $genre) {
-        $s .= "<option value=\"" . $genre . "\">" .  
-            $genre . "</option>";
+        $s .= "<option value=\"" . explode(";", $genre)[1] . "\">" .  
+        explode(";", $genre)[1] . "</option>";
     }
     $s .= "</select></div>";
 
