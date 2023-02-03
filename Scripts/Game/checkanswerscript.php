@@ -13,16 +13,16 @@ class Answer{
 
         if($QuestionAnswerdRight[0]['ISRIGHT'] == 1){
             /* true equals 1 in database*/
-            /*$conn -> query("UPDATE TABLE QUESTION SET QUESTION.AnsweredCorrectly = 1 WHERE QuestionDataID in 
+            $conn -> query("UPDATE TABLE QUESTION SET QUESTION.AnsweredCorrectly = 1 WHERE QuestionDataID in 
                             ( SELECT QUESTIONDATAID FROM QUESTIONDATA JOIN ANSWERDATA 
-                                ON QUESTIONDATA.QUESTIONDATAID = ANSWERDATA.QUESTION WHERE ANSWERDATA.ANSWERID = " . $answerID .")");*/
+                                ON QUESTIONDATA.QUESTIONDATAID = ANSWERDATA.QUESTION WHERE ANSWERDATA.ANSWERID = " . $answerID .")");
             return "true";
         }
         else{
             /* false equals 0 in database*/
-            /*$conn -> query("UPDATE TABLE QUESTION SET QUESTION.AnsweredCorrectly = 0 WHERE QuestionDataID in 
+            $conn -> query("UPDATE TABLE QUESTION SET QUESTION.AnsweredCorrectly = 0 WHERE QuestionDataID in 
                             ( SELECT QUESTIONDATAID FROM QUESTIONDATA JOIN ANSWERDATA 
-                                ON QUESTIONDATA.QUESTIONDATAID = ANSWERDATA.QUESTION WHERE ANSWERDATA.ANSWERID = " . $answerID .")");*/
+                                ON QUESTIONDATA.QUESTIONDATAID = ANSWERDATA.QUESTION WHERE ANSWERDATA.ANSWERID = " . $answerID .")");
             return "false";
         }
 
