@@ -5,14 +5,15 @@
     require 'roundscript.php';
 
     $output = "";
-    $answers = Round::getAllRounds();
+    $rounds = Round::getAllRounds();
+    print_r($rounds);
     foreach($answers as $current){
-        $output .= $current . "<br>";
+        $rounds .= $current . "<br>";
     }
 
-    if($output == ""){
-        $output = "Keine Runden gefunden.";
+    if($rounds == ""){
+        $rounds = "Keine Runden gefunden.";
     }
-    echo $output;
+    echo $rounds;
 
 ?>
