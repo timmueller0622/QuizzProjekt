@@ -29,7 +29,7 @@ if (!isset($_SESSION["username"])) {
 
     $s .= "<div align='center'><label for=\"difficulty\">Choose a difficulty: </label>";
     $s .= "<select name='difficulty' id='difficulty'>";
-    $genres = $conn->query("SELECT difficultydescriptor FROM genre")->fetchAll();
+    $genres = $conn->query("SELECT difficultydescriptor FROM difficulty")->fetchAll();
     for ($i = 0; $i < sizeof($genres); $i++) {
         $s .= "<option value=\"" . $genres[$i]['DIFFICULTYDESCRIPTOR'] . "\">" .  
             $genres[$i]['DIFFICULTYDESCRIPTOR'] . "</option>";
