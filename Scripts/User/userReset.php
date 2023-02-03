@@ -3,12 +3,13 @@
 class ResetUser
 {
     static function randomPassword() {
-        $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
-        for ($i = 0; $i < 8; $i++) {
-            $n = rand(0, count($alphabet)-1);
-            $pass[$i] = $alphabet[$n];
+        $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $password = array(); $charsLength = strlen($chars) - 1;
+        for ($c = 0; $c < 8; $c++) {
+            $x = rand(0, $charsLength);
+            $password[] = $chars[$x];
         }
-        return $pass;
+        return implode($pass);
     }
 
     static function sendResetEmail($emailinput)
