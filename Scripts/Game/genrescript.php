@@ -24,7 +24,7 @@ class Genre{
         $toReturn = array();
     
         foreach ($conn->query("SELECT * FROM GENRE") as $entry) {
-            $toReturn[] .= $entry['GENREID'] . ";". $entry['GENREDESCRIPTOR'] . ";";
+            $toReturn[] .= $entry['GENREID'] . ";". $entry['GENREDESCRIPTOR'] . ";|";
         }
     
         return $toReturn;
