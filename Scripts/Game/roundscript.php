@@ -17,16 +17,12 @@ class Round{
         $toExecute->execute();
         $counter = ($toExecute->fetchAll(PDO::FETCH_DEFAULT))['COUNT(ROUNDID)'];
 
-        echo "vor Counter";
         if($counter > 0){
-            echo "vor der Schleife";
             foreach($conn->query("SELECT * FROM ROUND") as $row){
                 print_r($row);
                 $back[] .= $row['ROUNDID'] . ";" . $row['GAMEID'] . ";" . $row['SETTINGID'] . ";|";
             }
-            echo "nach der Schleife";
         }
-        echo "nach der überprüfung und vor der Rückgabe";
         if($back == array()){
             return NULL;
         }
