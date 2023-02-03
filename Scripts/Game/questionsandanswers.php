@@ -8,7 +8,7 @@ class QuestionData{
         $toReturn = array();
 
         foreach($conn->query("SELECT QuestionData JOIN AnswerData ON QuestionData.QuestionDataID = AnswerData.Question WHERE QuestionData = " . $questionID . ";") as $entry){
-            $toReturn += $entry;
+            $toReturn[] .= $entry['ANSWERID'] . ";" . $entry['ANSWERDESCRIPTION'] . ";" . $entry['ISRIGHT'] . ";" . $entry['QUESTION'] . ";|" ;
         }
 
         return $toReturn;        
