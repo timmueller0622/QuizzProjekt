@@ -20,7 +20,7 @@ if (!isset($_SESSION["username"])) {
     require '../connectToDatabase.php';
     $s = "<div align='center'><label for=\"genre\">Choose a genre: </label>";
     $s .= "<select name='genre' id='genre'>";
-    $genres = $conn->query("SELECT genredescriptor FROM genre")->fetchAll()[0];
+    $genres = $conn->query("SELECT genredescriptor FROM genre")->fetchAll();
     print_r($genres);
     for ($i = 0; $i < sizeof($genres); $i++) {
         $s .= "<option value=\"" . $genres[$i] . "\">" .  array_values($r)[$i] . "</option>";
