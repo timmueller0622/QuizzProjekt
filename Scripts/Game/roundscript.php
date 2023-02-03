@@ -13,7 +13,7 @@ class Round{
 
     static function getAllRounds(){
         echo "Methodenaufruf<br>";
-        require '../connectToDatabase';
+        //require '../connectToDatabase';
         echo "require works<br>";
         $back = array();
         echo "back works";
