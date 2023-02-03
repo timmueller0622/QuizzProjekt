@@ -8,7 +8,7 @@
     if(isset($_GET['questionid']))
     {   
         $answers = QuestionData::getQuestionWithAnswers($_GET['questionid']);
-        foreach($genres as $current){
+        foreach($answers as $current){
             $output .= $current . "<br>";
         }
     }
