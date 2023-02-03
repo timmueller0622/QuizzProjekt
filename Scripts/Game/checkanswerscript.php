@@ -6,7 +6,8 @@ class Answer{
         require '../connectToDatabase.php';
 
         $toExecute = $conn -> prepare("SELECT ISRIGHT FROM ANSWERDATA WHERE ANSWERID = " . $answerID);
-        $QuestionAnswerdRight = $toExecute->execute();
+        $toExecute->execute();
+        $QuestionAnswerdRight = $toExecute->fetchAll(PDO::FETCH_FUNC, "ANSWERDATA");
 
         print_r($QuestionAnswerdRight);
         if($QuestionAnswerdRight == 1){
