@@ -9,9 +9,10 @@ class Answer{
         $toExecute->execute();
         $QuestionAnswerdRight = $toExecute->fetchAll(PDO::FETCH_DEFAULT);
 
-        print_r($QuestionAnswerdRight);
+
 
         if($QuestionAnswerdRight[0]['ISRIGHT'] == 1){
+            print_r($QuestionAnswerdRight . "WORKS");
             /* true equals 1 in database*/
             /*$conn -> query("UPDATE TABLE QUESTION SET QUESTION.AnsweredCorrectly = 1 WHERE QuestionDataID in 
                             ( SELECT QUESTIONDATAID FROM QUESTIONDATA JOIN ANSWERDATA 
@@ -19,6 +20,7 @@ class Answer{
             return true;
         }
         else{
+            print_r($QuestionAnswerdRight . " NOPE");
             /* false equals 0 in database*/
             /*$conn -> query("UPDATE TABLE QUESTION SET QUESTION.AnsweredCorrectly = 0 WHERE QuestionDataID in 
                             ( SELECT QUESTIONDATAID FROM QUESTIONDATA JOIN ANSWERDATA 
