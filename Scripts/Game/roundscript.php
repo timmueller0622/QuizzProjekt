@@ -1,5 +1,5 @@
 <?php
-
+echo "script require works";
 class Round{
 
     static function getQuestionsFromRound($roundID){    
