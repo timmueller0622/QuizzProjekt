@@ -21,10 +21,18 @@ if (!isset($_SESSION["username"])) {
     $s = "<div align='center'><label for=\"genre\">Choose a genre: </label>";
     $s .= "<select name='genre' id='genre'>";
     $genres = $conn->query("SELECT genredescriptor FROM genre")->fetchAll();
-    print_r($genres);
     for ($i = 0; $i < sizeof($genres); $i++) {
-        echo "test";
-        $s .= "<option value=\"" . $genres[$i]['GENREDESCRIPTOR'] . "\">" .  $genres[$i]['GENREDESCRIPTOR'] . "</option>";
+        $s .= "<option value=\"" . $genres[$i]['GENREDESCRIPTOR'] . "\">" .  
+            $genres[$i]['GENREDESCRIPTOR'] . "</option>";
+    }
+    $s .= "</select></div>";
+
+    $s .= "<div align='center'><label for=\"difficulty\">Choose a difficulty: </label>";
+    $s .= "<select name='difficulty' id='difficulty'>";
+    $genres = $conn->query("SELECT difficultydescriptor FROM genre")->fetchAll();
+    for ($i = 0; $i < sizeof($genres); $i++) {
+        $s .= "<option value=\"" . $genres[$i]['DIFFICULTYDESCRIPTOR'] . "\">" .  
+            $genres[$i]['DIFFICULTYDESCRIPTOR'] . "</option>";
     }
     $s .= "</select></div>";
     echo $s;
