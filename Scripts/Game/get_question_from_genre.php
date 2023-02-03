@@ -2,6 +2,7 @@
 
     require 'genrescript.php';
     $output = "Aufruf fehlgeschlagen! Falsche Parameter!";
+
     if(isset($_GET['genreid']) && isset($_GET['difficultyid']))
     {   
         $genreID = $_GET['genreid'];
