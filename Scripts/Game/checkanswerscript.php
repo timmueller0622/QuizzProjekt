@@ -7,9 +7,9 @@ class Answer{
 
         $toExecute = $conn -> prepare("SELECT ISRIGHT FROM ANSWERDATA WHERE ANSWERID = " . $answerID);
         $QuestionAnswerdRight = $toExecute->execute();
-        
+
         print_r($QuestionAnswerdRight);
-        if($QuestionAnswerdRight['ISRIGHT'] == 1){
+        if($QuestionAnswerdRight == 1){
             /* true equals 1 in database*/
             /*$conn -> query("UPDATE TABLE QUESTION SET QUESTION.AnsweredCorrectly = 1 WHERE QuestionDataID in 
                             ( SELECT QUESTIONDATAID FROM QUESTIONDATA JOIN ANSWERDATA 
