@@ -24,7 +24,7 @@ if (!isset($_SESSION["username"])) {
     print_r($genres);
     for ($i = 0; $i < sizeof($genres); $i++) {
         echo "test";
-        $s .= "<option value=\"" . $genres[$i]['GENREDESCRIPTOR'] . "\">" .  array_values($r)[$i] . "</option>";
+        $s .= "<option value=\"" . $genres[$i]['GENREDESCRIPTOR'] . "\">" .  $genres[$i]['GENREDESCRIPTOR'] . "</option>";
     }
     $s .= "</select></div>";
     echo $s;
