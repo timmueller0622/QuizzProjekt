@@ -1,9 +1,8 @@
 <?php
-echo "script require works<br>";
 class Round{
 
     static function getQuestionsFromRound($roundID){    
-        require_once '../connectToDatabase';
+        require_once '../connectToDatabase.php';
         $back = array();
         foreach($conn->query("SELECT * FROM QUESTIONDATA JOIN QUESTION ON QUESTIONDATA.QUESTIONDATAID = QUESTION.QUESTIONID WHERE ROUNDID =" . $roundID) as $row){
             $back[] .= $row['QUESTIONID'] . ";" . $row['ANSWERDCORRECTLY'] . ";" . $row['QUESTIONDESCRIPTION'] . ";|";
@@ -12,16 +11,10 @@ class Round{
     }
 
     static function getAllRounds(){
-        echo "Methodenaufruf<br>";
         require_once '../connectToDatabase.php';
-        echo "require works<br>";
         $back = array();
-        echo "back works<br>";
-        echo "vor Prepare <br>";
         $toExecute = $conn -> prepare("SELECT COUNT(ROUNDID) FROM ROUND");
-        echo "nach dem Prepare <br>";
         echo "vor Execute <br>";
-        print_r($toExecute);
         $toExecute->execute();
         echo "nach dem Execute <br>";
         print_r($toExecute);
