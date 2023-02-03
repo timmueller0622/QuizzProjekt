@@ -3,7 +3,7 @@ echo "script require works<br>";
 class Round{
 
     static function getQuestionsFromRound($roundID){    
-        require '../connectToDatabase';
+        require_once '../connectToDatabase';
         $back = array();
         foreach($conn->query("SELECT * FROM QUESTIONDATA JOIN QUESTION ON QUESTIONDATA.QUESTIONDATAID = QUESTION.QUESTIONID WHERE ROUNDID =" . $roundID) as $row){
             $back[] .= $row['QUESTIONID'] . ";" . $row['ANSWERDCORRECTLY'] . ";" . $row['QUESTIONDESCRIPTION'] . ";|";
@@ -13,7 +13,7 @@ class Round{
 
     static function getAllRounds(){
         echo "Methodenaufruf<br>";
-        //require '../connectToDatabase';
+        require_once '../connectToDatabase';
         echo "require works<br>";
         $back = array();
         echo "back works<br>";
