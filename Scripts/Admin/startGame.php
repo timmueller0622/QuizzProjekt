@@ -19,6 +19,7 @@ if (!isset($_SESSION["username"])) {
     require 'navi.php';
     require '../connectToDatabase.php';
     require '../Game/genrescript.php';
+    require '../Game/difficultyscript.php';
     $s = "<div align='center'><label for=\"genre\">Choose a genre: </label>";
     $s .= "<select name='genre' id='genre'>";
     $genres = Genre::getAllGenres();
@@ -30,10 +31,10 @@ if (!isset($_SESSION["username"])) {
 
     $s .= "<div align='center'><label for=\"difficulty\">Choose a difficulty: </label>";
     $s .= "<select name='difficulty' id='difficulty'>";
-    $genres = $conn->query("SELECT difficultydescriptor FROM difficulty")->fetchAll();
-    for ($i = 0; $i < sizeof($genres); $i++) {
-        $s .= "<option value=\"" . $genres[$i]['DIFFICULTYDESCRIPTOR'] . "\">" .  
-            $genres[$i]['DIFFICULTYDESCRIPTOR'] . "</option>";
+    $difficulties = Difficulty::getAllDifficulties();
+    foreach($difficulties as $difficulty) {
+        $s .= "<option value=\"" . explode(";", $difficulty)[1] . "\">" .  
+            explode(";", $difficulty)[1] . "</option>";
     }
     $s .= "</select></div>";
     echo $s;

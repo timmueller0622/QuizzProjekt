@@ -8,7 +8,7 @@ class Difficulty{
         $toReturn = array();
     
         foreach ($conn->query("SELECT * FROM DIFFICULTY") as $entry) {
-            $toReturn[] .= $entry['DIFFICULTYID'] . ";". $entry['DIFFICULTYDESCRIPTOR'] . ";|<br>";
+            $toReturn[] .= $entry['DIFFICULTYID'] . ";". $entry['DIFFICULTYDESCRIPTOR'];
         }
     
         return $toReturn;
