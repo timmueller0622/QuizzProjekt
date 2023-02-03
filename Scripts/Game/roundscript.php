@@ -13,8 +13,9 @@ class Round{
 
     static function getAllRounds(){
         require '../connectToDatabase';
+        echo "require works";
         $back = array();
-
+        echo "back works";
         echo "vor Prepare <br>";
         $toExecute = $conn -> prepare("SELECT COUNT(ROUNDID) FROM ROUND");
         echo "nach dem Prepare <br>";

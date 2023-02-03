@@ -6,7 +6,6 @@
 
     $output = "";
     $rounds = Round::getAllRounds();
-    echo $rounds;
     if(count($rounds) > 0){
         foreach($answers as $current){
             $rounds .= $current . "<br>";
