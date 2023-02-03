@@ -8,7 +8,7 @@ class Answer{
         $toExecute = $conn -> prepare("SELECT ISRIGHT FROM ANSWERDATA WHERE ANSWERID = " . $answerID);
         $toExecute->execute();
         print_r($toExecute);
-        $QuestionAnswerdRight = $toExecute->fetchAll(PDO::FETCH_FUNC, "ANSWERDATA");
+        $QuestionAnswerdRight = $toExecute->fetchAll(PDO::FETCH_DEFAULT);
         print_r($QuestionAnswerdRight);
 
         if($QuestionAnswerdRight == 1){
