@@ -3,7 +3,7 @@
 /*Call this Script for API Request*/
 
     require 'questionsandanswers.php';
-    $output = "Aufruf fehlgeschlagen! Falsche Parameter!";
+    $output = "Aufruf fehlgeschlagen! Keine Parameter!";
 
     if(isset($_GET['questionid']))
     {   
