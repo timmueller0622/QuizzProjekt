@@ -5,7 +5,8 @@ class Answer{
     public static function check_answer_is_correct($answerID){
         require '../connectToDatabase.php';
 
-        $QuestionAnswerdRight = $conn -> query("SELECT ISRIGHT FROM ANSWERDATA WHERE ANSWERID = " . $answerID);
+        $QuestionAnswerdRight = $conn -> prepare("SELECT ISRIGHT FROM ANSWERDATA WHERE ANSWERID = " . $answerID);
+        $QuestionAnswerdRight->execute();
         print_r($QuestionAnswerdRight);
         if($QuestionAnswerdRight['ISRIGHT'] == 1){
             /* true equals 1 in database*/
