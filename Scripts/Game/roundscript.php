@@ -15,7 +15,7 @@ class Round{
         require '../connectToDatabase';
         $back = array();
 
-        print_r($back . "<br>");
+        print_r($back);
         $toExecute = $conn -> prepare("SELECT COUNT(ROUNDID) FROM ROUND");
         print_r($toExecute);
         $toExecute->execute();
