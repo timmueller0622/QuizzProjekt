@@ -7,7 +7,7 @@ class Genre{
 
         $GenreArray = array();
         foreach ($conn->query("SELECT * FROM GENRE") as $row) {
-            $GenreArray[] .= $row['GENREDESCRIPTOR'];
+            $GenreArray[] .= $row['GENREDESCRIPTOR'] . $row['GENREID'];
         }
         $min = 0;
         $max = count($GenreArray)-1;
