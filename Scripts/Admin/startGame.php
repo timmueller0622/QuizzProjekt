@@ -18,12 +18,13 @@ if (!isset($_SESSION["username"])) {
     // http://quizzteam2.jedimasters.net/Scripts
     require 'navi.php';
     require '../connectToDatabase.php';
+    require '../Game/genrescript.php';
     $s = "<div align='center'><label for=\"genre\">Choose a genre: </label>";
     $s .= "<select name='genre' id='genre'>";
-    $genres = $conn->query("SELECT genredescriptor FROM genre")->fetchAll();
-    for ($i = 0; $i < sizeof($genres); $i++) {
-        $s .= "<option value=\"" . $genres[$i]['GENREDESCRIPTOR'] . "\">" .  
-            $genres[$i]['GENREDESCRIPTOR'] . "</option>";
+    $genres = Genre::getAllGenres();
+    foreach($genres as $genre) {
+        $s .= "<option value=\"" . $genre . "\">" .  
+            $genre . "</option>";
     }
     $s .= "</select></div>";
 
