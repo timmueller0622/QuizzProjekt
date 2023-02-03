@@ -9,6 +9,8 @@ class Answer{
         $toExecute->execute();
         $QuestionAnswerdRight = $toExecute->fetchAll(PDO::FETCH_DEFAULT);
 
+        print_r($QuestionAnswerdRight);
+
         if($QuestionAnswerdRight[0] == 1){
             /* true equals 1 in database*/
             /*$conn -> query("UPDATE TABLE QUESTION SET QUESTION.AnsweredCorrectly = 1 WHERE QuestionDataID in 
