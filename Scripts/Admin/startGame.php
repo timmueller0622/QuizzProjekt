@@ -23,7 +23,7 @@ if (!isset($_SESSION["username"])) {
 
     $s = "<div align='center'>
         <form action='playRound.php' method='post' id='matchSettings'>
-        <input type='submit'>
+        <input type='submit'>test
         </form>
         <label for='genre'>Choose a genre: </label>
         <select name='genre' id='genre' form='matchSettings'>";
