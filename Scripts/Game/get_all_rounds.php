@@ -6,7 +6,7 @@
     echo "require works";
 
     $output = "";
-    print_r($output);
+    print_r($output . " <- output");
     $rounds = Round::getAllRounds();
     foreach($answers as $current){
         $rounds .= $current . "<br>";
