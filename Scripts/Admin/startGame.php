@@ -7,37 +7,26 @@ if (!isset($_SESSION["username"])) {
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Genre Auswählen</title>
     <meta charset="utf-8">
 </head>
+
 <body>
     <?php
     // http://quizzteam2.jedimasters.net/Scripts
     require 'navi.php';
     require '../connectToDatabase.php';
-    $s = "<div align='center'>Choose Genre: ";
-    $s .= "<table align =\"center\" border= \"1\" cellpadding=\"10\" cellspacing=\"0\"><thead><tr>";
-    foreach ($conn->query('SELECT * FROM genre') as $r) {
-        for ($i = 0; $i < sizeof(array_keys($r)); $i++) {
-            if (is_numeric(array_keys($r)[$i]))
-                continue;
-            $s .= "<th>" . array_keys($r)[$i] . "</a></th>";
-        }
-        break;
+    $s = "<div align='center'><label for='genre'>Choose a genre: </label>";
+    $s .= "<select name='genre' id='genre'>";
+    $genres = $conn->query("SELECT genredescriptor FROM genre")->fetchAll()[0];
+    for ($i = 0; $i < sizeof($genres); $i++) {
+        $s .= "<option value='" . $genres[$i] . "'>" .  array_values($r)[$i] . "</option>";
     }
-    $s .= "</tr></thead><tbody>";
-    foreach ($conn->query("SELECT * FROM genre") as $r) {
-        $s .= "<tr>";
-        for ($i = 0; $i < sizeof(array_map('htmlentities', $r)); $i++) {
-            if (is_numeric(array_keys($r)[$i]))
-                continue;
-            $s .= "<td>" . array_values($r)[$i] . "</td>";
-        }
-        $s .= "</tr>";
-    }
-    $s .= "</tbody></table></div>";
+    $s .= "</select></div>";
     echo $s;
     ?>
 </body>
+
 </html>
