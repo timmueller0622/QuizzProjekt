@@ -15,10 +15,13 @@ class Round{
         require '../connectToDatabase';
         $back = array();
 
-        print_r($back);
+        echo "vor Prepare <br>";
         $toExecute = $conn -> prepare("SELECT COUNT(ROUNDID) FROM ROUND");
+        echo "nach dem Prepare <br>";
+        echo "vor Execute <br>";
         print_r($toExecute);
         $toExecute->execute();
+        echo "nach dem Execute <br>";
         print_r($toExecute);
         $counter = ($toExecute->fetchAll(PDO::FETCH_DEFAULT))['COUNT(ROUNDID)'];
         print_r($counter);
