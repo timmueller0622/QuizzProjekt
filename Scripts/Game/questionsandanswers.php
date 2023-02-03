@@ -3,6 +3,7 @@
 class QuestionData{
   
     public static function getQuestionWithAnswers($questionID){
+        echo "Methodenaufruf";
         require '../connectToDatabase.php';
 
         $toReturn = array();
