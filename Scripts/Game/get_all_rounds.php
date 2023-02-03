@@ -6,15 +6,16 @@
 
     $output = "";
     $rounds = Round::getAllRounds();
-    if(count($rounds) > 0){
+    
+    if($rounds != NULL){
         foreach($answers as $current){
             $rounds .= $current . "<br>";
         }
     }
-
-    if($rounds == ""){
+    else{
         $rounds = "Keine Runden gefunden.";
     }
+
     echo $rounds;
 
 ?>

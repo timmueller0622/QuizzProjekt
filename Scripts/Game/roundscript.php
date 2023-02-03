@@ -14,22 +14,25 @@ class Round{
         require_once '../connectToDatabase.php';
         $back = array();
         $toExecute = $conn -> prepare("SELECT COUNT(ROUNDID) FROM ROUND");
-        echo "vor Execute <br>";
         $toExecute->execute();
-        echo "nach dem Execute <br>";
-        print_r($toExecute);
         $counter = ($toExecute->fetchAll(PDO::FETCH_DEFAULT))['COUNT(ROUNDID)'];
-        print_r($counter);
 
-        echo "vor der Schleife";
+        echo "vor Counter";
         if($counter > 0){
+            echo "vor der Schleife";
             foreach($conn->query("SELECT * FROM ROUND") as $row){
                 print_r($row);
                 $back[] .= $row['ROUNDID'] . ";" . $row['GAMEID'] . ";" . $row['SETTINGID'] . ";|";
             }
+            echo "nach der Schleife";
         }
-        print_r($back);
-        return $back;
+        echo "nach der überprüfung und vor der Rückgabe";
+        if($back == array()){
+            return NULL;
+        }
+        else{
+            return $back;
+        }
     }
 
 
