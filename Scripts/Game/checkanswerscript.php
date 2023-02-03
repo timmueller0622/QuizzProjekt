@@ -5,8 +5,8 @@ class Answer{
     public static function check_answer_is_correct($answerID){
         require '../connectToDatabase.php';
 
-        $QuestionAnswerdRight = $conn -> query("SELECT ISRIGHT FROM ANSWERDATA WHERE ANSWERID = " . $answerID)->fetchAll();
-        if($QuestionAnswerdRight == 1){
+        $QuestionAnswerdRight = $conn -> query("SELECT ISRIGHT FROM ANSWERDATA WHERE ANSWERID = " . $answerID);
+        if($QuestionAnswerdRight['ISRIGHT'] == 1){
             /* true equals 1 in database*/
             /*$conn -> query("UPDATE TABLE QUESTION SET QUESTION.AnsweredCorrectly = 1 WHERE QuestionDataID in 
                             ( SELECT QUESTIONDATAID FROM QUESTIONDATA JOIN ANSWERDATA 
