@@ -1,5 +1,5 @@
 <?php
-echo "script require works";
+echo "script require works<br>";
 class Round{
 
     static function getQuestionsFromRound($roundID){    
@@ -12,9 +12,9 @@ class Round{
     }
 
     static function getAllRounds(){
-        echo "Methodenaufruf";
+        echo "Methodenaufruf<br>";
         require '../connectToDatabase';
-        echo "require works";
+        echo "require works<br>";
         $back = array();
         echo "back works";
         echo "vor Prepare <br>";
