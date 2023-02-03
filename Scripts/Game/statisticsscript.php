@@ -7,7 +7,7 @@ class Statistics{
 
         $toReturn = array();
 
-        foreach($conn->query("SELECT * FROM MatchHistory WHERE PlayerID = ". $playerID . ";") as $entry){
+        foreach($conn->query("SELECT * FROM MATCHHISTORY WHERE PLAYERID = ". $playerID) as $entry){
             $toReturn += $entry;
         }
 
