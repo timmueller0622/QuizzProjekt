@@ -6,7 +6,6 @@
 
     $output = "";
     $rounds = Round::getAllRounds();
-    print_r($rounds);
     foreach($answers as $current){
         $rounds .= $current . "<br>";
     }

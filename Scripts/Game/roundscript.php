@@ -15,8 +15,10 @@ class Round{
         require '../connectToDatabase';
         $back = array();
         foreach($conn->query("SELECT * FROM ROUND") as $row){
+            print_r($row);
             $back[] .= $row['ROUNDID'] . ";" . $row['GAMEID'] . ";" . $row['SETTINGID'] . ";|";
         }
+        print_r($back);
         return $back;
     }
 
