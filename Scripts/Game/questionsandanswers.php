@@ -2,7 +2,7 @@
 
 class QuestionData{
   
-    public static function getQuestionWithAnswers($questionID){
+    public static function getAnswersFromQuestion($questionID){
         require '../connectToDatabase.php';
         $toReturn = array();
         foreach($conn->query("SELECT QUESTION, ANSWERID, ANSWERDESCRIPTION, ISRIGHT 

@@ -8,7 +8,7 @@
     if(isset($_GET['questionid']))
     {   
         $output = "";
-        $answers = QuestionData::getQuestionWithAnswers($_GET['questionid']);
+        $answers = QuestionData::getAnswersFromQuestion($_GET['questionid']);
         foreach($answers as $current){
             $output .= $current . "<br>";
         }
