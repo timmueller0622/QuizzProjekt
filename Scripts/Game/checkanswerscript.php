@@ -17,7 +17,7 @@ class Answer{
             /*$conn -> query("UPDATE TABLE QUESTION SET QUESTION.AnsweredCorrectly = 1 WHERE QuestionDataID in 
                             ( SELECT QUESTIONDATAID FROM QUESTIONDATA JOIN ANSWERDATA 
                                 ON QUESTIONDATA.QUESTIONDATAID = ANSWERDATA.QUESTION WHERE ANSWERDATA.ANSWERID = " . $answerID .")");*/
-            return true;
+            return "true";
         }
         else{
             print_r($QuestionAnswerdRight . " NOPE");
@@ -25,7 +25,7 @@ class Answer{
             /*$conn -> query("UPDATE TABLE QUESTION SET QUESTION.AnsweredCorrectly = 0 WHERE QuestionDataID in 
                             ( SELECT QUESTIONDATAID FROM QUESTIONDATA JOIN ANSWERDATA 
                                 ON QUESTIONDATA.QUESTIONDATAID = ANSWERDATA.QUESTION WHERE ANSWERDATA.ANSWERID = " . $answerID .")");*/
-            return false;
+            return "false";
         }
 
     }
