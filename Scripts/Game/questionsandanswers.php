@@ -1,19 +1,24 @@
 <?php
-
 class QuestionData{
+    public static function getQuestionFromSettings($genreID, $difficultyID){
+        require '../connectToDatabase.php';
+        $toReturn = array();
+        foreach($conn->query("SELECT * FROM QUESTIONDATA
+        WHERE GENRE =" . $genreID .
+        "AND DIFFICULTY=" . $difficultyID) as $entry){
+            $toReturn[] .= $entry['QUESTIONDATAID'] . ";" . $entry['QUESTION'];
+        }
+        return $toReturn;
+    }
   
     public static function getAnswersFromQuestion($questionID){
         require '../connectToDatabase.php';
         $toReturn = array();
-        foreach($conn->query("SELECT QUESTION, ANSWERID, ANSWERDESCRIPTION, ISRIGHT 
-        FROM QUESTIONDATA JOIN ANSWERDATA ON QUESTIONDATA.QUESTIONDATAID = ANSWERDATA.QUESTION 
-        WHERE QUESTIONDATAID =" . $questionID) as $entry){
-            $toReturn[] .= $entry['ANSWERID'] . ";" . $entry['ANSWERDESCRIPTION'] . ";" . $entry['ISRIGHT'] . ";" . $entry['QUESTION'] . ";|" ;
-
+        foreach($conn->query("SELECT * FROM ANSWERDATA
+        WHERE QUESTION=" . $questionID) as $entry){
+            $toReturn[] .= $entry['ANSWERID'] . ";" . $entry['ANSWERDESCRIPTION'];
         }
-        return $toReturn;        
+        return $toReturn;
     }
-
 }
-
 ?>

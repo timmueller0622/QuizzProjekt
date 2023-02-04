@@ -1,6 +1,5 @@
 <?php
 session_start();
-require '../connectToDatabase.php';
 if (!isset($_SESSION["username"])) {
     header('Location: loginAPI.php');
 }
@@ -17,7 +16,6 @@ if (!isset($_SESSION["username"])) {
     <?php
     // http://quizzteam2.jedimasters.net/Scripts
     require 'navi.php';
-    require '../connectToDatabase.php';
     require '../Game/genrescript.php';
     require '../Game/difficultyscript.php';
 
@@ -29,7 +27,7 @@ if (!isset($_SESSION["username"])) {
         <select name='genre' id='genre' form='matchSettings'>";
     $genres = Genre::getAllGenres();
     foreach($genres as $genre) {
-        $s .= "<option value='" . explode(";", $genre)[1] . "'>" .  
+        $s .= "<option value='" . explode(";", $genre)[0] . "'>" .  
         explode(";", $genre)[1] . "</option>";
     }
     $s .= "</select></div>";
@@ -38,7 +36,7 @@ if (!isset($_SESSION["username"])) {
     $s .= "<select name='difficulty' id='difficulty'>";
     $difficulties = Difficulty::getAllDifficulties();
     foreach($difficulties as $difficulty) {
-        $s .= "<option value='" . explode(";", $difficulty)[1] . "'>" .  
+        $s .= "<option value='" . explode(";", $difficulty)[0] . "'>" .  
             explode(";", $difficulty)[1] . "</option>";
     }
     $s .= "</select>

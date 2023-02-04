@@ -2,7 +2,6 @@
 
 class RegisterUser
 {
-
     public static function createNewUser($username, $passwd, $email)
     {
         require '../connectToDatabase.php';
@@ -12,7 +11,7 @@ class RegisterUser
         }
         $id = $conn->query("SELECT count(playerid) FROM player")->fetchAll()[0][0];
         foreach ($conn->query("SELECT * FROM player") as $r){
-            while ($r['PLAYERID'] == $id)
+            if ($r['PLAYERID'] == $id)
                 $id++;
         }
 	    $sessionkey = null;
