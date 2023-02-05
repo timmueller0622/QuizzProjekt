@@ -23,7 +23,7 @@ if (!isset($_SESSION["username"])) {
     //Game::createGame();
     echo "test3";
     
-    $question = QuestionData::getQuestionFromSettings($_POST['GENRE'], $_POST['DIFFICULTY']);
+    $question = QuestionData::getQuestionFromSettings($_POST['genre'], $_POST['difficulty']);
     echo "test4";
     ?>
 </body>
