@@ -1,8 +1,17 @@
 <?php
 session_start();
+require '../Game/creategame.php';
 if (!isset($_SESSION["username"])) {
     header('Location: loginAPI.php');
 }
+if (isset($_POST['genre']) && isset($_POST['difficulty'])){
+    if (!isset($_SESSION['gameid']))
+        $_SESSION['gameid'] = Game::createGame();
+    if (!isset($_SESSION['roundid']))
+        $_SESSION['roundid'] = Game::createRound($gameid, $_POST['difficulty'], $_POST['genre']);
+    header('Location:playRound.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,7 +29,7 @@ if (!isset($_SESSION["username"])) {
     require '../Game/difficultyscript.php';
 
     $s = "<div align='center'>
-        <form action='playRound.php' method='post' id='matchSettings'>
+        <form action='startGame.php' method='post' id='matchSettings'>
         <input type='submit'>
         </form>
         <label for='genre'>Choose a genre: </label>

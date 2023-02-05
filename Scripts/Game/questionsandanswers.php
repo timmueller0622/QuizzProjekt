@@ -1,10 +1,16 @@
 <?php
 class QuestionData{
-    public static function getQuestionFromSettings($genreID, $difficultyID){
+    public static function getQuestionFromSettings($roundid){
         require '../connectToDatabase.php';
+        $settingid = $conn->query("SELECT genre, difficulty FROM roundsetting 
+        JOIN round on round.settingid = roundsetting.settingid
+        WHERE round.roundid =" . $roundid)->fetchAll()[0];
+        print_r($settingid);
+        $genreID = $settingid['GENRE'];
+        $difficultyID = $settingid['DIFFICULTY'];
         $toReturn = array();
         foreach($conn->query("SELECT * FROM QUESTIONDATA
-        WHERE GENRE =" . $genreID .
+        WHERE GENRE = (SELECT genreid " . $genreID .
         "AND DIFFICULTY =" . $difficultyID) as $entry){
             $toReturn[] .= $entry['QUESTIONDATAID'] . ";" . $entry['QUESTIONDESCRIPTION'];
         }

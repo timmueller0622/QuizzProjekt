@@ -15,11 +15,8 @@ if (!isset($_SESSION["username"])) {
     <?php
     // http://quizzteam2.jedimasters.net/Scripts
     require 'navi.php';
-    require '../Game/creategame.php';
     require '../Game/questionsandanswers.php';
-    $gameid = Game::createGame();
-    Game::createRound($gameid, $_POST['difficulty'], $_POST['genre']);
-    $question = QuestionData::getQuestionFromSettings($_POST['genre'], $_POST['difficulty']);
+    $question = QuestionData::getQuestionFromSettings($_SESSION['roundid']);
     $qnum = rand(0, sizeof($question));
     $s = '<div align="center">';
     $s .= explode(';', $question[$qnum])[1] . '<br>';
