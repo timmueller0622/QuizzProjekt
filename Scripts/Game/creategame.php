@@ -20,7 +20,7 @@
             echo "test1<br>";
             $sql = "INSERT INTO round (roundid, gameid, settingid) VALUES (?, ?, ?)";
             $roundid = $conn->query("SELECT count(*) FROM round")->fetchAll()[0];
-            echo "test2<br>";
+        print_r($roundid);
             foreach ($conn->query("SELECT * FROM round") as $r){
                 echo "test3<br>";
                 if ($r['ROUNDID'] == $roundid)
