@@ -20,7 +20,7 @@ if (!isset($_SESSION["username"])) {
     require '../Game/difficultyscript.php';
 
     $s = "<div align='center'>
-        <form action='playRound.php' method='post' id='matchsettings'>
+        <form action='playRound.php' method='post' id='matchSettings'>
         <input type='submit'>
         </form>
         <label for='genre'>Choose a genre: </label>
@@ -33,7 +33,7 @@ if (!isset($_SESSION["username"])) {
     $s .= "</select></div>";
 
     $s .= "<div align='center'><label for='difficulty'>Choose a difficulty: </label>";
-    $s .= "<select name='difficulty' id='difficulty' form='matchsettings'>";
+    $s .= "<select name='difficulty' id='difficulty' form='matchSettings'>";
     $difficulties = Difficulty::getAllDifficulties();
     foreach($difficulties as $difficulty) {
         $s .= "<option value='" . explode(";", $difficulty)[0] . "'>" .  
