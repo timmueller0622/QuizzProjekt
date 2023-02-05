@@ -15,13 +15,14 @@ if (!isset($_SESSION["username"])) {
     <?php
     // http://quizzteam2.jedimasters.net/Scripts
     require 'navi.php';
+    echo $_POST['GENRE'] . $_POST['DIFFICULTY'] . " posts....";
     echo "test1";
     require '../Game/creategame.php';
     echo "test2";
     require '../Game/questionsandanswers.php';
     //Game::createGame();
     echo "test3";
-    echo $_POST['GENRE'] . $_POST['DIFFICULTY'];
+    
     $question = QuestionData::getQuestionFromSettings($_POST['GENRE'], $_POST['DIFFICULTY']);
     echo "test4";
     ?>
