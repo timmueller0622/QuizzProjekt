@@ -11,7 +11,7 @@ class QuestionData{
         $difficultyID = $settingid['DIFFICULTY'];
         $toReturn = array();
         foreach($conn->query("SELECT * FROM QUESTIONDATA
-        WHERE GENRE = (SELECT genreid " . $genreID .
+        WHERE GENRE = " . $genreID .
         "AND DIFFICULTY =" . $difficultyID) as $entry){
             $toReturn[] .= $entry['QUESTIONDATAID'] . ";" . $entry['QUESTIONDESCRIPTION'];
         }
