@@ -32,6 +32,7 @@ class Game
         echo "test1";
         try {
             print_r($stmt);
+            echo "<br>" . $gameid . $difficulty . $genre . "<br>";
             $stmt->execute([$roundid, $gameid, $settingid]);
         } catch (Exception $e) {
             echo $e;
