@@ -31,6 +31,7 @@ class Game
         $stmt = $conn->prepare($sql);
         echo "test1";
         try {
+            print_r($stmt);
             $stmt->execute([$roundid, $gameid, $settingid]);
         } catch (Exception $e) {
             echo $e;
