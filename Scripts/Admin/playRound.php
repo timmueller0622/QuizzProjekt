@@ -15,7 +15,7 @@ if (!isset($_SESSION["username"])) {
     <?php
     // http://quizzteam2.jedimasters.net/Scripts
     require 'navi.php';
-    echo $_POST['GENRE'] . $_POST['DIFFICULTY'] . " posts....";
+    echo $_POST['genre'] . $_POST['difficulty'] . " posts....";
     echo "test1";
     require '../Game/creategame.php';
     echo "test2";
