@@ -21,7 +21,7 @@ class Game
     {
         require '../connectToDatabase.php';
         $sql = "INSERT INTO round (roundid, gameid, settingid) VALUES (?, ?, ?)";
-        $roundid = $conn->query("SELECT count(*) FROM round")->fetchAll()[0];
+        $roundid = $conn->query("SELECT count(*) FROM round")->fetchAll()[0][0];
         foreach ($conn->query("SELECT * FROM round") as $r) {
             if ($r['ROUNDID'] == $roundid)
                 $roundid++;
