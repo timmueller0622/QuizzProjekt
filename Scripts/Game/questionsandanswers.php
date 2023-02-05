@@ -7,10 +7,8 @@ class QuestionData{
         foreach($conn->query("SELECT * FROM QUESTIONDATA
         WHERE GENRE =" . $genreID .
         "AND DIFFICULTY =" . $difficultyID) as $entry){
-            
             echo "test2";
             $toReturn[] .= $entry['QUESTIONDATAID'] . ";" . $entry['QUESTIONDESCRIPTION'];
-            
             echo "test3";
         }
         
