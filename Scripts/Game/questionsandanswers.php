@@ -2,6 +2,7 @@
 class QuestionData{
     public static function getQuestionFromSettings($roundid){
         require '../connectToDatabase.php';
+        echo "test1";
         $settingid = $conn->query("SELECT genre, difficulty FROM roundsetting 
         JOIN round on round.settingid = roundsetting.settingid
         WHERE round.roundid =" . $roundid)->fetchAll()[0];
