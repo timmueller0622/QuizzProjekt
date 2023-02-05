@@ -22,10 +22,11 @@
             $roundid = $conn->query("SELECT count(*) FROM round")->fetchAll()[0];
         print_r($roundid);
             foreach ($conn->query("SELECT * FROM round") as $r){
-                echo "test3<br>";
+                echo "test2<br>";
                 if ($r['ROUNDID'] == $roundid)
                     $roundid++;
             }
+            echo "test3<br>";
             $sql = "SELECT settingid FROM roundsetting
                 WHERE difficulty =" . $difficulty .
                 "AND WHERE genre = " . $genre;
