@@ -17,23 +17,18 @@
 
         static function createRound($gameid, $difficulty, $genre) {
             require '../connectToDatabase.php';
-            echo "test1<br>";
             $sql = "INSERT INTO round (roundid, gameid, settingid) VALUES (?, ?, ?)";
             $roundid = $conn->query("SELECT count(*) FROM round")->fetchAll()[0];
-        print_r($roundid);
             foreach ($conn->query("SELECT * FROM round") as $r){
-                echo "test2<br>";
                 if ($r['ROUNDID'] == $roundid)
                     $roundid++;
             }
             $sql = "SELECT * FROM roundsetting WHERE genre =" . $genre . "AND difficulty =" . $difficulty;
-            $setting = $conn->query($sql)->fetchAll()[0][0];
-            echo "test4<br>";
+            $settingid = $conn->query($sql)->fetchAll()[0][0];
             print_r($setting);
-            echo "test5<br>";
-            //$stmt = $conn->prepare($sql);
-        	//$stmt->execute([$roundid, $gameid, $setting]);
-            //return $roundid;
+            $stmt = $conn->prepare($sql);
+        	$stmt->execute([$roundid, $gameid, $settingid]);
+            return $roundid;
         }
     }
 ?>
