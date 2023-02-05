@@ -18,7 +18,7 @@ if (!isset($_SESSION["username"])) {
     require '../Game/creategame.php';
     require '../Game/questionsandanswers.php';
     $gameid = Game::createGame();
-    Game::createRound($gameid, $_POST['genre'], $_POST['difficulty']);
+    Game::createRound($gameid, $_POST['difficulty'], $_POST['genre']);
     $question = QuestionData::getQuestionFromSettings($_POST['genre'], $_POST['difficulty']);
     $qnum = rand(0, sizeof($question));
     $s = '<div align="center">';
