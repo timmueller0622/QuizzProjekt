@@ -20,11 +20,14 @@ if (!isset($_SESSION["username"])) {
     //Game::createGame();
     $question = QuestionData::getQuestionFromSettings($_POST['genre'], $_POST['difficulty']);
     $qnum = rand(0, sizeof($question));
-    echo explode(';', $question[$qnum])[1];
+    $s = '<div align="center">';
+    $s .= explode(';', $question[$qnum])[1] . '<br>';
     $answers = QuestionData::getAnswersFromQuestion(explode(';', $question[$qnum])[0]);
     foreach($answers as $answer){
-        echo explode(';', $answer)[1] . '<br>';
+        $s .= explode(';', $answer)[1] . '<br>';
     }
+    $s .= '</div>';
+    echo $s;
     ?>
 </body>
 </html>
