@@ -27,11 +27,11 @@ class Game
                 $roundid++;
         }
         $sql = "SELECT * FROM roundsetting WHERE genre =" . $genre . "AND difficulty =" . $difficulty;
-        $setting = $conn->query($sql)->fetchAll()[0][0];
+        $settingid = $conn->query($sql)->fetchAll()[0][0];
         $stmt = $conn->prepare($sql);
         echo "test1";
         try {
-            $stmt->execute([$roundid, $gameid, $setting]);
+            $stmt->execute([$roundid, $gameid, $settingid]);
         } catch (Exception $e) {
             echo $e;
         }
