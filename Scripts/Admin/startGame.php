@@ -4,12 +4,14 @@ require '../Game/creategame.php';
 if (!isset($_SESSION["username"])) {
     header('Location: loginAPI.php');
 }
+unset($_SESSION['gameid']);
+unset($_SESSION['roundid']);
 if (isset($_POST['genre']) && isset($_POST['difficulty'])){
     if (!isset($_SESSION['gameid']))
         $_SESSION['gameid'] = Game::createGame();
     if (!isset($_SESSION['roundid']))
         $_SESSION['roundid'] = Game::createRound($gameid, $_POST['difficulty'], $_POST['genre']);
-    header('Location:playRound.php');
+    //header('Location:playRound.php');
 }
 
 ?>
