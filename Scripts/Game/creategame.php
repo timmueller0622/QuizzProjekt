@@ -25,9 +25,10 @@
             }
             $sql = "SELECT * FROM roundsetting WHERE genre =" . $genre . "AND difficulty =" . $difficulty;
             $setting = $conn->query($sql)->fetchAll()[0][0];
-            print_r($setting);
             $stmt = $conn->prepare($sql);
+        echo "test1";
         	$stmt->execute([$roundid, $gameid, $setting]);
+        echo "test";
             return $roundid;
         }
     }
