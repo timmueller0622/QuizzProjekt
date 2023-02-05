@@ -19,7 +19,12 @@ if (!isset($_SESSION["username"])) {
     require '../Game/questionsandanswers.php';
     //Game::createGame();
     $question = QuestionData::getQuestionFromSettings($_POST['genre'], $_POST['difficulty']);
-    echo explode(';', $question[0])[1];
+    $qnum = rand(0, sizeof($question));
+    echo explode(';', $question[$qnum])[1];
+    $answers = QuestionData::getAnswersFromQuestion(explode(';', $question[$qnum])[0]);
+    foreach($answers as $answer){
+        echo explode(';', $answer)[1] . '<br>';
+    }
     ?>
 </body>
 </html>
