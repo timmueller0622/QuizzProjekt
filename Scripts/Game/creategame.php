@@ -26,8 +26,8 @@ class Game
             if ($r['ROUNDID'] == $roundid)
                 $roundid++;
         }
-        $sql = "SELECT * FROM roundsetting WHERE genre =" . $genre . "AND difficulty =" . $difficulty;
-        $settingid = $conn->query($sql)->fetchAll()[0][0];
+        $sql2 = "SELECT * FROM roundsetting WHERE genre =" . $genre . "AND difficulty =" . $difficulty;
+        $settingid = $conn->query($sql2)->fetchAll()[0][0];
         $stmt = $conn->prepare($sql);
         echo "test1";
         try {
