@@ -27,7 +27,7 @@
                     $roundid++;
             }
             echo $difficulty . $genre . "<br>";
-            $sql = "SELECT * FROM roundsetting WHERE genre =" . $genre;
+            $sql = "SELECT * FROM roundsetting WHERE genre =" . $genre . "AND difficulty =" . $difficulty;
             $setting = $conn->query($sql)->fetchAll();
             echo "test4<br>";
             print_r($setting);
