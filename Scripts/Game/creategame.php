@@ -26,7 +26,7 @@
                 if ($r['ROUNDID'] == $roundid)
                     $roundid++;
             }
-            echo "test3<br>";
+            echo $difficulty . $genre . "<br>";
             $sql = "SELECT * FROM roundsetting";
             $setting = $conn->query($sql)->fetchAll();
             echo "test4<br>";
