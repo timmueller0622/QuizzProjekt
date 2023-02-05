@@ -19,7 +19,7 @@ if (!isset($_SESSION["username"])) {
     require '../Game/questionsandanswers.php';
     //Game::createGame();
     $question = QuestionData::getQuestionFromSettings($_POST['genre'], $_POST['difficulty']);
-    echo $question['QUESTIONDESCRIPTION'] . "<br>";
+    echo $question[0]['QUESTIONDESCRIPTION'] . "<br>";
     ?>
 </body>
 </html>
