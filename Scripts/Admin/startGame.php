@@ -17,12 +17,10 @@ if (isset($_POST['genre']) && isset($_POST['difficulty'])){
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Genre Auswählen</title>
     <meta charset="utf-8">
 </head>
-
 <body>
     <?php
     // http://quizzteam2.jedimasters.net/Scripts
@@ -36,6 +34,7 @@ if (isset($_POST['genre']) && isset($_POST['difficulty'])){
         </form>
         <label for='genre'>Choose a genre: </label>
         <select name='genre' id='genre' form='matchSettings'>";
+        
     $genres = Genre::getAllGenres();
     foreach($genres as $genre) {
         $s .= "<option value='" . explode(";", $genre)[0] . "'>" .  
@@ -55,5 +54,4 @@ if (isset($_POST['genre']) && isset($_POST['difficulty'])){
     echo $s;
     ?>
 </body>
-
 </html>

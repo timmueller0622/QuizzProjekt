@@ -10,6 +10,7 @@ session_start();
 </head>
 
 <body>
+    <!-- Form um sich einzuloggen-->
     <form action="loginAPI.php" method="post">
         <table align="center" border="1" cellpadding="10" cellspacing="0">
             <tr>

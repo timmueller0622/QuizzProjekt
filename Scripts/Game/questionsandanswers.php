@@ -6,7 +6,6 @@ class QuestionData{
         $settingid = $conn->query("SELECT genre, difficulty FROM roundsetting 
         JOIN round on round.settingid = roundsetting.settingid
         WHERE round.roundid =" . $roundid)->fetchAll()[0];
-        print_r($settingid);
         $genreID = $settingid['GENRE'];
         $difficultyID = $settingid['DIFFICULTY'];
         $toReturn = array();

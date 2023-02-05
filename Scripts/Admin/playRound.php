@@ -16,8 +16,12 @@ if (!isset($_SESSION["username"])) {
     // http://quizzteam2.jedimasters.net/Scripts
     require 'navi.php';
     require '../Game/questionsandanswers.php';
+    require '../Game/roundscript.php';
+    $qpr = Round::getQuestionsPerRound($_SESSION['roundid']);
+    echo $qpr;
     $question = QuestionData::getQuestionFromSettings($_SESSION['roundid']);
     $qnum = rand(0, sizeof($question));
+
     $s = '<div align="center">';
     $s .= explode(';', $question[$qnum])[1] . '<br>';
     $answers = QuestionData::getAnswersFromQuestion(explode(';', $question[$qnum])[0]);

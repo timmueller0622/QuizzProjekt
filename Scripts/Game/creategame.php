@@ -39,4 +39,9 @@ class Game
         }
         return $roundid;
     }
+
+    static function createQuestions($questionsperround){
+        $toReturn = array();
+        return $toReturn;
+    }
 }

@@ -1,6 +1,5 @@
 <?php
 class Difficulty{
-
     static function getAllDifficulties(){
         require '../connectToDatabase.php';
         $toReturn = array();
