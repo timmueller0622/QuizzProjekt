@@ -20,7 +20,6 @@ if (!isset($_SESSION["username"])) {
     //Game::createGame();
     $question = QuestionData::getQuestionFromSettings($_POST['genre'], $_POST['difficulty']);
     $qnum = rand(0, sizeof($question));
-    echo $qnum;
     echo explode(';', $question[$qnum])[1];
     $answers = QuestionData::getAnswersFromQuestion(explode(';', $question[$qnum])[0]);
     foreach($answers as $answer){
