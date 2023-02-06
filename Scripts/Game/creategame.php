@@ -29,10 +29,7 @@ class Game
         $sql2 = "SELECT * FROM roundsetting WHERE genre =" . $genre . "AND difficulty =" . $difficulty;
         $settingid = $conn->query($sql2)->fetchAll()[0][0];
         $stmt = $conn->prepare($sql);
-        echo "test1";
         try {
-            print_r($stmt);
-            echo "<br>" . $gameid . $roundid . $settingid . "<br>";
             $stmt->execute([$roundid, $gameid, $settingid]);
         } catch (Exception $e) {
             echo $e;
@@ -40,8 +37,25 @@ class Game
         return $roundid;
     }
 
-    static function createQuestions($questionsperround){
+    static function createQuestions($questionsperround, $roundid){
+        require '../connectToDatabase.php';
+        require 'questionsandanswer.php';
+        $questiondata = QuestionData::getQuestionFromSettings($roundid);
         $toReturn = array();
+        $sql = "INSERT INTO round (questionid, answeredcorrectly, roundid, questiondataid) VALUES (?, ?, ?, ?)";
+        for ($i=0; $i < $questionsperround; $i++) {
+            $questionid = $conn->query("SELECT count(*) FROM round")->fetchAll()[0][0];
+            foreach ($conn->query("SELECT * FROM question") as $r) {
+                if ($r['QUESTIONID'] == $questionid)
+                    $questionid++;
+            }
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$questionid, null, $roundid, $questiondata[$i]]);
+            $getQuestions = "SELECT questionid, questiondescription FROM question 
+                JOIN questiondata ON questiondata.questiondataid = question.questiondataid 
+                WHERE roundid =" . $roundid;
+            $toReturn = $conn->query($getQuestions)->fetchAll();
+        }
         return $toReturn;
     }
 }
