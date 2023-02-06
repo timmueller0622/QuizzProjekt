@@ -41,9 +41,10 @@ class Game
         require '../connectToDatabase.php';
         
         echo "test1<br>";
-        require '/questionsandanswers.php';
-        $questiondata = QuestionData::getQuestionFromSettings($roundid);
+        require '../Game/questionsandanswers.php';
+        
         echo "test2<br>";
+        $questiondata = QuestionData::getQuestionFromSettings($roundid);
         $toReturn = array();
         $sql = "INSERT INTO round (questionid, answeredcorrectly, roundid, questiondataid) VALUES (?, ?, ?, ?)";
         for ($i=0; $i < $questionsperround; $i++) {
