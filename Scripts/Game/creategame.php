@@ -53,7 +53,7 @@ class Game
             echo "test2<br>";
             $stmt = $conn->prepare($sql);
             
-            echo "test3<br>";
+            echo "test3<br>" . $questiondata[$i];
             try{
                 $stmt->execute([$questionid, 0, $roundid, $questiondata[$i]]);
             }catch (Exception $e){
