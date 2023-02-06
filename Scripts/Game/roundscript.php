@@ -1,6 +1,5 @@
 <?php
 class Round{
-
     static function getQuestionsFromRound($roundID){    
         require_once '../connectToDatabase.php';
         $back = array();

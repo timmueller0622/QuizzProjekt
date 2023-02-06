@@ -41,7 +41,7 @@ class Game
         require '../connectToDatabase.php';
         $questiondata = QuestionData::getQuestionFromSettings($roundid);
         $toReturn = array();
-        $sql = "INSERT INTO round (questionid, answeredcorrectly, roundid) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO question (questionid, answeredcorrectly, roundid, QUESTIONDATAID) VALUES (?, ?, ?, ?)";
         for ($i=0; $i < $questionsperround; $i++) {
             $questionid = $conn->query("SELECT count(*) FROM question")->fetchAll()[0][0];
             echo "questionid: " . $questionid . "<br>";
@@ -49,11 +49,11 @@ class Game
                 if ($r['QUESTIONID'] == $questionid)
                     $questionid++;
             }
-            $questiondataid = intval(explode(";", $questiondata[$i])[0]);
+            $questiondataid = explode(";", $questiondata[$i])[0];
             $stmt = $conn->prepare($sql);
             echo "questiondataid: " . $questiondataid . "<br>";
             try{
-                $stmt->execute([$questionid, 0, $roundid]);
+                $stmt->execute([$questionid, 0, $roundid, $questiondataid]);
             }catch (Exception $e){
                 echo $e;
             }
