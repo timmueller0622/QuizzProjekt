@@ -1,6 +1,6 @@
 <?php
+echo "test";
 class QuestionData{
-
     public static function getQuestionFromSettings($roundid){
         require '../connectToDatabase.php';
         echo $roundid;
