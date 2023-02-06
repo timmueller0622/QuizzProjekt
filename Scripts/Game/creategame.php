@@ -43,9 +43,8 @@ class Game
         $toReturn = array();
         $sql = "INSERT INTO round (questionid, answeredcorrectly, roundid, questiondataid) VALUES (?, ?, ?, ?)";
         for ($i=0; $i < $questionsperround; $i++) {
-            
-            echo "test<br>";
             $questionid = $conn->query("SELECT count(*) FROM question")->fetchAll()[0][0];
+            echo "test<br>";
             print_r($questionid);
             foreach ($conn->query("SELECT * FROM question") as $r) {
                 if ($r['QUESTIONID'] == $questionid)
@@ -55,9 +54,8 @@ class Game
             $stmt = $conn->prepare($sql);
             
             echo "test3<br>";
-            $answeredcorrectly = null;
             try{
-                $stmt->execute([$questionid, $answeredcorrectly, $roundid, $questiondata[$i]]);
+                $stmt->execute([$questionid, 0, $roundid, $questiondata[$i]]);
             }catch (Exception $e){
                 echo $e;
             }
