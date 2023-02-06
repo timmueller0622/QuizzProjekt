@@ -15,18 +15,10 @@ if (!isset($_SESSION["username"])) {
     <?php
     // http://quizzteam2.jedimasters.net/Scripts
     require 'navi.php';
-    
-    echo "test1";
     try {
         require '../Game/questionsandanswers.php';
-        
-    echo "test2";
         require '../Game/roundscript.php';
-        
-    echo "test3";
         require '../Game/questionsandanswers.php';
-        
-    echo "test4";
     } catch (Exception $e){
         echo $e;
     }
