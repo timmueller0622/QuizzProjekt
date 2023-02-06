@@ -18,14 +18,18 @@ if (!isset($_SESSION["username"])) {
     require '../Game/questionsandanswers.php';
     require '../Game/roundscript.php';
     require '../Game/creategame.php';
-    $qpr = Round::getQuestionsPerRound($_SESSION['roundid']);
-    echo "qpr: " . $qpr;
-    $qArray = Game::createQuestions($qpr, $_SESSION['roundid']);
-    $question = QuestionData::getQuestionFromSettings($_SESSION['roundid']);
-    $qnum = rand(0, sizeof($question));
-
+    
     $s = '<div align="center">';
-    $s .= explode(';', $question[$qnum])[1] . '<br>';
+
+    $qpr = Round::getQuestionsPerRound($_SESSION['roundid']);
+    $qArray = Game::createQuestions($qpr, $_SESSION['roundid']);
+    print_r($qArray);
+    foreach($qArray as $question){
+        $s .= QuestionData::getQuestion($question['QUESTIONID']);
+        $aArray = QuestionData::getAnswersFromQuestion($question['QUESTIONID']);
+        print_r($aArray);
+    }
+
     $answers = QuestionData::getAnswersFromQuestion(explode(';', $question[$qnum])[0]);
     foreach($answers as $answer){
         $s .= explode(';', $answer)[1] . '<br>';

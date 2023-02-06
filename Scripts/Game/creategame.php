@@ -63,7 +63,6 @@ class Game
 
         $getQuestions = "SELECT questionid FROM question WHERE roundid =" . $roundid;
         $toReturn = $conn->query($getQuestions)->fetchAll();
-        print_r($toReturn);
         return $toReturn;
     }
 }

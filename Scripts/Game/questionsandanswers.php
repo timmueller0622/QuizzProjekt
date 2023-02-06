@@ -27,11 +27,11 @@ class QuestionData{
   
     static function getAnswersFromQuestion($questionid){
         require '../connectToDatabase.php';
-        $toReturn = array();
-        foreach($conn->query("SELECT * FROM ANSWERDATA
-        WHERE QUESTION=" . $questiondataid) as $entry){
-            $toReturn[] .= $entry['ANSWERID'] . ";" . $entry['ANSWERDESCRIPTION'];
-        }
+        $sql = "SELECT answerdescription FROM answerdata
+        JOIN questiondata ON questiondata.questiondataid = answerdata.question
+        JOIN question ON questiondata.questionid = question.questionid
+        WHERE question.questionid=" . $questionid;
+        $toReturn = $conn->query($sql)->fetchAll();
         return $toReturn;
     }
 }
