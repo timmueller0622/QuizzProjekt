@@ -1,7 +1,6 @@
 <?php
-echo "test";
 class QuestionData{
-    public static function getQuestionFromSettings($roundid){
+    static function getQuestionFromSettings($roundid){
         require '../connectToDatabase.php';
         echo $roundid;
         $settingid = $conn->query("SELECT genre, difficulty FROM roundsetting 
@@ -18,7 +17,7 @@ class QuestionData{
         return $toReturn;
     }
   
-    public static function getAnswersFromQuestion($questionID){
+    static function getAnswersFromQuestion($questionID){
         require '../connectToDatabase.php';
         $toReturn = array();
         foreach($conn->query("SELECT * FROM ANSWERDATA
