@@ -42,7 +42,9 @@ class Game
         $existingQuestionsInRound = $conn->query("SELECT count(*) FROM question WHERE roundid=" . $roundid)->fetchAll()[0][0];
         if ($existingQuestionsInRound >= $questionsperround){
             echo "round filled with questions already";
-            return;
+            $getQuestions = "SELECT questionid FROM question WHERE roundid =" . $roundid;
+            $toReturn = $conn->query($getQuestions)->fetchAll();
+            return $toReturn;
         }
         $questiondata = QuestionData::getQuestionFromSettings($roundid);
         $sql = "INSERT INTO question (questionid, answeredcorrectly, roundid, QUESTIONDATAID) VALUES (?, ?, ?, ?)";
