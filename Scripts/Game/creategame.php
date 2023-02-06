@@ -41,7 +41,6 @@ class Game
         require '../connectToDatabase.php';
         
         echo "test1<br>";
-        require '../Game/questionsandanswers.php';
         
         echo "test2<br>";
         $questiondata = QuestionData::getQuestionFromSettings($roundid);
