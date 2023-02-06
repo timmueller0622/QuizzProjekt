@@ -1,5 +1,14 @@
 <?php
 class Round{
+    
+    static function getQuestionsPerRound($roundid){
+        require '../connectToDatabase.php';
+        $qpr = $conn->query("SELECT questionsperround FROM roundsetting 
+            JOIN round on round.settingid = roundsetting.settingid
+            WHERE roundid =" . $roundid)->fetchAll()[0][0];
+        return $qpr;
+    }
+
     static function getQuestionsFromRound($roundID){    
         require_once '../connectToDatabase.php';
         $back = array();
@@ -28,14 +37,6 @@ class Round{
         else{
             return $back;
         }
-    }
-
-    static function getQuestionsPerRound($roundid){
-        require '../connectToDatabase.php';
-        $qpr = $conn->query("SELECT questionsperround FROM roundsetting 
-            JOIN round on round.settingid = roundsetting.settingid
-            WHERE roundid =" . $roundid)->fetchAll()[0][0];
-        return $qpr;
     }
 }
 ?>

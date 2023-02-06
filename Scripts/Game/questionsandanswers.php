@@ -8,6 +8,7 @@ class QuestionData{
         $toReturn = $conn->query($sql)->fetchAll()[0][0];
         return $toReturn;
     }
+    
     static function getQuestionFromSettings($roundid){
         require '../connectToDatabase.php';
         $settingid = $conn->query("SELECT genre, difficulty FROM roundsetting 
