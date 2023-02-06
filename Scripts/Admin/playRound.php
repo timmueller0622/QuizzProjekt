@@ -14,6 +14,7 @@ if (!isset($_SESSION["username"])) {
 <body>
     <?php
     // http://quizzteam2.jedimasters.net/Scripts
+    echo "test";
     require 'navi.php';
     try {
         require '../Game/questionsandanswers.php';
