@@ -26,16 +26,12 @@ if (!isset($_SESSION["username"])) {
     print_r($qArray);
     echo "<br>";
     foreach($qArray as $question){
-        print_r($question);
-        echo QuestionData::getQuestion($question['QUESTIONID']);
+        $s .= QuestionData::getQuestion($question['QUESTIONID']) . "<br>";
         $aArray = QuestionData::getAnswersFromQuestion($question['QUESTIONID']);
-        print_r($aArray);
-        echo "<br>";
-    }
-
-    $answers = QuestionData::getAnswersFromQuestion(explode(';', $question[$qnum])[0]);
-    foreach($answers as $answer){
-        $s .= explode(';', $answer)[1] . '<br>';
+        foreach($aArray as $answer){
+            $s .= $answer['ANSWERDESCRIPTION'] . "<br>";
+        }
+        echo "<br><hr>";
     }
     $s .= '</div>';
     echo $s;
