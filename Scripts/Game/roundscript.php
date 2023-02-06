@@ -34,8 +34,8 @@ class Round{
     static function getQuestionsPerRound($roundid){
         require '../connectToDatabase.php';
         $qpr = $conn->query("SELECT questionsperround FROM roundsetting 
-        JOIN round on round.settingid = roundsetting.settingid
-        WHERE round.roundid =" . $roundid)->fetchAll()[0];
+            JOIN round on round.settingid = roundsetting.settingid
+            WHERE round.roundid =" . $roundid)->fetchAll()[0];
         return $qpr;
     }
 }
