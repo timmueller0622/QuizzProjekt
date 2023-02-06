@@ -39,7 +39,7 @@ class Game
 
     static function createQuestions($questionsperround, $roundid){
         require '../connectToDatabase.php';
-        require 'questionsandanswer.php';
+        require 'questionsandanswers.php';
         echo "test1<br>";
         $questiondata = QuestionData::getQuestionFromSettings($roundid);
         echo "test2<br>";

@@ -27,5 +27,4 @@ class QuestionData{
         return $toReturn;
     }
 }
-echo "qnatest";
 ?>
