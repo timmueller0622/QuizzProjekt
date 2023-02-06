@@ -18,7 +18,9 @@ if (!isset($_SESSION["username"])) {
     try {
         require '../Game/questionsandanswers.php';
         require '../Game/roundscript.php';
+        echo "test1";
         require '../Game/questionsandanswers.php';
+        echo "test2";
     } catch (Exception $e){
         echo $e;
     }
