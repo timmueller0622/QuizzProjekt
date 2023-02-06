@@ -1,7 +1,13 @@
 <?php
 class QuestionData{
-    static function getQuestion($questiondataid){
-        
+    static function getQuestion($questionid){
+        require '../connectToDatabase.php';
+        $toReturn = array();
+        foreach($conn->query("SELECT * FROM ANSWERDATA
+        WHERE QUESTION=" . $questiondataid) as $entry){
+            $toReturn[] .= $entry['ANSWERID'] . ";" . $entry['ANSWERDESCRIPTION'];
+        }
+        return $toReturn;
     }
     static function getQuestionFromSettings($roundid){
         require '../connectToDatabase.php';
@@ -19,7 +25,7 @@ class QuestionData{
         return $toReturn;
     }
   
-    static function getAnswersFromQuestion($questiondataid){
+    static function getAnswersFromQuestion($questionid){
         require '../connectToDatabase.php';
         $toReturn = array();
         foreach($conn->query("SELECT * FROM ANSWERDATA

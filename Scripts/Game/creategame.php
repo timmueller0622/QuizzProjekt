@@ -58,9 +58,7 @@ class Game
             }
         }
 
-        $getQuestions = "SELECT questionid, questiondescription FROM question 
-        JOIN questiondata ON questiondata.questiondataid = question.questiondataid 
-        WHERE roundid =" . $roundid;
+        $getQuestions = "SELECT questionid FROM question WHERE roundid =" . $roundid;
         $toReturn = $conn->query($getQuestions)->fetchAll();
         print_r($toReturn);
         return $toReturn;
