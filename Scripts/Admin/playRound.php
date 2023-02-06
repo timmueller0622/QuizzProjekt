@@ -25,6 +25,8 @@ if (!isset($_SESSION["username"])) {
         
     echo "test3";
         require '../Game/questionsandanswers.php';
+        
+    echo "test4";
     } catch (Exception $e){
         echo $e;
     }
