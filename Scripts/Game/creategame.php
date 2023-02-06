@@ -40,7 +40,6 @@ class Game
     static function createQuestions($questionsperround, $roundid){
         require '../connectToDatabase.php';
         $questiondata = QuestionData::getQuestionFromSettings($roundid);
-        $toReturn = array();
         $sql = "INSERT INTO question (questionid, answeredcorrectly, roundid, QUESTIONDATAID) VALUES (?, ?, ?, ?)";
         for ($i=0; $i < $questionsperround; $i++) {
             $questionid = $conn->query("SELECT count(*) FROM question")->fetchAll()[0][0];
@@ -59,12 +58,11 @@ class Game
             }
         }
 
-
-
         $getQuestions = "SELECT questionid, questiondescription FROM question 
         JOIN questiondata ON questiondata.questiondataid = question.questiondataid 
         WHERE roundid =" . $roundid;
         $toReturn = $conn->query($getQuestions)->fetchAll();
+        print_r($toReturn);
         return $toReturn;
     }
 }
