@@ -1,5 +1,8 @@
 <?php
 class QuestionData{
+    static function getQuestion($questiondataid){
+        
+    }
     static function getQuestionFromSettings($roundid){
         require '../connectToDatabase.php';
         $settingid = $conn->query("SELECT genre, difficulty FROM roundsetting 
@@ -16,11 +19,11 @@ class QuestionData{
         return $toReturn;
     }
   
-    static function getAnswersFromQuestion($questionID){
+    static function getAnswersFromQuestion($questiondataid){
         require '../connectToDatabase.php';
         $toReturn = array();
         foreach($conn->query("SELECT * FROM ANSWERDATA
-        WHERE QUESTION=" . $questionID) as $entry){
+        WHERE QUESTION=" . $questiondataid) as $entry){
             $toReturn[] .= $entry['ANSWERID'] . ";" . $entry['ANSWERDESCRIPTION'];
         }
         return $toReturn;
