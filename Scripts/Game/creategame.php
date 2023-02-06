@@ -39,6 +39,11 @@ class Game
 
     static function createQuestions($questionsperround, $roundid){
         require '../connectToDatabase.php';
+        $existingQuestionsInRound = $conn->query("SELECT count(*) FROM question WHERE roundid=" . $roundid)->fetchAll()[0][0];
+        if ($existingQuestionsInRound >= $questionsperround){
+            echo "round filled with questions already";
+            return;
+        }
         $questiondata = QuestionData::getQuestionFromSettings($roundid);
         $sql = "INSERT INTO question (questionid, answeredcorrectly, roundid, QUESTIONDATAID) VALUES (?, ?, ?, ?)";
         for ($i=0; $i < $questionsperround; $i++) {
