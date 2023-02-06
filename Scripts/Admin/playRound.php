@@ -30,6 +30,7 @@ if (!isset($_SESSION["username"])) {
         //$s .= QuestionData::getQuestion($question['QUESTIONID']);
         $aArray = QuestionData::getAnswersFromQuestion($question['QUESTIONID']);
         print_r($aArray);
+        echo "<br>";
     }
 
     $answers = QuestionData::getAnswersFromQuestion(explode(';', $question[$qnum])[0]);
