@@ -31,7 +31,7 @@ if (!isset($_SESSION["username"])) {
         foreach($aArray as $answer){
             $s .= $answer['ANSWERDESCRIPTION'] . "<br>";
         }
-        s .= "<br><hr>";
+        $s .= "<br><hr>";
     }
     $s .= '</div>';
     echo $s;
