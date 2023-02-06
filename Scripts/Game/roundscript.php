@@ -36,7 +36,7 @@ class Round{
         echo "test1";
         $qpr = $conn->query("SELECT questionsperround FROM roundsetting 
             JOIN round on round.settingid = roundsetting.settingid
-            WHERE roundid =" . $roundid)->fetchAll()[0];
+            WHERE roundid =" . $roundid)->fetchAll()[0][0];
         return $qpr;
     }
 }

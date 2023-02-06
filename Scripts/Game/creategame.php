@@ -40,7 +40,9 @@ class Game
     static function createQuestions($questionsperround, $roundid){
         require '../connectToDatabase.php';
         require 'questionsandanswer.php';
+        echo "test1<br>";
         $questiondata = QuestionData::getQuestionFromSettings($roundid);
+        echo "test2<br>";
         $toReturn = array();
         $sql = "INSERT INTO round (questionid, answeredcorrectly, roundid, questiondataid) VALUES (?, ?, ?, ?)";
         for ($i=0; $i < $questionsperround; $i++) {

@@ -19,7 +19,6 @@ if (!isset($_SESSION["username"])) {
     require '../Game/roundscript.php';
     require '../Game/creategame.php';
     $qpr = Round::getQuestionsPerRound($_SESSION['roundid']);
-    print_r($qpr);
     $qArray = Game::createQuestions($qpr, $_SESSION['roundid']);
     $question = QuestionData::getQuestionFromSettings($_SESSION['roundid']);
     $qnum = rand(0, sizeof($question));
