@@ -17,12 +17,7 @@ if (!isset($_SESSION["username"])) {
     require 'navi.php';
     require '../Game/questionsandanswers.php';
     require '../Game/roundscript.php';
-    try {
-        require '../Game/questionsandanswers.php';
-    } catch (Exception $e){
-        echo $e;
-    }
-    echo "test";
+    require '../Game/creategame.php';
     $qpr = Round::getQuestionsPerRound($_SESSION['roundid']);
     print_r($qpr);
     $qArray = Game::createQuestions($qpr, $_SESSION['roundid']);
