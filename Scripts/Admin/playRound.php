@@ -15,9 +15,13 @@ if (!isset($_SESSION["username"])) {
     <?php
     // http://quizzteam2.jedimasters.net/Scripts
     require 'navi.php';
-    require '../Game/questionsandanswers.php';
-    require '../Game/roundscript.php';
-    require '../Game/questionsandanswers.php';
+    try {
+        require '../Game/questionsandanswers.php';
+        require '../Game/roundscript.php';
+        require '../Game/questionsandanswers.php';
+    } catch (Exception $e){
+        echo $e;
+    }
     echo "test";
     $qpr = Round::getQuestionsPerRound($_SESSION['roundid']);
     print_r($qpr);
