@@ -49,12 +49,11 @@ class Game
                 if ($r['QUESTIONID'] == $questionid)
                     $questionid++;
             }
-            
             $questiondataid = intval(explode(";", $questiondata[$i])[0]);
             $stmt = $conn->prepare($sql);
             echo "questiondataid: " . $questiondataid . "<br>";
             try{
-                $stmt->execute([$questionid, 0, $roundid, $questiondataid]);
+                $stmt->execute([$questionid, 0, $roundid, 3]);
             }catch (Exception $e){
                 echo $e;
             }
