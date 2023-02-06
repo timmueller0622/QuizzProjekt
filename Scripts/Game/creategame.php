@@ -44,23 +44,23 @@ class Game
         $sql = "INSERT INTO round (questionid, answeredcorrectly, roundid, questiondataid) VALUES (?, ?, ?, ?)";
         for ($i=0; $i < $questionsperround; $i++) {
             $questionid = $conn->query("SELECT count(*) FROM question")->fetchAll()[0][0];
-            print_r($questionid);
+            echo "questionid: " . $questionid . "<br>";
             foreach ($conn->query("SELECT * FROM question") as $r) {
                 if ($r['QUESTIONID'] == $questionid)
                     $questionid++;
             }
             $questiondataid = explode(";", $questiondata[$i])[0];
             $stmt = $conn->prepare($sql);
-            echo "test3<br>" . $questiondataid;
+            echo "questiondataid: " . $questiondataid . "<br>";
             try{
                 $stmt->execute([$questionid, 0, $roundid, $questiondataid]);
             }catch (Exception $e){
                 echo $e;
             }
-            
-            
-            echo "test4<br>";
         }
+
+
+
         $getQuestions = "SELECT questionid, questiondescription FROM question 
         JOIN questiondata ON questiondata.questiondataid = question.questiondataid 
         WHERE roundid =" . $roundid;
