@@ -18,7 +18,7 @@ if (!isset($_SESSION["username"])) {
     require '../Game/questionsandanswers.php';
     require '../Game/roundscript.php';
     require '../Game/creategame.php';
-    echo "roundid: " . $roundid;
+    echo "roundid: " . $_SESSION['roundid'];
     $qpr = Round::getQuestionsPerRound($_SESSION['roundid']);
     $qArray = Game::createQuestions($qpr, $_SESSION['roundid']);
     $question = QuestionData::getQuestionFromSettings($_SESSION['roundid']);
