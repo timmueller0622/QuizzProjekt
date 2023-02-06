@@ -55,7 +55,8 @@ class Game
             $stmt = $conn->prepare($sql);
             
             echo "test3<br>";
-            $stmt->execute([$questionid, null, $roundid, $questiondata[$i]]);
+            $answeredcorrectly = null;
+            $stmt->execute([$questionid, $answeredcorrectly, $roundid, $questiondata[$i]]);
             
             echo "test4<br>";
         }
