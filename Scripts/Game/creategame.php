@@ -56,7 +56,12 @@ class Game
             
             echo "test3<br>";
             $answeredcorrectly = null;
-            $stmt->execute([$questionid, $answeredcorrectly, $roundid, $questiondata[$i]]);
+            try{
+                $stmt->execute([$questionid, $answeredcorrectly, $roundid, $questiondata[$i]]);
+            }catch (Exception $e){
+                echo $e;
+            }
+            
             
             echo "test4<br>";
         }
