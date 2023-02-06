@@ -8,6 +8,16 @@ class QuestionData{
         $toReturn = $conn->query($sql)->fetchAll()[0][0];
         return $toReturn;
     }
+  
+    static function getAnswersFromQuestion($questionid){
+        require '../connectToDatabase.php';
+        $sql = "SELECT answerdescription FROM question
+        JOIN questiondata ON question.questiondataid = questiondata.questiondataid
+        JOIN answerdata ON questiondata.questiondataid = answerdata.question
+        WHERE question.questionid=" . $questionid;
+        $toReturn = $conn->query($sql)->fetchAll();
+        return $toReturn;
+    }
     
     static function getQuestionFromSettings($roundid){
         require '../connectToDatabase.php';
@@ -22,16 +32,6 @@ class QuestionData{
         "AND DIFFICULTY =" . $difficultyID) as $entry){
             $toReturn[] .= $entry['QUESTIONDATAID'] . ";" . $entry['QUESTIONDESCRIPTION'];
         }
-        return $toReturn;
-    }
-  
-    static function getAnswersFromQuestion($questionid){
-        require '../connectToDatabase.php';
-        $sql = "SELECT answerdescription FROM question
-        JOIN questiondata ON question.questiondataid = questiondata.questiondataid
-        JOIN answerdata ON questiondata.questiondataid = answerdata.question
-        WHERE question.questionid=" . $questionid;
-        $toReturn = $conn->query($sql)->fetchAll();
         return $toReturn;
     }
 }
