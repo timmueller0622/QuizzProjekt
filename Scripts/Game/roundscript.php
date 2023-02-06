@@ -40,6 +40,4 @@ class Round{
         return $qpr;
     }
 }
-
-
 ?>
