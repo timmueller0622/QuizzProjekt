@@ -43,14 +43,12 @@ class Game
         $sql = "INSERT INTO question (questionid, answeredcorrectly, roundid, QUESTIONDATAID) VALUES (?, ?, ?, ?)";
         for ($i=0; $i < $questionsperround; $i++) {
             $questionid = $conn->query("SELECT count(*) FROM question")->fetchAll()[0][0];
-            echo "questionid: " . $questionid . "<br>";
             foreach ($conn->query("SELECT * FROM question") as $r) {
                 if ($r['QUESTIONID'] == $questionid)
                     $questionid++;
             }
             $questiondataid = explode(";", $questiondata[$i])[0];
             $stmt = $conn->prepare($sql);
-            echo "questiondataid: " . $questiondataid . "<br>";
             try{
                 $stmt->execute([$questionid, 0, $roundid, $questiondataid]);
             }catch (Exception $e){
