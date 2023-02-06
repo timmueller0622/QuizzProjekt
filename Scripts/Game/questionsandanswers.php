@@ -1,8 +1,5 @@
 <?php
 class QuestionData{
-    static function createQuestion($roundid){
-        
-    }
 
     public static function getQuestionFromSettings($roundid){
         require '../connectToDatabase.php';
