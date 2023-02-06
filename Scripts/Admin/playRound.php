@@ -8,7 +8,7 @@ if (!isset($_SESSION["username"])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Genre Auswählen</title>
+    <title>Runde spielen</title>
     <meta charset="utf-8">
 </head>
 <body>
@@ -18,6 +18,7 @@ if (!isset($_SESSION["username"])) {
     require '../Game/questionsandanswers.php';
     require '../Game/roundscript.php';
     require '../Game/creategame.php';
+    echo "roundid: " . $roundid;
     $qpr = Round::getQuestionsPerRound($_SESSION['roundid']);
     $qArray = Game::createQuestions($qpr, $_SESSION['roundid']);
     $question = QuestionData::getQuestionFromSettings($_SESSION['roundid']);
