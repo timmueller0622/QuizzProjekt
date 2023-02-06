@@ -20,6 +20,7 @@ if (!isset($_SESSION["username"])) {
     require '../Game/creategame.php';
     echo "roundid: " . $_SESSION['roundid'];
     $qpr = Round::getQuestionsPerRound($_SESSION['roundid']);
+    echo $qpr;
     $qArray = Game::createQuestions($qpr, $_SESSION['roundid']);
     $question = QuestionData::getQuestionFromSettings($_SESSION['roundid']);
     $qnum = rand(0, sizeof($question));
