@@ -2,11 +2,10 @@
 class QuestionData{
     static function getQuestion($questionid){
         require '../connectToDatabase.php';
-        $toReturn = array();
-        foreach($conn->query("SELECT * FROM ANSWERDATA
-        WHERE QUESTION=" . $questiondataid) as $entry){
-            $toReturn[] .= $entry['ANSWERID'] . ";" . $entry['ANSWERDESCRIPTION'];
-        }
+        $sql = "SELECT questiondescription FROM question
+        JOIN questiondata ON question.questiondataid = questiondata.questiondataid
+        WHERE questionid = " . $questionid;
+        $toReturn = $conn->query($sql)->fetchAll()[0][0];
         return $toReturn;
     }
     static function getQuestionFromSettings($roundid){

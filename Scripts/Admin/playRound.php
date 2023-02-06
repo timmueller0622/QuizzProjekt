@@ -27,7 +27,7 @@ if (!isset($_SESSION["username"])) {
     echo "<br>";
     foreach($qArray as $question){
         print_r($question);
-        //$s .= QuestionData::getQuestion($question['QUESTIONID']);
+        echo QuestionData::getQuestion($question['QUESTIONID']);
         $aArray = QuestionData::getAnswersFromQuestion($question['QUESTIONID']);
         print_r($aArray);
         echo "<br>";
