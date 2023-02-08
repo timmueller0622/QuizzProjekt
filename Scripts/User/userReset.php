@@ -19,7 +19,7 @@ class ResetUser
 
         $betreff = 'Quizzapp Reset Passwd';
         $nachricht = 'Ihr neues Passwort: ' . $newPasswd;
-        $header = 'From: Michael.Nettersheim@bib.de' . "\r\n" . 'Reply-To: Reset Password' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+        $header = 'From: michael.nettersheim@bib.de' . "\r\n" . 'Reply-To: michael.nettersheim@bib.de' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
         $worked=mail($emailinput, $betreff, $nachricht, $header);
         return $worked;
