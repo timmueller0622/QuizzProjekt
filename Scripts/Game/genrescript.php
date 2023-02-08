@@ -9,9 +9,8 @@ class Genre{
         $min = 0;
         $max = count($GenreArray)-1;
         $randomNumber = rand($min, $max);
-        $categoryToReturn = $GenreArray[$randomNumber];
         //print_r($GenreArray);
-        return $categoryToReturn;
+        return $categoryToReturn[$randomNumber];
     }
     
     static function getAllGenres()
