@@ -14,7 +14,7 @@ class ResetUser
 
     static function sendResetEmail($emailinput)
     {
-        $newPasswd = randomPassword();
+        $newPasswd = "HierStehtDasNeuePasswort"; //randomPassword();
         echo "passwd worked!";
         require '../connectToDatabase.php'; 
 
@@ -26,8 +26,8 @@ class ResetUser
 
         mail($emailinput, $betreff, $nachricht, $header);
 
-        $toExecute = $conn -> prepare("UPDATE TABLE PLAYER SET USERPASSWORD =" . $newPasswd . " WHERE EMAIL = " . $emailinput);
-        $toExecute->execute();
+        //$toExecute = $conn -> prepare("UPDATE TABLE PLAYER SET USERPASSWORD =" . $newPasswd . " WHERE EMAIL = " . $emailinput);
+        //$toExecute->execute();
     }
 }
 
