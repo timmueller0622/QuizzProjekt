@@ -37,8 +37,8 @@ if (isset($_POST['genre']) && isset($_POST['difficulty'])){
         
     $genres = Genre::getAllGenres();
     foreach($genres as $genre) {
-        $s .= "<option value='" . explode(";", $genre)[0] . "'>" .  
-        explode(";", $genre)[1] . "</option>";
+        $s .= "<option value='" . $genre['GENREID'] . "'>" .  
+        $genre['GENREDESCRIPTOR'] . "</option>";
     }
     $s .= "</select></div>";
 
@@ -46,8 +46,8 @@ if (isset($_POST['genre']) && isset($_POST['difficulty'])){
     $s .= "<select name='difficulty' id='difficulty' form='matchSettings'>";
     $difficulties = Difficulty::getAllDifficulties();
     foreach($difficulties as $difficulty) {
-        $s .= "<option value='" . explode(";", $difficulty)[0] . "'>" .  
-            explode(";", $difficulty)[1] . "</option>";
+        $s .= "<option value='" . $difficulty['DIFFICULTYID'] . "'>" .  
+            $difficulty['DIFFICULTYDESCRIPTOR'] . "</option>";
     }
     $s .= "</select>
         </div>";

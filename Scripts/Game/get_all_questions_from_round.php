@@ -13,7 +13,6 @@
             $output .= $current . "<br>";
         }
     }
-
     echo $output;
 
 ?>
