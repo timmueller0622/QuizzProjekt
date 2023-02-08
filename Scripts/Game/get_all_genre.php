@@ -2,10 +2,8 @@
 
 /*Call this Script for API Request*/
 
-    require 'genrescript.php';
-    $genres = Genre::getAllGenres();
-    foreach($genres as $current){
-        echo $current . "<br>";
-    }
+require 'genrescript.php';
+print_r(json_encode(Genre::getAllGenres()));
+    
 
 ?>
