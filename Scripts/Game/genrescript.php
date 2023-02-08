@@ -5,10 +5,14 @@ class Genre{
     {
         require '../connectToDatabase.php';
 
-        $categoryToReturn = $conn->query("SELECT * FROM GENRE")->fetchAll();
+        $GenreArray = array();
+        foreach ($conn->query("SELECT * FROM GENRE") as $row) {
+            $GenreArray[] .= $row['GENREID'] . ";". $row['GENREDESCRIPTOR'];
+        }
         $min = 0;
         $max = count($GenreArray)-1;
         $randomNumber = rand($min, $max);
+        $categoryToReturn = $GenreArray[$randomNumber];
         //print_r($GenreArray);
         return $categoryToReturn;
     }
