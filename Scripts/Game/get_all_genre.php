@@ -16,7 +16,7 @@
         require 'genrescript.php';
         $data = Genre::getAllGenres();
         ?>
-        JSON.stringify(<?php $mydata?>);
+        JSON.stringify(<?php $data?>);
     </script>
     
 </body>
