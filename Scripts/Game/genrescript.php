@@ -10,7 +10,7 @@ class Genre{
         $max = count($GenreArray)-1;
         $randomNumber = rand($min, $max);
         print_r($conn->query("SELECT genreid FROM genre where genredescriptor='Gaming'")->fetchAll()[0][0]);
-        $categoryToReturn = array('GENREID' => $GenreArray[$randomNumber]['GENREID'], 'GENREDESCRIPTOR' => $GenreArray[$randomNumber]['GENREDESCRIPTOR']);
+        $categoryToReturn = array(array('GENREID' => $GenreArray[$randomNumber]['GENREID'], 'GENREDESCRIPTOR' => $GenreArray[$randomNumber]['GENREDESCRIPTOR']));
         print_r($categoryToReturn);
         return $categoryToReturn;
     }
