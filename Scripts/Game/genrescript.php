@@ -28,7 +28,7 @@ class Genre{
             $toReturn[$i] = $temp;
             $i++;
         }
-        return $GenreArray;
+        return $toReturn;
     }
 
     /*static function getRandomQuestionFromGenre($genreID, $difficultyID){
