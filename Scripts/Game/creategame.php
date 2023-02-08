@@ -10,11 +10,11 @@ class Game
             if ($r['GAMEID'] == $gameid)
                 $gameid++;
         }
-        $roundcount = 2;
+        $roundcount = 3;
         $gametime = null;
         $stmt = $conn->prepare($sql);
         $stmt->execute([$gameid, $roundcount, $gametime]);
-        return $gameid;
+        return array(array('GAMEID'=>$gameid));
     }
 
     static function createRound($gameid, $difficulty, $genre)
@@ -34,7 +34,7 @@ class Game
         } catch (Exception $e) {
             echo $e;
         }
-        return $roundid;
+        return array(array('GAMEID'=>$roundid));
     }
 
     static function createQuestions($questionsperround, $roundid){
