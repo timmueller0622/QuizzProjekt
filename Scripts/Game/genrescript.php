@@ -22,9 +22,7 @@ class Genre{
         $toReturn = array();
         $i = 0;
         foreach($GenreArray as $r){
-            $temp = array();
-            $temp[0] = $r[0];
-            $temp[1] = $r[1];
+            $temp = array($r[1] => $r[0]);
             $toReturn[$i] = $temp;
             $i++;
         }
