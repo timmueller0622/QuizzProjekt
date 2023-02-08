@@ -15,7 +15,7 @@ class ResetUser
     static function sendResetEmail($emailinput)
     {
         $newPasswd = randomPassword();
-
+        echo "passwd worked!";
         require '../connectToDatabase.php'; 
 
         $betreff = 'Quizzapp Reset Passwd';
