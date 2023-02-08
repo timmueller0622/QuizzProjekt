@@ -2,20 +2,20 @@
 
 /*Call this Script for API Request*/
 
-    require 'roundscript.php';
+require 'roundscript.php';
 
-    $output = "";
-    $rounds = Round::getAllRounds();
+$output = "";
+$rounds = Round::getAllRounds();
     
-    if($rounds != NULL){
-        foreach($answers as $current){
-            $rounds .= $current . "<br>";
-        }
+if($rounds != NULL){
+    foreach($answers as $current){
+        $rounds .= $current . "<br>";
     }
-    else{
-        $rounds = "Keine Runden gefunden.";
-    }
+}
+else{
+    $rounds = "Keine Runden gefunden.";
+}
 
-    echo $rounds;
+echo $rounds;
 
 ?>

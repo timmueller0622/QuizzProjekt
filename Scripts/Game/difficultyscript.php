@@ -10,7 +10,7 @@ class Difficulty{
             $toReturn[$i] = $temp;
             $i++;
         }
-        return $toReturn;
+        return json_encode($toReturn);
     }
 }
 
