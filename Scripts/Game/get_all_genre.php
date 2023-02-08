@@ -18,7 +18,7 @@ $mydata = 'test';
     <!-- Form um sich einzuloggen-->
     
     <script type="text/javascript">
-        alert("<?php print_r($mydata) ?>");
+        alert("<?php echo $data ?>");
     </script>
     
 </body>
