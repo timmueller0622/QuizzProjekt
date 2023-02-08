@@ -20,9 +20,7 @@ class Game
     static function createRound($gameid, $difficulty, $genre)
     {
         require '../connectToDatabase.php';
-        echo $gameid;
-        echo $difficulty;
-        echo $genre;
+        
         $sql = "INSERT INTO round (roundid, gameid, settingid) VALUES (?, ?, ?)";
         $roundid = $conn->query("SELECT count(*) FROM round")->fetchAll()[0][0];
         foreach ($conn->query("SELECT * FROM round") as $r) {
@@ -37,6 +35,9 @@ class Game
         } catch (Exception $e) {
             echo $e;
         }
+        echo $gameid;
+        echo $difficulty;
+        echo $genre;
         return array(array('ROUNDID'=>$roundid));
     }
 
