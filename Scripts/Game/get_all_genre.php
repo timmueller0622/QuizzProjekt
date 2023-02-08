@@ -15,7 +15,7 @@
 <body>
     <!-- Form um sich einzuloggen-->
     
-    <script>
+    <script type="text/javascript">
         JSON.stringify(<?php $data?>);
     </script>
     
