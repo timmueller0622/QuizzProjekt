@@ -25,7 +25,7 @@ class ResetUser
 
 
 
-ResetUser::sendResetEmail("marc.pape@edu.bib.de");
-echo "Mail worked!";
+$test ResetUser::sendResetEmail("marc.pape@edu.bib.de");
+echo "Mail worked: " . $test;
 
 ?>
