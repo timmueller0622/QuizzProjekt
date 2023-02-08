@@ -6,9 +6,6 @@ class Genre{
         require '../connectToDatabase.php';
 
         $GenreArray = $conn->query("SELECT * FROM GENRE")->fetchAll();
-        foreach ($conn->query("SELECT * FROM GENRE") as $row) {
-            //$GenreArray[] .= $row['GENREID'] . ";". $row['GENREDESCRIPTOR'];
-        }
         $min = 0;
         $max = count($GenreArray)-1;
         $randomNumber = rand($min, $max);
@@ -21,9 +18,16 @@ class Genre{
     static function getAllGenres()
     {
         require '../connectToDatabase.php';
+        $GenreArray = $conn->query("SELECT * FROM GENRE")->fetchAll();
         $toReturn = array();
-        foreach ($conn->query("SELECT * FROM GENRE") as $entry) {
-            $toReturn[] .= $entry['GENREID'] . ";". $entry['GENREDESCRIPTOR'];
+        for ($i = 0; $i < sizeof($GenreArray); $i++){
+            $temp = array();
+            for($j=0; $j <sizeof($GenreArray[$i]); $i++){
+                if (is_numeric(array_keys($GenreArray[$i])[$j]))
+                    continue;
+                $temp[$j] = $GenreArray[$i][$j];
+            }
+            $toReturn[$i] = $temp;
         }
         return $toReturn;
     }
