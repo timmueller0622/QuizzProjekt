@@ -17,9 +17,14 @@ class ResetUser
         $newPasswd = randomPassword();
 
         require '../connectToDatabase.php'; 
-        mail($emailinput, "Quizapp reset Mail", "Your new Password is: " . $newPasswd, "From: QuizzApp Support <Michael.Nettersheim@bib.de>");
+        mail($emailinput, "Quizapp reset Mail", "Your new Password is: " . $newPasswd);
         $toExecute = $conn -> prepare("UPDATE TABLE PLAYER SET USERPASSWORD =" . $newPasswd . " WHERE EMAIL = " . $emailinput);
         $toExecute->execute();
     }
 }
+
+
+
+ResetUser::sendResetEmail("marc.pape@edu.bib.de");
+
 ?>
