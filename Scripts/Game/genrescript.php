@@ -9,9 +9,7 @@ class Genre{
         $min = 0;
         $max = count($GenreArray)-1;
         $randomNumber = rand($min, $max);
-        $categoryToReturn = array();
-        $categoryToReturn[0] .= $GenreArray[$randomNumber]['GENREID'];
-        $categoryToReturn[1] .= $GenreArray[$randomNumber]['GENREDESCRIPTOR'];
+        $categoryToReturn = array($GenreArray[$randomNumber]['GENREID'] => $GenreArray[$randomNumber]['GENREDESCRIPTOR']);
         return $categoryToReturn;
     }
     
