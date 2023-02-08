@@ -1,7 +1,5 @@
 <?php
 
-echo "before all";
-
 class ResetUser
 {
     /*static function randomPassword() {
@@ -23,7 +21,7 @@ class ResetUser
         $nachricht = 'Ihr neues Passwort: ' . $newPasswd;
         $header = 'From: Michael.Nettersheim@bib.de' . "\r\n" . 'Reply-To: Michael.Nettersheim@bib.de' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
-        //mail($emailinput, $betreff, $nachricht, $header);
+        mail($emailinput, $betreff, $nachricht, $header);
 
         //$toExecute = $conn -> prepare("UPDATE TABLE PLAYER SET USERPASSWORD =" . $newPasswd . " WHERE EMAIL = " . $emailinput);
         //$toExecute->execute();
@@ -32,7 +30,7 @@ class ResetUser
 
 
 echo "bound worked.";
-$test ResetUser::sendResetEmail("marc.pape@edu.bib.de");
+$test = ResetUser::sendResetEmail("marc.pape@edu.bib.de");
 echo "Mail worked: " . $test;
 
 ?>
