@@ -19,16 +19,19 @@ if (!isset($_SESSION["username"])) {
     require '../Game/roundscript.php';
     $qpr = Round::getQuestionsPerRound($_SESSION['roundid']);
     echo $qpr;
-    $question = QuestionData::getQuestionFromSettings($_SESSION['roundid']);
+    $s = '<div align="center"><form method="post" action="playRound.php">
+    <input type="submit">';
     $qnum = rand(0, sizeof($question));
-
-    $s = '<div align="center">';
-    $s .= explode(';', $question[$qnum])[1] . '<br>';
-    $answers = QuestionData::getAnswersFromQuestion(explode(';', $question[$qnum])[0]);
-    foreach($answers as $answer){
-        $s .= explode(';', $answer)[1] . '<br>';
+    for ($i=0; $i < $qpr; $i++) { 
+        $question = QuestionData::getQuestionFromSettings($_SESSION['roundid']);
+        $s .= explode(';', $question[$qnum])[1] . '<br>';
+        $answers = QuestionData::getAnswersFromQuestion(explode(';', $question[$qnum])[0]);
+        foreach($answers as $answer){
+            $s .= '<input type="radio" name="answer" id=' . explode(';', $question[$qnum])[1];
+            $s .= explode(';', $answer)[1] . '<br>';
+        }
     }
-    $s .= '</div>';
+    $s .= '</form></div>';
     echo $s;
     ?>
 </body>

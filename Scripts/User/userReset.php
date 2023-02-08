@@ -9,7 +9,7 @@ class ResetUser
             $x = rand(0, $charsLength);
             $password[] = $chars[$x];
         }
-        return implode($pass);
+        return implode($password);
     }
 
     static function sendResetEmail($emailinput)
