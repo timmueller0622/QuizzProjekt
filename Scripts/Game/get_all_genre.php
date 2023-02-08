@@ -2,7 +2,6 @@
         /*Call this Script for API Request*/
         require 'genrescript.php';
         $data = Genre::getAllGenres();
-        $mydata='Variables declaration in PHP';
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +16,7 @@
     <!-- Form um sich einzuloggen-->
     
     <script type="text/javascript">
-        alert("<?php echo $mydata?>");
+        alert("<?php print_r($data)?>");
     </script>
     
 </body>
