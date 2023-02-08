@@ -22,22 +22,30 @@ class Game
         require '../connectToDatabase.php';
         
         $sql = "INSERT INTO round (roundid, gameid, settingid) VALUES (?, ?, ?)";
+        echo "test1<br>";
         $roundid = $conn->query("SELECT count(*) FROM round")->fetchAll()[0][0];
+        echo "test2<br>";
         foreach ($conn->query("SELECT * FROM round") as $r) {
+            echo "test3<br>";
             if ($r['ROUNDID'] == $roundid)
                 $roundid++;
+            echo "test4<br>";
+            
         }
-        $sql2 = "SELECT * FROM roundsetting WHERE genre =" . $genre . "AND difficulty =" . $difficulty;
+        echo "test5<br>";
+        $sql2 = "SELECT * FROM roundsetting";
+        print_r($conn->query($sql2)->fetchAll());
         $settingid = $conn->query($sql2)->fetchAll()[0][0];
+        echo "test6<br>";
         $stmt = $conn->prepare($sql);
+        echo "test7<br>";
         try {
+            echo "test8<br>";
             $stmt->execute([$roundid, $gameid, $settingid]);
+            echo "test9<br>";
         } catch (Exception $e) {
             echo $e;
         }
-        echo $gameid;
-        echo $difficulty;
-        echo $genre;
         return array(array('ROUNDID'=>$roundid));
     }
 
