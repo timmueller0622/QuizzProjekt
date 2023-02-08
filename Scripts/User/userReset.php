@@ -2,7 +2,7 @@
 
 class ResetUser
 {
-    static function randomPassword() {
+    /*static function randomPassword() {
         $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
         $password = array(); $charsLength = strlen($chars) - 1;
         for ($c = 0; $c < 8; $c++) {
@@ -10,12 +10,11 @@ class ResetUser
             $password[] = $chars[$x];
         }
         return implode($password);
-    }
+    }*/
 
     static function sendResetEmail($emailinput)
     {
         $newPasswd = "HierStehtDasNeuePasswort"; //randomPassword();
-        echo "passwd worked!";
         require '../connectToDatabase.php'; 
 
         $betreff = 'Quizzapp Reset Passwd';
