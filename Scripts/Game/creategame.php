@@ -34,7 +34,7 @@ class Game
         } catch (Exception $e) {
             echo $e;
         }
-        return array(array('GAMEID'=>$roundid));
+        return array(array('ROUNDID'=>$roundid));
     }
 
     static function createQuestions($questionsperround, $roundid){
