@@ -17,7 +17,7 @@ $mydata = 'test';
 <body>
     <!-- Form um sich einzuloggen-->
     
-    <script type="text/javascript">
+    <script>
         alert("<?php echo $data ?>");
     </script>
     
