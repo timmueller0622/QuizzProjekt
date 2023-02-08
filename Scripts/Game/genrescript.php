@@ -26,7 +26,7 @@ class Genre{
             $toReturn[$i] = $temp;
             $i++;
         }
-        return json_encode($toReturn);
+        return $toReturn;
     }
 
     /*static function getRandomQuestionFromGenre($genreID, $difficultyID){
