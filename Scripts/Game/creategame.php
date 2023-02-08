@@ -32,8 +32,8 @@ class Game
             echo "test4<br>";
             
         }
-        echo $genre . "test5<br>";
-        print_r($conn->query("SELECT genreid FROM genre")->fetchAll());
+        echo gettype($genre) . "test5<br>";
+        print_r($conn->query('SELECT genreid FROM genre WHERE genredescriptor=' . $genre)->fetchAll());
         $genreid = $conn->query("SELECT genreid FROM genre WHERE genredescriptor=" . $genre)->fetchAll()[0][0];
         $difficultyid = $conn->query("SELECT difficultyid FROM difficulty WHERE difficultydescriptor=" . $difficulty)->fetchAll()[0][0];
         $sql2 = "SELECT * FROM roundsetting WHERE genre =" . $genreid . "AND difficulty =" . $difficultyid;
