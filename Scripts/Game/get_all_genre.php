@@ -1,4 +1,8 @@
-
+<?php
+        /*Call this Script for API Request*/
+        require 'genrescript.php';
+        $data = Genre::getAllGenres();
+?>
 
 <!DOCTYPE html>
 <html>
@@ -10,12 +14,8 @@
 
 <body>
     <!-- Form um sich einzuloggen-->
+    
     <script>
-        <?php
-        /*Call this Script for API Request*/
-        require 'genrescript.php';
-        $data = Genre::getAllGenres();
-        ?>
         JSON.stringify(<?php $data?>);
     </script>
     
