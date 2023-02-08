@@ -32,7 +32,7 @@ class ResetUser
 
 
 echo "bound worked.";
-$test ResetUser::sendResetEmail("marc.pape@edu.bib.de");
+$test = ResetUser::sendResetEmail("marc.pape@edu.bib.de");
 echo "Mail worked: " . $test;
 
 ?>
