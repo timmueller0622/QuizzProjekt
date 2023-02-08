@@ -26,7 +26,12 @@ class Genre{
             for($j=0; $j <sizeof($GenreArray[$i]); $i++){
                 if (is_numeric(array_keys($GenreArray[$i])[$j]))
                     continue;
+
+                
+                echo "test2";
                 $temp[$j] = $GenreArray[$i][$j];
+                
+                echo "test3";    
             }
             $toReturn[$i] = $temp;
         }
