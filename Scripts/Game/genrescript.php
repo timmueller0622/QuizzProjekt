@@ -22,7 +22,7 @@ class Genre{
         $toReturn = array();
         $i = 0;
         foreach($GenreArray as $r){
-            $temp = array($r[1] => $r[0]);
+            $temp = array('GENREID' => $r[1], 'GENREDESCRIPTOR' => $r[0]);
             $toReturn[$i] = $temp;
             $i++;
         }
