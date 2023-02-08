@@ -20,20 +20,13 @@ class Genre{
         require '../connectToDatabase.php';
         $GenreArray = $conn->query("SELECT * FROM GENRE")->fetchAll();
         $toReturn = array();
-        for ($i = 0; $i < sizeof($GenreArray); $i++){
+        $i = 0;
+        foreach($GenreArray as $r){
             $temp = array();
-            echo "test";
-            for($j=0; $j <sizeof($GenreArray[$i]); $i++){
-                if (is_numeric(array_keys($GenreArray[$i])[$j]))
-                    continue;
-
-                
-                echo "test2";
-                $temp[$j] = $GenreArray[$i][$j];
-                
-                echo "test3";    
-            }
+            $temp[0] = $r[0];
+            $temp[1] = $r[1];
             $toReturn[$i] = $temp;
+            $i++;
         }
         return $GenreArray;
     }
