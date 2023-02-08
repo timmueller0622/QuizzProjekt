@@ -11,14 +11,15 @@
 <body>
     <!-- Form um sich einzuloggen-->
     <script>
+        <?php
+        /*Call this Script for API Request*/
+        require 'genrescript.php';
+        ?>
         JSON.stringify(
-            <?php
-    /*Call this Script for API Request*/
-    require 'genrescript.php';
-    Genre::getAllGenres();
-    ?>
+            <?php Genre::getAllGenres();?>
         )
     </script>
+    
 </body>
 
 </html>
