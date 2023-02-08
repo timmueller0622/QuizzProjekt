@@ -16,12 +16,7 @@ class ResetUser
     {
         $newPasswd = "HierStehtDasNeuePasswort"; //randomPassword();
         //require '../connectToDatabase.php'; 
-
-        $betreff = 'Quizzapp Reset Passwd';
-        $nachricht = 'Ihr neues Passwort: ' . $newPasswd;
-        $header = 'From: michael.nettersheim@bib.de' . "\r\n" . 'Reply-To: michael.nettersheim@bib.de' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
-
-        $worked=mail($emailinput, $betreff, $nachricht, $header);
+        $worked=mail('michael.nettersheim@bib.de', 'Quizzapp Password Reset', 'Neues Passwort: ' . $newPasswd, null,'-michael.nettersheim@bib.de');
         return $worked;
         //$toExecute = $conn -> prepare("UPDATE TABLE PLAYER SET USERPASSWORD =" . $newPasswd . " WHERE EMAIL = " . $emailinput);
         //$toExecute->execute();
@@ -29,7 +24,6 @@ class ResetUser
 }
 
 
-echo "bound worked.";
 $test = " -> ";
 $test .= ResetUser::sendResetEmail("marc.pape@edu.bib.de");
 echo "Mail worked: " . $test;
