@@ -2,7 +2,7 @@
 /*Call this Script for API Request*/
 require 'genrescript.php';
 $data = Genre::getAllGenres();
-print_r(type($data));
+print_r(gettype($data));
 $mydata = 'test';
 ?>
 
