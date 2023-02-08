@@ -5,16 +5,16 @@ class Genre{
     {
         require '../connectToDatabase.php';
 
-        $GenreArray = array();
+        $GenreArray = $conn->query("SELECT * FROM GENRE")->fetchAll();
         foreach ($conn->query("SELECT * FROM GENRE") as $row) {
-            $GenreArray[] .= $row['GENREID'] . ";". $row['GENREDESCRIPTOR'];
+            //$GenreArray[] .= $row['GENREID'] . ";". $row['GENREDESCRIPTOR'];
         }
         $min = 0;
         $max = count($GenreArray)-1;
         $randomNumber = rand($min, $max);
         $categoryToReturn = $GenreArray[$randomNumber];
         //print_r($GenreArray);
-        return $categoryToReturn;
+        return $GenreArray;
     }
     
     static function getAllGenres()

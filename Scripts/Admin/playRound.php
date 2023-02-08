@@ -19,7 +19,7 @@ if (!isset($_SESSION["username"])) {
     require '../Game/roundscript.php';
     require '../Game/creategame.php';
     
-    $s = '<div align="center">';
+    $s = '<div align="center"><form method="post" action=';
 
     $qpr = Round::getQuestionsPerRound($_SESSION['roundid']);
     $qArray = Game::createQuestions($qpr, $_SESSION['roundid']);
