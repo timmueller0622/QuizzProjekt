@@ -12,9 +12,13 @@ class Genre{
         $min = 0;
         $max = count($GenreArray)-1;
         $randomNumber = rand($min, $max);
-        $categoryToReturn = $GenreArray[$randomNumber];
-        //print_r($GenreArray);
-        return $GenreArray;
+        $categoryToReturn = array();
+        for($i = 0; $i < sizeof($GenreArray[$randomNumber]); $i++){
+            if (is_numeric(array_keys($GenreArray[$randomNumber])[$i]))
+                continue;
+            $categoryToReturn[] .= $GenreArray[$randomNumber][$i];
+        }
+        return $categoryToReturn;
     }
     
     static function getAllGenres()
