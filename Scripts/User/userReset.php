@@ -25,7 +25,7 @@ class ResetUser
 
 
 $test = "Aufruf der methode fehlgeschlagen.";
-$test = " -> " . ResetUser::sendResetEmail("marc.pape@edu.bib.de")? 'true' : 'false';
+$test = " -> " . ResetUser::sendResetEmail('marc.pape-info@web.de')? 'true' : 'false';
 echo "Mail worked: " . $test;
 
 ?>
