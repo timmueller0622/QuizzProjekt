@@ -4,14 +4,14 @@ class Genre{
     static function getRandomGenre()
     {
         require '../connectToDatabase.php';
-
         $GenreArray = $conn->query("SELECT * FROM GENRE")->fetchAll();
         $min = 0;
         $max = count($GenreArray)-1;
         $randomNumber = rand($min, $max);
-        print_r($conn->query("SELECT genreid FROM genre where genredescriptor='Gaming'")->fetchAll()[0][0]);
-        $categoryToReturn = array(array('GENREID' => $GenreArray[$randomNumber]['GENREID'], 'GENREDESCRIPTOR' => $GenreArray[$randomNumber]['GENREDESCRIPTOR']));
-        print_r($categoryToReturn);
+        $categoryToReturn = array(
+            array('GENREID' => $GenreArray[$randomNumber]['GENREID'], 
+            'GENREDESCRIPTOR' => $GenreArray[$randomNumber]['GENREDESCRIPTOR'])
+        );
         return $categoryToReturn;
     }
     
