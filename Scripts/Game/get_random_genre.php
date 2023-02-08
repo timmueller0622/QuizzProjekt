@@ -3,6 +3,6 @@
 /*Call this Script for API Request*/
 
     require 'genrescript.php';
-    echo Genre::getRandomGenre();
+    print json_encode(Genre::getRandomGenre()); 
 
 ?>
