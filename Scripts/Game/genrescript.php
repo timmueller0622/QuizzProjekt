@@ -5,7 +5,7 @@ class Genre{
     {
         require '../connectToDatabase.php';
 
-        $categoryToReturn = $conn->query("SELECT * FROM GENRE")->fetchAll();
+        $categoryToReturn = $conn->query("SELECT * FROM GENRE")->fetchAll()[0];
         $min = 0;
         $max = count($GenreArray)-1;
         $randomNumber = rand($min, $max);
