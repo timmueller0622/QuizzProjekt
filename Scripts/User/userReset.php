@@ -1,5 +1,7 @@
 <?php
 
+echo "before all";
+
 class ResetUser
 {
     /*static function randomPassword() {
