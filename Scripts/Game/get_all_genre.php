@@ -3,6 +3,7 @@
 require 'genrescript.php';
 $data = Genre::getAllGenres();
 print_r($data);
+$mydata = 'test';
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +18,7 @@ print_r($data);
     <!-- Form um sich einzuloggen-->
     
     <script type="text/javascript">
-        alert("<?php echo 'test'?>");
+        alert("<?php print_r($mydata) ?>");
     </script>
     
 </body>
