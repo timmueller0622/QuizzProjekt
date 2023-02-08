@@ -29,10 +29,7 @@ class Game
         $sql2 = "SELECT * FROM roundsetting WHERE genre =" . $genre . "AND difficulty =" . $difficulty;
         $settingid = $conn->query($sql2)->fetchAll()[0][0];
         $stmt = $conn->prepare($sql);
-        echo "test1";
         try {
-            print_r($stmt);
-            echo "<br>" . $gameid . $roundid . $settingid . "<br>";
             $stmt->execute([$roundid, $gameid, $settingid]);
         } catch (Exception $e) {
             echo $e;
@@ -40,8 +37,34 @@ class Game
         return $roundid;
     }
 
-    static function createQuestions($questionsperround){
-        $toReturn = array();
+    static function createQuestions($questionsperround, $roundid){
+        require '../connectToDatabase.php';
+        $existingQuestionsInRound = $conn->query("SELECT count(*) FROM question WHERE roundid=" . $roundid)->fetchAll()[0][0];
+        if ($existingQuestionsInRound >= $questionsperround){
+            echo "round filled with questions already";
+            $getQuestions = "SELECT questionid FROM question WHERE roundid =" . $roundid;
+            $toReturn = $conn->query($getQuestions)->fetchAll();
+            return $toReturn;
+        }
+        $questiondata = QuestionData::getQuestionFromSettings($roundid);
+        $sql = "INSERT INTO question (questionid, answeredcorrectly, roundid, QUESTIONDATAID) VALUES (?, ?, ?, ?)";
+        for ($i=0; $i < $questionsperround; $i++) {
+            $questionid = $conn->query("SELECT count(*) FROM question")->fetchAll()[0][0];
+            foreach ($conn->query("SELECT * FROM question") as $r) {
+                if ($r['QUESTIONID'] == $questionid)
+                    $questionid++;
+            }
+            $questiondataid = explode(";", $questiondata[$i])[0];
+            $stmt = $conn->prepare($sql);
+            try{
+                $stmt->execute([$questionid, 0, $roundid, $questiondataid]);
+            }catch (Exception $e){
+                echo $e;
+            }
+        }
+
+        $getQuestions = "SELECT questionid FROM question WHERE roundid =" . $roundid;
+        $toReturn = $conn->query($getQuestions)->fetchAll();
         return $toReturn;
     }
 }

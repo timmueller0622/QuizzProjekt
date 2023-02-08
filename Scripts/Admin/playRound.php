@@ -8,7 +8,7 @@ if (!isset($_SESSION["username"])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Genre Auswählen</title>
+    <title>Runde spielen</title>
     <meta charset="utf-8">
 </head>
 <body>
@@ -17,19 +17,21 @@ if (!isset($_SESSION["username"])) {
     require 'navi.php';
     require '../Game/questionsandanswers.php';
     require '../Game/roundscript.php';
+    require '../Game/creategame.php';
+    
+    $s = '<div align="center">';
+
     $qpr = Round::getQuestionsPerRound($_SESSION['roundid']);
-    echo $qpr;
-    $s = '<div align="center"><form method="post" action="playRound.php">
-    <input type="submit">';
-    $qnum = rand(0, sizeof($question));
-    for ($i=0; $i < $qpr; $i++) { 
-        $question = QuestionData::getQuestionFromSettings($_SESSION['roundid']);
-        $s .= explode(';', $question[$qnum])[1] . '<br>';
-        $answers = QuestionData::getAnswersFromQuestion(explode(';', $question[$qnum])[0]);
-        foreach($answers as $answer){
-            $s .= '<input type="radio" name="answer" id=' . explode(';', $question[$qnum])[1];
-            $s .= explode(';', $answer)[1] . '<br>';
+    $qArray = Game::createQuestions($qpr, $_SESSION['roundid']);
+    foreach($qArray as $question){
+        $s .= QuestionData::getQuestion($question['QUESTIONID']) . "<br>";
+        $aArray = QuestionData::getAnswersFromQuestion($question['QUESTIONID']);
+        print_r($aArray);
+        echo "<br>";
+        foreach($aArray as $answer){
+            $s .= $answer['ANSWERDESCRIPTION'] . "<br>";
         }
+        $s .= "<br><hr>";
     }
     $s .= '</form></div>';
     echo $s;

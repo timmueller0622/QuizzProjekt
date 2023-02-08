@@ -1,8 +1,26 @@
 <?php
 class QuestionData{
-    public static function getQuestionFromSettings($roundid){
+    static function getQuestion($questionid){
         require '../connectToDatabase.php';
-        echo $roundid;
+        $sql = "SELECT questiondescription FROM question
+        JOIN questiondata ON question.questiondataid = questiondata.questiondataid
+        WHERE questionid = " . $questionid;
+        $toReturn = $conn->query($sql)->fetchAll()[0][0];
+        return $toReturn;
+    }
+  
+    static function getAnswersFromQuestion($questionid){
+        require '../connectToDatabase.php';
+        $sql = "SELECT answerdescription FROM question
+        JOIN questiondata ON question.questiondataid = questiondata.questiondataid
+        JOIN answerdata ON questiondata.questiondataid = answerdata.question
+        WHERE question.questionid=" . $questionid;
+        $toReturn = $conn->query($sql)->fetchAll();
+        return $toReturn;
+    }
+    
+    static function getQuestionFromSettings($roundid){
+        require '../connectToDatabase.php';
         $settingid = $conn->query("SELECT genre, difficulty FROM roundsetting 
         JOIN round on round.settingid = roundsetting.settingid
         WHERE round.roundid =" . $roundid)->fetchAll()[0];
@@ -13,16 +31,6 @@ class QuestionData{
         WHERE GENRE = " . $genreID .
         "AND DIFFICULTY =" . $difficultyID) as $entry){
             $toReturn[] .= $entry['QUESTIONDATAID'] . ";" . $entry['QUESTIONDESCRIPTION'];
-        }
-        return $toReturn;
-    }
-  
-    public static function getAnswersFromQuestion($questionID){
-        require '../connectToDatabase.php';
-        $toReturn = array();
-        foreach($conn->query("SELECT * FROM ANSWERDATA
-        WHERE QUESTION=" . $questionID) as $entry){
-            $toReturn[] .= $entry['ANSWERID'] . ";" . $entry['ANSWERDESCRIPTION'];
         }
         return $toReturn;
     }
