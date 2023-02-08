@@ -16,7 +16,7 @@ class ResetUser
     {
         $newPasswd = "HierStehtDasNeuePasswort"; //randomPassword();
         //require '../connectToDatabase.php'; 
-        $worked=mail('michael.nettersheim@bib.de', 'Quizzapp Password Reset', 'Neues Passwort: ' . $newPasswd, null,'-michael.nettersheim@bib.de');
+        $worked = mail('michael.nettersheim@bib.de', 'Quizzapp Password Reset', 'Neues Passwort: ' . $newPasswd, null,'-michael.nettersheim@bib.de');
         return $worked;
         //$toExecute = $conn -> prepare("UPDATE TABLE PLAYER SET USERPASSWORD =" . $newPasswd . " WHERE EMAIL = " . $emailinput);
         //$toExecute->execute();
