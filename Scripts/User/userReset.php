@@ -21,11 +21,9 @@ class ResetUser
 
         $betreff = 'Quizzapp Reset Passwd';
         $nachricht = 'Ihr neues Passwort: ' . $newPasswd;
-        $header = 'From: Michael.Nettersheim@bib.de' . "\r\n" .
-        'Reply-To: Michael.Nettersheim@bib.de' . "\r\n" .
-        'X-Mailer: PHP/' . phpversion();
+        $header = 'From: Michael.Nettersheim@bib.de' . "\r\n" . 'Reply-To: Michael.Nettersheim@bib.de' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
-        mail($emailinput, $betreff, $nachricht, $header);
+        //mail($emailinput, $betreff, $nachricht, $header);
 
         //$toExecute = $conn -> prepare("UPDATE TABLE PLAYER SET USERPASSWORD =" . $newPasswd . " WHERE EMAIL = " . $emailinput);
         //$toExecute->execute();
