@@ -1,7 +1,7 @@
 <?php
-        /*Call this Script for API Request*/
-        require 'genrescript.php';
-        $data = Genre::getAllGenres();
+/*Call this Script for API Request*/
+require 'genrescript.php';
+$data = Genre::getAllGenres();
 print_r($data);
 ?>
 
@@ -17,7 +17,7 @@ print_r($data);
     <!-- Form um sich einzuloggen-->
     
     <script type="text/javascript">
-        alert("<?php print_r($data)?>");
+        alert("<?php echo 'test'?>");
     </script>
     
 </body>
