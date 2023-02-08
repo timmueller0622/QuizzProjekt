@@ -13,11 +13,8 @@ class Genre{
         $max = count($GenreArray)-1;
         $randomNumber = rand($min, $max);
         $categoryToReturn = array();
-        for($i = 0; $i < sizeof($GenreArray[$randomNumber]); $i++){
-            if (is_numeric(array_keys($GenreArray[$randomNumber])[$i]))
-                continue;
-            $categoryToReturn[] .= $GenreArray[$randomNumber][$i];
-        }
+        $categoryToReturn[0] .= $GenreArray[$randomNumber]['GENREID'];
+        $categoryToReturn[1] .= $GenreArray[$randomNumber]['GENREDESCRIPTOR'];
         return $categoryToReturn;
     }
     
