@@ -44,6 +44,7 @@ if (isset($_POST['genre']) && isset($_POST['difficulty'])){
 
     $s .= "<div align='center'><label for='difficulty'>Choose a difficulty: </label>";
     $s .= "<select name='difficulty' id='difficulty' form='matchSettings'>";
+
     $difficulties = Difficulty::getAllDifficulties();
     foreach($difficulties as $difficulty) {
         $s .= "<option value='" . $difficulty['DIFFICULTYID'] . "'>" .  
@@ -51,6 +52,7 @@ if (isset($_POST['genre']) && isset($_POST['difficulty'])){
     }
     $s .= "</select>
         </div>";
+        
     echo $s;
     ?>
 </body>
