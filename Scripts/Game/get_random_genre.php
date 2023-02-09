@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-require 'genrescript.php';
-$data = Genre::getRandomGenre();
+require 'settings.php';
+$data = Setting::getRandomGenre();
 echo json_encode($data);
 ?>

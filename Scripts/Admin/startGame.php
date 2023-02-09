@@ -10,7 +10,7 @@ if (isset($_POST['genre']) && isset($_POST['difficulty'])){
     if (!isset($_SESSION['gameid']))
         $_SESSION['gameid'] = Game::createGame()[0]['GAMEID'];
     if (!isset($_SESSION['roundid']))
-        $_SESSION['roundid'] = Game::createRound($_SESSION['gameid'], $_POST['difficulty'], $_POST['genre']);
+        $_SESSION['round'] = Game::createRound($_SESSION['gameid'], $_POST['difficulty'], $_POST['genre']);
     header('Location:playRound.php');
 }
 
@@ -25,8 +25,7 @@ if (isset($_POST['genre']) && isset($_POST['difficulty'])){
     <?php
     // http://quizzteam2.jedimasters.net/Scripts
     require 'navi.php';
-    require '../Game/genrescript.php';
-    require '../Game/difficultyscript.php';
+    require '../Game/settings.php';
 
     $s = "<div align='center'>
         <form action='startGame.php' method='post' id='matchSettings'>
@@ -35,7 +34,7 @@ if (isset($_POST['genre']) && isset($_POST['difficulty'])){
         <label for='genre'>Choose a genre: </label>
         <select name='genre' id='genre' form='matchSettings'>";
         
-    $genres = Genre::getAllGenres();
+    $genres = Setting::getAllGenres();
     foreach($genres as $genre) {
         $s .= "<option value='" . $genre['GENREID'] . "'>" .  
         $genre['GENREDESCRIPTOR'] . "</option>";
@@ -45,7 +44,7 @@ if (isset($_POST['genre']) && isset($_POST['difficulty'])){
     $s .= "<div align='center'><label for='difficulty'>Choose a difficulty: </label>";
     $s .= "<select name='difficulty' id='difficulty' form='matchSettings'>";
 
-    $difficulties = Difficulty::getAllDifficulties();
+    $difficulties = Setting::getAllDifficulties();
     foreach($difficulties as $difficulty) {
         $s .= "<option value='" . $difficulty['DIFFICULTYID'] . "'>" .  
             $difficulty['DIFFICULTYDESCRIPTOR'] . "</option>";

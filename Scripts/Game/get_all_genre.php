@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-require 'genrescript.php';
-$data = Genre::getAllGenres();
+require 'settings.php';
+$data = Setting::getAllGenres();
 echo json_encode($data);
 ?>

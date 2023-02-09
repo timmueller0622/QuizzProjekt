@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-require 'difficultyscript.php';
-$data = Difficulty::getAllDifficulties();
+require 'settings.php';
+$data = Setting::getAllDifficulties();
 echo json_encode($data);
 ?>

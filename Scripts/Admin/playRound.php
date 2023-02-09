@@ -21,8 +21,7 @@ if (!isset($_SESSION["username"])) {
     
     $s = '<div align="center"><form method="post" action=';
 
-    $qpr = Round::getQuestionsPerRound($_SESSION['roundid']);
-    $qArray = Game::createQuestions($qpr, $_SESSION['roundid']);
+    $qArray = $_SESSION['roundid']['QUESTIONS'];
     print_r($qArray);
     foreach($qArray as $question){
         $s .= QuestionData::getQuestion($question['QUESTIONID']) . "<br>";
