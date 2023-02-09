@@ -2,11 +2,15 @@
 class QuestionData{
     static function getQuestion($questionid){
         require '../connectToDatabase.php';
+        //prepare sql statement to get questiondata as string
         $sqlQuestion = "SELECT question.questiondataid, questiondescription FROM question
-        JOIN questiondata ON question.questiondataid = questiondata.questiondataid
-        WHERE questionid = " . $questionid;
+            JOIN questiondata ON question.questiondataid = questiondata.questiondataid
+            WHERE questionid = " . $questionid;
+        //get questiondata entry as array
         $question = $conn->query($sqlQuestion)->fetchAll()[0];
+        //get answers corresponding to question as array
         $answers = QuestionData::getAnswersFromQuestion($questionid);
+        //format array to return
         $toReturn = array(
                     'QUESTION' => array(
                         'QUESTIONID' => $questionid,
@@ -39,24 +43,29 @@ class QuestionData{
   
     static function getAnswersFromQuestion($questionid){
         require '../connectToDatabase.php';
+        //prepare sql statement as string to fetch all answers corresponding to questiondataid saved in entry corresponding to questionid
         $sql = "SELECT answerid, answerdescription, isright FROM question
             JOIN questiondata ON question.questiondataid = questiondata.questiondataid
             JOIN answerdata ON questiondata.questiondataid = answerdata.question
             WHERE question.questionid=" . $questionid;
+        //save result in array to return
         $toReturn = $conn->query($sql)->fetchAll();
         return $toReturn;
     }
     
     static function getQuestionsFromSettings($roundid){
         require '../connectToDatabase.php';
+        //get entry from setting table corresponding to saved setting variable in round
         $settingid = $conn->query("SELECT genre, difficulty FROM roundsetting 
             JOIN round on round.settingid = roundsetting.settingid
             WHERE round.roundid =" . $roundid)->fetchAll()[0];
-        $genreID = $settingid['GENRE'];
-        $difficultyID = $settingid['DIFFICULTY'];
+        //save genre and difficulty ids in setting entry
+        $genreid = $settingid['GENRE'];
+        $difficultyid = $settingid['DIFFICULTY'];
+        //fetch array from question data containing all questions correlating to genre and difficulty in this round's settings
         $toReturn = $conn->query("SELECT * FROM questiondata
-            WHERE genre = " . $genreID .
-            "AND difficulty =" . $difficultyID)->fetchAll();
+            WHERE genre = " . $genreid .
+            "AND difficulty =" . $difficultyid)->fetchAll();
         return $toReturn;
     }
 }
