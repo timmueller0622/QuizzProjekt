@@ -36,8 +36,7 @@ $header = "From:Tim.Mueller@edu.bib.de \r\n";
 $header .= "MIME-Version: 1.0\r\n";
 $header .= "Content-type: text/html\r\n";
 try {
-    
-$retval = mail($to, $subject, $message);
+    $retval = mail($to, $subject, $message, '', '');
 } catch(Exception $e){
     echo $e;
 }
