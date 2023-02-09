@@ -46,7 +46,7 @@ class Game
             'ROUND' => array('ROUNDID' => $roundid, 'GAMEID' => $gameid, 'SETTINGID' => $setting['SETTINGID']),
             'QUESTIONS' => 'test'
         );
-        return array(array('ROUNDID'=>$roundid));
+        return $toReturn;
     }
 
     static function createQuestions($questionsperround, $roundid){
