@@ -32,8 +32,6 @@ class QuestionData{
                         )
                     );
 
-        print_r($toReturn);
-
         return $toReturn;
     }
   
