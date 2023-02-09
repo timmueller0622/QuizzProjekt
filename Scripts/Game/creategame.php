@@ -39,7 +39,12 @@ class Game
         } catch (Exception $e) {
             return "ERROR. SOMETHING WENT WRONG.";
         }
-        array('GAME' => array('GAMEID'))
+        $gameData = $conn->query("SELECT * FROM game WHERE gameid=" . $gameid)->fetchAll()[0];
+        array(
+            'GAME' => array('GAMEID' => $gameid, 'ROUNDCOUNT' => $gameData['ROUNDCOUNT'], 'GAMETIME' => $gameData['GAMETIME']),
+            'ROUND' => array('ROUNDID' => $roundid, 'GAMEID' => $gameid, 'SETTINGID' => $settingid)
+            
+        );
         return array(array('ROUNDID'=>$roundid));
     }
 
