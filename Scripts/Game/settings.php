@@ -3,7 +3,7 @@ class Setting{
     static function getRandomGenre()
     {
         require '../connectToDatabase.php';
-        $GenreArray = $conn->query("SELECT * FROM GENRE")->fetchAll();
+        $GenreArray = $conn->query("SELECT * FROM genre")->fetchAll();
         $min = 0;
         $max = count($GenreArray)-1;
         $randomNumber = rand($min, $max);
@@ -17,7 +17,7 @@ class Setting{
     static function getAllGenres()
     {
         require '../connectToDatabase.php';
-        $GenreArray = $conn->query("SELECT * FROM GENRE")->fetchAll();
+        $GenreArray = $conn->query("SELECT * FROM genre")->fetchAll();
         $toReturn = array();
         $i = 0;
         foreach($GenreArray as $r){
@@ -29,7 +29,7 @@ class Setting{
     }
     static function getAllDifficulties(){
         require '../connectToDatabase.php';
-        $GenreArray = $conn->query("SELECT * FROM DIFFICULTY")->fetchAll();
+        $GenreArray = $conn->query("SELECT * FROM difficulty")->fetchAll();
         $toReturn = array();
         $i = 0;
         foreach($GenreArray as $r){
