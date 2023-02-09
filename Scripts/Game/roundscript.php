@@ -9,7 +9,7 @@ class Round{
         return $qpr;
     }
 
-    static function getQuestionsFromRound($roundID){    
+    /*static function getQuestionsFromRound($roundID){    
         require_once '../connectToDatabase.php';
         $back = array();
         foreach($conn->query("SELECT * FROM QUESTIONDATA JOIN QUESTION ON QUESTIONDATA.QUESTIONDATAID = QUESTION.QUESTIONID WHERE ROUNDID =" . $roundID) as $row){
@@ -37,6 +37,6 @@ class Round{
         else{
             return $back;
         }
-    }
+    }*/
 }
 ?>

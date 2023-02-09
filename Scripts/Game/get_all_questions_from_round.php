@@ -8,7 +8,7 @@
     if(isset($_GET['roundid']))
     {   
         $output = "";
-        $answers = Round::getQuestionsFromRound($_GET['roundid']);
+        //$answers = Round::getQuestionsFromRound($_GET['roundid']);
         foreach($answers as $current){
             $output .= $current . "<br>";
         }

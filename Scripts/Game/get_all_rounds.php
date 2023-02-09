@@ -5,7 +5,7 @@
 require 'roundscript.php';
 
 $output = "";
-$rounds = Round::getAllRounds();
+//$rounds = Round::getAllRounds();
     
 if($rounds != NULL){
     foreach($answers as $current){
