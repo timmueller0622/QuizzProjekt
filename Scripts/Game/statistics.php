@@ -29,10 +29,12 @@ class Statistics{
         require '../connectToDatabase.php';
         $toReturn = array();
         $rounds = $conn->query("SELECT * FROM round WHERE gameid=". $gameid)->fetchAll();
-        foreach($rounds as $round){
-            $toReturn['ROUNDID'] = $round['ROUNDID'];
-            $toReturn['SETTING'] = Statistics::getSettings($round['SETTINGID']);
-            $toReturn['QUESTIONS'] = Statistics::getQuestions($round['ROUNDID']);
+        for($i = 0; $i < sizeof($rounds); $i++){
+            $toReturn['ROUND' . $i] = array(
+                'ROUNDID' => $rounds[$i]['ROUNDID'],
+                'SETTING' => Statistics::getSettings($rounds[$i]['SETTINGID']),
+                'QUESTIONS' => Statistics::getQuestions($rounds[$i]['ROUNDID'])
+            );
         }
         return $toReturn;
     }
@@ -50,10 +52,12 @@ class Statistics{
         require '../connectToDatabase.php';
         $toReturn = array();
         $questions = $conn->query("SELECT * FROM question WHERE roundid=". $roundid)->fetchAll();
-        foreach($questions as $question){
-            $toReturn['QUESTIONID'] = $question['QUESTIONID'];
-            $toReturn['QUESTIONDATAID'] = $question['QUESTIONDATAID'];
-            $toReturn['ANSWEREDCORRECTLY'] = $question['ANSWEREDCORRECTLY'];
+        for($i = 0; $i < sizeof($questions); $i++){
+            $toReturn['QUESTION' . $i] = array(
+                'QUESTIONID' => $question['QUESTIONID'],
+                'QUESTIONDATAID' => $question['QUESTIONDATAID'],
+                'ANSWEREDCORRECTLY' => $question['ANSWEREDCORRECTLY']
+            );
         }
         return $toReturn;
     }
