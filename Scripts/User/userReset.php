@@ -16,16 +16,13 @@ class ResetUser
     {
         $newPasswd = "HierStehtDasNeuePasswort"; //randomPassword();
         //require '../connectToDatabase.php'; 
-        $worked = mail('michael.nettersheim@bib.de', 'Quizzapp Password Reset', 'Neues Passwort: ' . $newPasswd, '','-michael.nettersheim@bib.de');
+        $worked = mail('Tim.Mueller@edu.bib.de', 'Quizzapp Password Reset', 'Neues Passwort: ' . $newPasswd, '','');
         return $worked;
         //$toExecute = $conn -> prepare("UPDATE TABLE PLAYER SET USERPASSWORD =" . $newPasswd . " WHERE EMAIL = " . $emailinput);
         //$toExecute->execute();
     }
 }
-
-
 $test = "Aufruf der methode fehlgeschlagen.";
 $test = " -> " . ResetUser::sendResetEmail('marc.pape-info@web.de')? 'true' : 'false';
 echo "Mail worked: " . $test;
-
 ?>
