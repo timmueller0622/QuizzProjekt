@@ -11,10 +11,7 @@ class QuestionData{
         } catch(Exception $e){
             echo $e;
         }
-        
-        print_r($question);
         $answers = QuestionData::getAnswersFromQuestion($questionid);
-        print_r($answers);
         $toReturn = array(
                     'QUESTION' => array(
                         'QUESTIONID' => $questionid,
@@ -38,7 +35,7 @@ class QuestionData{
                         'ANSWERDESCRIPTION' => $answers[3]['ANSWERDESCRIPTION']
                         )
                     );
-
+        print_r($toReturn);
         return $toReturn;
     }
   
