@@ -24,7 +24,7 @@ class Game
         return $toReturn;
     }
 
-    static function createRound($gameid, $difficulty, $genre)
+    static function createRound($playerid, $gameid, $difficulty, $genre)
     {
         require '../connectToDatabase.php';
 
@@ -62,7 +62,7 @@ class Game
         //fetch entry in game table correlating to created entry in round table
         $gameData = $conn->query("SELECT * FROM game WHERE gameid=" . $gameid)->fetchAll()[0];
         //create entries in question table and save as array
-        $questionData = Game::createQuestions($setting['QUESTIONSPERROUND'], $roundid);
+        $questionData = Game::createQuestions($setting['QUESTIONSPERROUND'], $roundid, $playerid);
         //create and format array to return with formatted entry in game table, round table and entries in question table
         $toReturn = array(
             'GAME' => array('GAMEID' => $gameid, 'ROUNDCOUNT' => $gameData['ROUNDCOUNT'], 'GAMETIME' => $gameData['GAMETIME']),
@@ -72,7 +72,7 @@ class Game
         return $toReturn;
     }
 
-    static function createQuestions($questionsperround, $roundid){
+    static function createQuestions($questionsperround, $roundid, $playerid){
         require '../connectToDatabase.php';
         require 'questionsandanswers.php';
 
@@ -108,5 +108,20 @@ class Game
             $toReturn['QUESTION' . $i] = QuestionData::getQuestion($questionid);
         }
         return $toReturn;
+    }
+
+    static function getQuestionAlreadyAnswered($playerid, $questiondataid){
+        require '../connectToDatabase.php';
+        $sql = "SELECT answeredcorrectly FROM matchhistory
+            JOIN game ON game.gameid = matchhistory.gameid
+            JOIN round ON round.gameid = game.gameid
+            JOIN question ON question.roundid = round.roundid
+            JOIN questiondata ON questiondata.questiondataid = question.questiondataid
+            WHERE matchhistory.playerid =" . $playerid . " AND questiondata.questiondataid=" . $questiondataid;
+        $toReturn = $conn->query($sql)->fetchAll()[0][0];
+        if ($toReturn == 1)
+            return true;
+        else
+            return false;
     }
 }

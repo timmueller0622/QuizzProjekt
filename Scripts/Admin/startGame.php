@@ -8,9 +8,9 @@ unset($_SESSION['gameid']);
 unset($_SESSION['roundid']);
 if (isset($_POST['genre']) && isset($_POST['difficulty'])){
     if (!isset($_SESSION['gameid']))
-        $_SESSION['gameid'] = Game::createGame()[0]['GAMEID'];
+        //$_SESSION['gameid'] = Game::createGame()[0]['GAMEID'];
     if (!isset($_SESSION['roundid']))
-        $_SESSION['round'] = Game::createRound($_SESSION['gameid'], $_POST['difficulty'], $_POST['genre']);
+        //$_SESSION['round'] = Game::createRound($_SESSION['gameid'], $_POST['difficulty'], $_POST['genre']);
     header('Location:playRound.php');
 }
 

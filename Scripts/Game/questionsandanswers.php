@@ -68,5 +68,22 @@ class QuestionData{
             "AND difficulty =" . $difficultyid)->fetchAll();
         return $toReturn;
     }
+
+    static function updateAnsweredQuestion($questionid){
+        require '../connectToDatabase.php';
+        $sql = "UPDATE question SET answeredcorrectly = ? WHERE questionid= ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([1, $questionid]);
+        $question = $conn->query("SELECT * FROM question WHERE questionid=" . $questionid)->fetchAll()[0];
+        $toReturn = array(
+            'QUESTION' => array(
+                'QUESTIONID' => $question['QUESTIONID'],
+                'QUESTIONDATAID' => $question['QUESTIONDATAID'],
+                'ROUNDID' => $question['ROUNDID'],
+                'ANSWEREDCORRECTLY' => $question['ANSWEREDCORRECTLY']
+            )
+        );
+        return $toReturn;
+    }
 }
 ?>
