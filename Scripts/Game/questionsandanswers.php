@@ -2,11 +2,12 @@
 class QuestionData{
     static function getQuestion($questionid){
         require '../connectToDatabase.php';
+        echo 'test<br>';
         $sqlQuestion = "SELECT questiondataid, questiondescription FROM question
         JOIN questiondata ON question.questiondataid = questiondata.questiondataid
         WHERE questionid = " . $questionid;
         $question = $conn->query($sqlQuestion)->fetchAll()[0];
-
+        print_r($question);
         $answers = QuestionData::getAnswersFromQuestion($questionid);
         print_r($answers);
         $toReturn = array(
