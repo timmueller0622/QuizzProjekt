@@ -16,13 +16,30 @@ class ResetUser
     {
         $newPasswd = "HierStehtDasNeuePasswort"; //randomPassword();
         //require '../connectToDatabase.php'; 
-        $worked = mail('Tim.Mueller@edu.bib.de', 'Quizzapp Password Reset', 'Neues Passwort: ' . $newPasswd, '','');
+        $worked = mail('Tim.Mueller@edu.bib.de', 'Quizzapp Password Reset', 'Neues Passwort: ' . $newPasswd, '', '');
         return $worked;
         //$toExecute = $conn -> prepare("UPDATE TABLE PLAYER SET USERPASSWORD =" . $newPasswd . " WHERE EMAIL = " . $emailinput);
         //$toExecute->execute();
     }
 }
-$test = "Aufruf der methode fehlgeschlagen.";
+/*$test = "Aufruf der methode fehlgeschlagen.";
 $test = " -> " . ResetUser::sendResetEmail('marc.pape-info@web.de')? 'true' : 'false';
-echo "Mail worked: " . $test;
+echo "Mail worked: " . $test;*/
+
+$to = "timmueller0622@outlook.de";
+$subject = "This is subject";
+
+$message = "<b>This is HTML message.</b>";
+$message .= "<h1>This is headline.</h1>";
+
+$header = "From:Tim.Mueller@edu.bib.de \r\n";
+$header .= "MIME-Version: 1.0\r\n";
+$header .= "Content-type: text/html\r\n";
+
+$retval = mail($to, $subject, $message, $header);
+if ($retval == true) {
+    echo "Message sent successfully...";
+} else {
+    echo "Message could not be sent...";
+}
 ?>
