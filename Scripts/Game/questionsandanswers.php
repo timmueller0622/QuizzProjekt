@@ -8,7 +8,7 @@ class QuestionData{
         $question = $conn->query($sqlQuestion)->fetchAll()[0];
 
         $answers = QuestionData::getAnswersFromQuestion($questionid);
-
+        print_r($answers);
         $toReturn = array(
                     'QUESTION' => array(
                         'QUESTIONID' => $questionid,
@@ -46,7 +46,7 @@ class QuestionData{
         return $toReturn;
     }
     
-    static function getQuestionFromSettings($roundid){
+    static function getQuestionsFromSettings($roundid){
         require '../connectToDatabase.php';
         $settingid = $conn->query("SELECT genre, difficulty FROM roundsetting 
         JOIN round on round.settingid = roundsetting.settingid

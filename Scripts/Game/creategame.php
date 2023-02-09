@@ -57,9 +57,8 @@ class Game
             $toReturn = $conn->query($getQuestions)->fetchAll();
             return $toReturn;
         }
-        $questiondata = QuestionData::getQuestionFromSettings($roundid);
-        echo 'test5<br>';
-        print_r($questiondata);
+        $questiondata = QuestionData::getQuestionsFromSettings($roundid);
+        $toReturn = array();
         $sql = "INSERT INTO question (questionid, answeredcorrectly, roundid, questiondataid) VALUES (?, ?, ?, ?)";
         for ($i=0; $i < $questionsperround; $i++) {
             $questionid = $conn->query("SELECT count(*) FROM question")->fetchAll()[0][0];
@@ -67,16 +66,14 @@ class Game
                 if ($r['QUESTIONID'] == $questionid)
                     $questionid++;
             }
-            $questiondataid = explode(";", $questiondata[$i])[0];
+            $questiondataid = $questiondata[$i]['QUESTIONDATAID'];
+            print_r($questiondata[$i]);
             $stmt = $conn->prepare($sql);
-            try{
-                $stmt->execute([$questionid, 0, $roundid, $questiondataid]);
-            }catch (Exception $e){
-                echo $e;
-            }
+            $stmt->execute([$questionid, 0, $roundid, $questiondataid]);
+            $toReturn['QUESTION' . $i] = QuestionData::getQuestion($questionid);
         }
 
-        $getQuestions = "SELECT questionid FROM question WHERE roundid =" . $roundid;
+        $getQuestions = "SELECT * FROM question WHERE roundid =" . $roundid;
         $toReturn = $conn->query($getQuestions)->fetchAll();
         return $toReturn;
     }
