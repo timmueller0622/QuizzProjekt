@@ -58,6 +58,8 @@ class Game
         }
         echo 'test1<br>';
         $questiondata = QuestionData::getQuestionFromSettings($roundid);
+        echo 'test2<br>';
+        print_r($questiondata);
         $sql = "INSERT INTO question (questionid, answeredcorrectly, roundid, questiondataid) VALUES (?, ?, ?, ?)";
         for ($i=0; $i < $questionsperround; $i++) {
             $questionid = $conn->query("SELECT count(*) FROM question")->fetchAll()[0][0];
