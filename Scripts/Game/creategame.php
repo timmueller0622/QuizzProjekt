@@ -86,6 +86,7 @@ class Game
 
         //get all questions relating to settings in array
         $questiondata = QuestionData::getQuestionsFromSettings($roundid);
+        print_r($questiondata);
         $toReturn = array();
         //prepare sql statement as string to insert questions
         $sql = "INSERT INTO question (questionid, answeredcorrectly, roundid, questiondataid) VALUES (?, ?, ?, ?)";
@@ -105,6 +106,7 @@ class Game
             $questiondataid = $questiondata[$qCounter++]['QUESTIONDATAID'];
             if ($qCounter >= sizeof($questiondata))
                 $qCounter = 0;
+            echo Game::getQuestionAlreadyAnswered($playerid, $questiondataid);
             if (Game::getQuestionAlreadyAnswered($playerid, $questiondataid) == true && $sameQuestionCounter <= 3){
                 $sameQuestionCounter++;
                 continue;
