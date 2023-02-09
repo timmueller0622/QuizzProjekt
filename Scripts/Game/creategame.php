@@ -14,29 +14,32 @@ class Game
         $gametime = null;
         $stmt = $conn->prepare($sql);
         $stmt->execute([$gameid, $roundcount, $gametime]);
-        return array(array('GAMEID'=>$gameid));
+        $toReturn = array('GAME' => array('GAMEID' => $gameid, 'ROUNDCOUNT' => $roundcount, 'GAMETIME' => $gametime));
+        return $toReturn;
     }
 
     static function createRound($gameid, $difficulty, $genre)
     {
         require '../connectToDatabase.php';
         
-        $sql = "INSERT INTO round (roundid, gameid, settingid) VALUES (?, ?, ?)";
+        $sqlRound = "INSERT INTO round (roundid, gameid, settingid) VALUES (?, ?, ?)";
         $roundid = $conn->query("SELECT count(*) FROM round")->fetchAll()[0][0];
+        print_r("roundid" . $roundid);
         foreach ($conn->query("SELECT * FROM round") as $r) {
             if ($r['ROUNDID'] == $roundid)
                 $roundid++;
         }
-        $genreid = $conn->query("SELECT genreid FROM genre WHERE GENREDESCRIPTOR='" . $genre . "'")->fetchAll()[0][0];
+        $genreid = $conn->query("SELECT genreid FROM genre WHERE genredescriptor='" . $genre . "'")->fetchAll()[0][0];
         $difficultyid = $conn->query("SELECT difficultyid FROM difficulty WHERE difficultydescriptor='" . $difficulty . "'")->fetchAll()[0][0];
         $sql2 = "SELECT * FROM roundsetting WHERE genre ='" . $genreid . "' AND difficulty ='" . $difficultyid . "'";
         $settingid = $conn->query($sql2)->fetchAll()[0][0];
-        $stmt = $conn->prepare($sql);
+        $stmt = $conn->prepare($sqlRound);
         try {
             $stmt->execute([$roundid, $gameid, $settingid]);
         } catch (Exception $e) {
-            echo $e;
+            return "ERROR. SOMETHING WENT WRONG.";
         }
+        array('GAME' => array('GAMEID'))
         return array(array('ROUNDID'=>$roundid));
     }
 
@@ -50,7 +53,7 @@ class Game
             return $toReturn;
         }
         $questiondata = QuestionData::getQuestionFromSettings($roundid);
-        $sql = "INSERT INTO question (questionid, answeredcorrectly, roundid, QUESTIONDATAID) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO question (questionid, answeredcorrectly, roundid, questiondataid) VALUES (?, ?, ?, ?)";
         for ($i=0; $i < $questionsperround; $i++) {
             $questionid = $conn->query("SELECT count(*) FROM question")->fetchAll()[0][0];
             foreach ($conn->query("SELECT * FROM question") as $r) {
