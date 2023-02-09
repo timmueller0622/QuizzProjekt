@@ -19,29 +19,25 @@ class Statistics{
 
     static function getGame($gameid){
         require '../connectToDatabase.php';
-        echo 'test1<br>';
-        $toReturn = array();
         $game = $conn->query("SELECT * FROM game WHERE gameid = ". $gameid)->fetchAll();
-        echo 'test2<br>';
-        $toReturn['GAMEID'] = $game['GAMEID'];
-        $toReturn['ROUNDCOUNT'] = $game['GAMEID'];
-        $toReturn['GAMETIME'] = $game['GAMEID'];
-        echo 'test3<br>';
-        $toReturn['ROUND'] = Statistics::getRounds($gameid);
+        echo 'testgame<br>';
+        $toReturn = array(
+            'GAMEID' => $game['GAMEID'],
+            'ROUNDCOUNT' => $game['ROUNDCOUNT'],
+            'GAMETIME' => $game['GAMETIME'],
+            'ROUND' => 'test'//Statistics::getRounds($gameid)
+        );
         return $toReturn;
     }
 
     static function getRounds($gameid){
         require '../connectToDatabase.php';
         $toReturn = array();
-        echo 'test1<br>';
+        echo 'testround<br>';
         $rounds = $conn->query("SELECT * FROM round WHERE gameid=". $gameid)->fetchAll();
-        echo 'test2<br>';
         foreach($rounds as $round){
             $toReturn['ROUNDID'] = $round['ROUNDID'];
-            echo 'test3<br>';
             $toReturn['SETTING'] = Statistics::getSettings($round['SETTINGID']);
-            echo 'test4<br>';
             $toReturn['QUESTIONS'] = Statistics::getQuestions($round['ROUNDID']);
         }
         return $toReturn;
