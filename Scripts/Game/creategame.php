@@ -92,6 +92,7 @@ class Game
         //iterate over number of allowed questions in this round
         $sameQuestionCounter = 0;
         $qCounter = 0;
+        $i = 0;
         while (sizeof($toReturn) < $questionsperround){
             //get preliminary questionid by counting all entries in question table
             $questionid = $conn->query("SELECT count(*) FROM question")->fetchAll()[0][0];
@@ -101,7 +102,9 @@ class Game
                     $questionid++;
             }
             //create variable that holds questiondataid
-            $questiondataid = $questiondata[$qCounter]['QUESTIONDATAID'];
+            $questiondataid = $questiondata[$qCounter++]['QUESTIONDATAID'];
+            if ($qCounter >= sizeof($questiondata))
+                $qCounter = 0;
             if (Game::getQuestionAlreadyAnswered($playerid, $questiondataid) == true && $sameQuestionCounter < 3){
                 $sameQuestionCounter++;
                 continue;
@@ -111,10 +114,7 @@ class Game
             //execute statement using created variables
             $stmt->execute([$questionid, 0, $roundid, $questiondataid]);
             //get question from questionid as array and save it in returning array
-            $toReturn['QUESTION' . $i] = QuestionData::getQuestion($questionid);
-            $qCounter++;
-            if ($qCounter >= sizeof($questiondata))
-                $qCounter = 0;
+            $toReturn['QUESTION' . $i++] = QuestionData::getQuestion($questionid);
         }
         return $toReturn;
     }
