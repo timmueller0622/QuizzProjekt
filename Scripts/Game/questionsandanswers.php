@@ -6,7 +6,12 @@ class QuestionData{
         $sqlQuestion = "SELECT questiondataid, questiondescription FROM question
         JOIN questiondata ON question.questiondataid = questiondata.questiondataid
         WHERE questionid = " . $questionid;
-        $question = $conn->query($sqlQuestion)->fetchAll()[0];
+        try{
+            $question = $conn->query($sqlQuestion)->fetchAll()[0];
+        } catch(Exception $e){
+            echo $e;
+        }
+        
         print_r($question);
         $answers = QuestionData::getAnswersFromQuestion($questionid);
         print_r($answers);
