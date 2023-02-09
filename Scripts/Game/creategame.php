@@ -108,7 +108,7 @@ class Game
             $questiondataid = $questiondata[$qCounter++]['QUESTIONDATAID'];
             if ($qCounter >= sizeof($questiondata)) //if questioncounter should go out of bounds reset to 0
                 $qCounter = 0;
-            if (Game::getQuestionAlreadyAnswered($playerid, $questiondataid) == true && $sameQuestionCounter <= $questionsperround){
+            if (Game::getQuestionAlreadyAnswered($playerid, $questiondataid) == true && $sameQuestionCounter < sizeof($questiondata)){
                 //if the question was already answered correctly and the number of questions already answered is smaller than
                 //the number of questions needed for this round, increment answered question counter by 1
                 //and skip insert statement and growing and formatting of returning array
