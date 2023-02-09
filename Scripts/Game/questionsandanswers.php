@@ -48,14 +48,17 @@ class QuestionData{
     
     static function getQuestionFromSettings($roundid){
         require '../connectToDatabase.php';
+        echo 'test2<br>';
         $settingid = $conn->query("SELECT genre, difficulty FROM roundsetting 
         JOIN round on round.settingid = roundsetting.settingid
         WHERE round.roundid =" . $roundid)->fetchAll()[0];
+        echo 'test3<br>';
         $genreID = $settingid['GENRE'];
         $difficultyID = $settingid['DIFFICULTY'];
         $toReturn = $conn->query("SELECT * FROM QUESTIONDATA
             WHERE GENRE = " . $genreID .
             "AND DIFFICULTY =" . $difficultyID)->fetchAll()[0];
+            echo 'test4<br>';
         return $toReturn;
     }
 }

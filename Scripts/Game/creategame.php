@@ -58,7 +58,7 @@ class Game
         }
         echo 'test1<br>';
         $questiondata = QuestionData::getQuestionFromSettings($roundid);
-        echo 'test2<br>';
+        echo 'test5<br>';
         print_r($questiondata);
         $sql = "INSERT INTO question (questionid, answeredcorrectly, roundid, questiondataid) VALUES (?, ?, ?, ?)";
         for ($i=0; $i < $questionsperround; $i++) {
