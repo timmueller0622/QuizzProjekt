@@ -17,6 +17,7 @@ class Statistics{
 
     static function getGame($gameid){
         require '../connectToDatabase.php';
+        echo 'test2<br>';
         $game = $conn->query("SELECT * FROM game WHERE gameid=". $gameid)->fetchAll()[0];
         $toReturn = array();
         $toReturn['GAMEID'] = $game['GAMEID'];
@@ -60,8 +61,6 @@ class Statistics{
                 'ANSWEREDCORRECTLY' => $questions[$i]['ANSWEREDCORRECTLY']
             );
         }
-        
-        echo 'test2<br>';
         return $toReturn;
     }
 
