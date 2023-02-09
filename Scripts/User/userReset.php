@@ -22,29 +22,7 @@ class ResetUser
         //$toExecute->execute();
     }
 }
-/*$test = "Aufruf der methode fehlgeschlagen.";
+$test = "Aufruf der methode fehlgeschlagen.";
 $test = " -> " . ResetUser::sendResetEmail('marc.pape-info@web.de')? 'true' : 'false';
-echo "Mail worked: " . $test;*/
-error_reporting(-1);
-ini_set('display_errors', 'On');
-set_error_handler("var_dump");
-$to = "timmueller0622@outlook.de";
-$subject = "This is subject";
-
-$message = "<b>This is HTML message.</b>";
-$message .= "<h1>This is headline.</h1>";
-
-$header = "From:Tim.Mueller@edu.bib.de \r\n";
-$header .= "MIME-Version: 1.0\r\n";
-$header .= "Content-type: text/html\r\n";
-try {
-    $retval = mail($to, $subject, $message);
-} catch(Exception $e){
-    echo $e;
-}
-if ($retval == true) {
-    echo "Message sent successfully...";
-} else {
-    echo "Message could not be sent...";
-}
+echo "Mail worked: " . $test;
 ?>
