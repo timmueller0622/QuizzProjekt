@@ -63,7 +63,9 @@ class Statistics{
     static function getQuestions($roundid){
         require '../connectToDatabase.php';
         $toReturn = array();
-        $questions = $conn->query("SELECT * FROM questions WHERE roundid=". $gameid)->fetchAll();
+        echo 'test1<br>';
+        $questions = $conn->query("SELECT * FROM question WHERE roundid=". $gameid)->fetchAll();
+        echo 'test2<br>';
         foreach($questions as $question){
             $toReturn['QUESTIONID'] = $question['QUESTIONID'];
             $toReturn['QUESTIONDATAID'] = $question['QUESTIONDATAID'];
