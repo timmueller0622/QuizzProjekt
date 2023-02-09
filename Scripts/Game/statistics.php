@@ -16,7 +16,7 @@ class Statistics{
 
     static function getGame($gameid){
         require '../connectToDatabase.php';
-        $game = $conn->query("SELECT * FROM game WHERE gameid = ". $gameid)->fetchAll();
+        $game = $conn->query("SELECT * FROM game WHERE gameid=". $gameid)->fetchAll()[0];
         $toReturn = array();
         $toReturn['GAMEID'] = $game['GAMEID'];
         $toReturn['ROUNDCOUNT'] = $game['GAMEID'];
