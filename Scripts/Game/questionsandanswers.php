@@ -15,19 +15,23 @@ class QuestionData{
                         ),
                     'ANSWER1' => array(
                         'ANSWERID' => $answers[0]['ANSWERID'],
-                        'ANSWERDESCRIPTION' => $answers[0]['ANSWERDESCRIPTION']
+                        'ANSWERDESCRIPTION' => $answers[0]['ANSWERDESCRIPTION'],
+                        'ISRIGHT' => $answers[0]['ISRIGHT']
                         ),
                     'ANSWER2' => array(
                         'ANSWERID' => $answers[1]['ANSWERID'],
-                        'ANSWERDESCRIPTION' => $answers[1]['ANSWERDESCRIPTION']
+                        'ANSWERDESCRIPTION' => $answers[1]['ANSWERDESCRIPTION'],
+                        'ISRIGHT' => $answers[1]['ISRIGHT']
                         ),
                     'ANSWER3' => array(
                         'ANSWERID' => $answers[2]['ANSWERID'],
-                        'ANSWERDESCRIPTION' => $answers[2]['ANSWERDESCRIPTION']
+                        'ANSWERDESCRIPTION' => $answers[2]['ANSWERDESCRIPTION'],
+                        'ISRIGHT' => $answers[2]['ISRIGHT']
                         ),
                     'ANSWER4' => array(
                         'ANSWERID' => $answers[3]['ANSWERID'],
-                        'ANSWERDESCRIPTION' => $answers[3]['ANSWERDESCRIPTION']
+                        'ANSWERDESCRIPTION' => $answers[3]['ANSWERDESCRIPTION'],
+                        'ISRIGHT' => $answers[3]['ISRIGHT']
                         )
                     );
         return $toReturn;
@@ -35,7 +39,7 @@ class QuestionData{
   
     static function getAnswersFromQuestion($questionid){
         require '../connectToDatabase.php';
-        $sql = "SELECT answerid, answerdescription FROM question
+        $sql = "SELECT answerid, answerdescription, isright FROM question
         JOIN questiondata ON question.questiondataid = questiondata.questiondataid
         JOIN answerdata ON questiondata.questiondataid = answerdata.question
         WHERE question.questionid=" . $questionid;
