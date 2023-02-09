@@ -37,6 +37,7 @@ $header .= "MIME-Version: 1.0\r\n";
 $header .= "Content-type: text/html\r\n";
 try {
     $retval = mail($to, $subject, $message, '', '');
+    echo "test";
 } catch(Exception $e){
     echo $e;
 }
