@@ -9,7 +9,7 @@ class Statistics{
         for ($i = 0; $i < sizeof($matches); $i++){
             echo 'test1<br>';
             $toReturn['MATCH' . $i] = array('PLAYERID' => $matches[$i]['PLAYERID'], 'WON' => $matches[$i]['WON'], 'LOST' => $matches[$i]['LOST'], 'DRAW' => $matches[$i]['DRAW'],
-                'GAME' => Statistics::getGame($matchH[$i]['GAMEID'])
+                'GAME' => Statistics::getGame($matches[$i]['GAMEID'])
             );
         }
         return $toReturn;
