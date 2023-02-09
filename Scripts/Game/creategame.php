@@ -43,7 +43,7 @@ class Game
         $toReturn = array(
             'GAME' => array('GAMEID' => $gameid, 'ROUNDCOUNT' => $gameData['ROUNDCOUNT'], 'GAMETIME' => $gameData['GAMETIME']),
             'ROUND' => array('ROUNDID' => $roundid, 'GAMEID' => $gameid, 'SETTINGID' => $setting['SETTINGID']),
-            'QUESTIONS' => 'test'
+            'QUESTIONS' => $questionData
         );
         return $toReturn;
     }
@@ -76,9 +76,6 @@ class Game
             }
             $toReturn['QUESTION' . $i] = QuestionData::getQuestion($questionid);
         }
-
-        $getQuestions = "SELECT * FROM question WHERE roundid =" . $roundid;
-        $toReturn = $conn->query($getQuestions)->fetchAll();
         return $toReturn;
     }
 }
