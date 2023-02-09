@@ -24,7 +24,6 @@ class Game
         
         $sqlRound = "INSERT INTO round (roundid, gameid, settingid) VALUES (?, ?, ?)";
         $roundid = $conn->query("SELECT count(*) FROM round")->fetchAll()[0][0];
-        print_r("roundid" . $roundid);
         foreach ($conn->query("SELECT * FROM round") as $r) {
             if ($r['ROUNDID'] == $roundid)
                 $roundid++;
