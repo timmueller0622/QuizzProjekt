@@ -11,6 +11,7 @@ class QuestionData{
 
         $toReturn = array(
                     'QUESTION' => array(
+                        'QUESTIONID' => $questionid,
                         'QUESTIONDATAID' => $question['QUESTIONDATAID'], 
                         'QUESTIONDESCRIPTION' => $question['QUESTIONDESCRIPTION']
                         ),

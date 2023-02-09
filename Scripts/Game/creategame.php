@@ -41,10 +41,10 @@ class Game
         }
         $gameData = $conn->query("SELECT * FROM game WHERE gameid=" . $gameid)->fetchAll()[0];
         $questionData = Game::createQuestions($setting['QUESTIONSPERROUND'], $roundid);
-        array(
+        $toReturn = array(
             'GAME' => array('GAMEID' => $gameid, 'ROUNDCOUNT' => $gameData['ROUNDCOUNT'], 'GAMETIME' => $gameData['GAMETIME']),
-            'ROUND' => array('ROUNDID' => $roundid, 'GAMEID' => $gameid, 'SETTINGID' => $setting['SETTINGID'])
-            
+            'ROUND' => array('ROUNDID' => $roundid, 'GAMEID' => $gameid, 'SETTINGID' => $setting['SETTINGID']),
+            'QUESTIONS' => 'test'
         );
         return array(array('ROUNDID'=>$roundid));
     }
@@ -53,7 +53,6 @@ class Game
         require '../connectToDatabase.php';
         $existingQuestionsInRound = $conn->query("SELECT count(*) FROM question WHERE roundid=" . $roundid)->fetchAll()[0][0];
         if ($existingQuestionsInRound >= $questionsperround){
-            echo "round filled with questions already";
             $getQuestions = "SELECT questionid FROM question WHERE roundid =" . $roundid;
             $toReturn = $conn->query($getQuestions)->fetchAll();
             return $toReturn;
