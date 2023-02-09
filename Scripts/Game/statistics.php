@@ -41,6 +41,7 @@ class Statistics{
             $toReturn['ROUNDID'] = $round['ROUNDID'];
             echo 'test3<br>';
             $toReturn['SETTING'] = Statistics::getSettings($round['SETTINGID']);
+            echo 'test4<br>';
             $toReturn['QUESTIONS'] = Statistics::getQuestions($round['ROUNDID']);
         }
         return $toReturn;
