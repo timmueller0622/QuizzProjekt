@@ -60,6 +60,8 @@ class Statistics{
                 'ANSWEREDCORRECTLY' => $questions[$i]['ANSWEREDCORRECTLY']
             );
         }
+        
+        echo 'test2<br>';
         return $toReturn;
     }
 
