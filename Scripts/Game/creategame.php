@@ -90,6 +90,9 @@ class Game
         //prepare sql statement as string to insert questions
         $sql = "INSERT INTO question (questionid, answeredcorrectly, roundid, questiondataid) VALUES (?, ?, ?, ?)";
         //iterate over number of allowed questions in this round
+        //use counter to keep track of questions that were already answered correctly
+        //use counter to iterate over questiondata array
+        //use counter to add unique keys to returning array
         $sameQuestionCounter = 0;
         $qCounter = 0;
         $i = 0;
@@ -103,9 +106,12 @@ class Game
             }
             //create variable that holds questiondataid
             $questiondataid = $questiondata[$qCounter++]['QUESTIONDATAID'];
-            if ($qCounter >= sizeof($questiondata))
+            if ($qCounter >= sizeof($questiondata)) //if questioncounter should go out of bounds reset to 0
                 $qCounter = 0;
-            if (Game::getQuestionAlreadyAnswered($playerid, $questiondataid) == true && $sameQuestionCounter <= 3){
+            if (Game::getQuestionAlreadyAnswered($playerid, $questiondataid) == true && $sameQuestionCounter <= $questionsperround){
+                //if the question was already answered correctly and the number of questions already answered is smaller than
+                //the number of questions needed for this round, increment answered question counter by 1
+                //and skip insert statement and growing and formatting of returning array
                 $sameQuestionCounter++;
                 continue;
             }
@@ -121,6 +127,7 @@ class Game
 
     static function getQuestionAlreadyAnswered($playerid, $questiondataid){
         require '../connectToDatabase.php';
+        //prepare sql statement as string to check if player has already answered the question correctly once before
         $sql = "SELECT answeredcorrectly FROM matchhistory
             JOIN game ON game.gameid = matchhistory.gameid
             JOIN round ON round.gameid = game.gameid
@@ -128,9 +135,9 @@ class Game
             JOIN questiondata ON questiondata.questiondataid = question.questiondataid
             WHERE matchhistory.playerid =" . $playerid . " AND questiondata.questiondataid=" . $questiondataid;
         $toReturn = $conn->query($sql)->fetchAll()[0][0];
-        if ($toReturn == 1)
+        if ($toReturn == 1) //if answered correctly then return true
             return true;
-        else
+        else //else return false
             return false;
     }
 }
