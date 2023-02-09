@@ -50,6 +50,7 @@ class Game
 
     static function createQuestions($questionsperround, $roundid){
         require '../connectToDatabase.php';
+        require 'questionsandanswers.php';
         $existingQuestionsInRound = $conn->query("SELECT count(*) FROM question WHERE roundid=" . $roundid)->fetchAll()[0][0];
         if ($existingQuestionsInRound >= $questionsperround){
             $getQuestions = "SELECT questionid FROM question WHERE roundid =" . $roundid;
