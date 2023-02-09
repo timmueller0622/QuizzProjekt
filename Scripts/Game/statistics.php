@@ -5,9 +5,9 @@ class Statistics{
     static function getMatchHistory($playerid){
         require '../connectToDatabase.php';
         $toReturn = array();
-        $matchH = $conn->query("SELECT * FROM matchhistory WHERE playerid = ". $playerid)->fetchAll();
-        for ($i = 0; $i < sizeof($matchH); $i++){
-            $toReturn['MATCH' . $i] = array('PLAYERID' => $matchH[$i]['PLAYERID'], 'WON' => $matchH[$i]['WON'], 'LOST' => $matchH[$i]['LOST'], 'DRAW' => $matchH[$i]['DRAW'],
+        $matches = $conn->query("SELECT * FROM matchhistory WHERE playerid = ". $playerid)->fetchAll();
+        for ($i = 0; $i < sizeof($matches); $i++){
+            $toReturn['MATCH' . $i] = array('PLAYERID' => $matches[$i]['PLAYERID'], 'WON' => $matches[$i]['WON'], 'LOST' => $matches[$i]['LOST'], 'DRAW' => $matches[$i]['DRAW'],
                 'GAME' => Statistics::getGame($matchH[$i]['GAMEID'])
             );
         }
@@ -60,6 +60,32 @@ class Statistics{
             );
         }
         return $toReturn;
+    }
+
+    static function createMatchHistoryEntry($playerid, $gameid, $result){
+        require '../connectToDatabase.php';
+        $sql = "INSERT INTO matchhistory (playerid, gameid, won, lost, draw) VALUES (?, ?, ?, ?, ?)";
+        $won = 0;
+        $lost = 0;
+        $draw = 0;
+        switch ($result){
+            case 'win':
+                $won = 1;
+                break;
+            case 'loss':
+                $lost = 1;
+                break;
+            case 'draw':
+                $draw = 1;
+                break;
+        }
+        $stmt = $conn->prepare($sql);
+        try{
+            $stmt->execute([$playerid, $gameid, $won, $lost, $draw]);
+            return array('ENTRYRESULT' => 'Entry successfully made.');
+        } catch (Exception $e){
+            return array('ENTRYRESULT' => $e);
+        }
     }
 }
 
