@@ -19,8 +19,8 @@ class Statistics{
         $game = $conn->query("SELECT * FROM game WHERE gameid=". $gameid)->fetchAll()[0];
         $toReturn = array();
         $toReturn['GAMEID'] = $game['GAMEID'];
-        $toReturn['ROUNDCOUNT'] = $game['GAMEID'];
-        $toReturn['GAMETIME'] = $game['GAMEID'];
+        $toReturn['ROUNDCOUNT'] = $game['ROUNDCOUNT'];
+        $toReturn['GAMETIME'] = $game['GAMETIME'];
         $toReturn['ROUND'] = Statistics::getRounds($gameid);
         return $toReturn;
     }
