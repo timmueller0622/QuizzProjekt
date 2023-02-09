@@ -90,7 +90,9 @@ class Game
         //prepare sql statement as string to insert questions
         $sql = "INSERT INTO question (questionid, answeredcorrectly, roundid, questiondataid) VALUES (?, ?, ?, ?)";
         //iterate over number of allowed questions in this round
-        for ($i=0; $i < $questionsperround; $i++) {
+        $sameQuestionCounter = 0;
+        $qCounter = 0;
+        while (sizeof($toReturn) < $questionsperround){
             //get preliminary questionid by counting all entries in question table
             $questionid = $conn->query("SELECT count(*) FROM question")->fetchAll()[0][0];
             //iterate over question table and check if questionid already exists
@@ -99,13 +101,20 @@ class Game
                     $questionid++;
             }
             //create variable that holds questiondataid
-            $questiondataid = $questiondata[$i]['QUESTIONDATAID'];
+            $questiondataid = $questiondata[$qCounter]['QUESTIONDATAID'];
+            if (Game::getQuestionAlreadyAnswered($playerid, $questiondataid) == true && $sameQuestionCounter < 3){
+                $sameQuestionCounter++;
+                continue;
+            }
             //prepare sql statement
             $stmt = $conn->prepare($sql);
             //execute statement using created variables
             $stmt->execute([$questionid, 0, $roundid, $questiondataid]);
             //get question from questionid as array and save it in returning array
             $toReturn['QUESTION' . $i] = QuestionData::getQuestion($questionid);
+            $qCounter++;
+            if ($qCounter >= sizeof($questiondata))
+                $qCounter = 0;
         }
         return $toReturn;
     }
