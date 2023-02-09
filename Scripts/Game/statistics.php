@@ -7,9 +7,8 @@ class Statistics{
         $toReturn = array();
         $matchH = $conn->query("SELECT * FROM matchhistory WHERE playerid = ". $playerid)->fetchAll();
         for ($i = 0; $i < sizeof($matchH); $i++){
-            $toReturn['MATCH' . $i] = array('PLAYERID' => $matchH[$i]['PLAYERID'], 'WON' => $matchH[$i]['WON'], 'LOST' => $matchH[$i]['LOST'], 'DRAW' => $matchH[$i]['DRAW'],
-                'GAME' => array(Statistics::getGame($matchH[$i]['GAMEID']))
-            );
+            $toReturn['MATCH' . $i] = 'test';//array('PLAYERID' => $matchH[$i]['PLAYERID'], 'WON' => $matchH[$i]['WON'], 'LOST' => $matchH[$i]['LOST'], 'DRAW' => $matchH[$i]['DRAW'],
+                //'GAME' => array(Statistics::getGame($matchH[$i]['GAMEID'])));
         }
         return $matchH;
     }
