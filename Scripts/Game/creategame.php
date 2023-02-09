@@ -39,7 +39,7 @@ class Game
             return array(array('ERROR'=>"Something went wrong."));
         }
         $gameData = $conn->query("SELECT * FROM game WHERE gameid=" . $gameid)->fetchAll()[0];
-        //$questionData = Game::createQuestions($setting['QUESTIONSPERROUND'], $roundid);
+        $questionData = Game::createQuestions($setting['QUESTIONSPERROUND'], $roundid);
         $toReturn = array(
             'GAME' => array('GAMEID' => $gameid, 'ROUNDCOUNT' => $gameData['ROUNDCOUNT'], 'GAMETIME' => $gameData['GAMETIME']),
             'ROUND' => array('ROUNDID' => $roundid, 'GAMEID' => $gameid, 'SETTINGID' => $setting['SETTINGID']),
