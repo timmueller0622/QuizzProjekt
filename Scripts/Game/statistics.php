@@ -49,7 +49,7 @@ class Statistics{
     static function getSettings($settingid){
         require '../connectToDatabase.php';
         echo 'settingid: ' . $settingid;
-        $setting = $conn->query("SELECT * FROM setting WHERE settingid=". $settingid)->fetchAll()[0];
+        $setting = $conn->query("SELECT * FROM roundsetting WHERE settingid=". $settingid)->fetchAll()[0];
         echo 'test1<br>';
         $genre = $conn->query("SELECT genredescriptor FROM genre WHERE genreid=". $settingid['GENREID'])->fetchAll()[0][0];
         echo 'test2<br>';
