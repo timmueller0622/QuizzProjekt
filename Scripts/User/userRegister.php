@@ -21,7 +21,6 @@ class RegisterUser
             $stmt->execute([$id, $username, $email, $passwd, $sessionkey, $sessiontime]);
             return $id;
         } catch (Exception $e) {
-            echo $e;
             return "ERROR. USER ALREADY EXISTS OR PARAMETERS INVALID.";
         }
     }
