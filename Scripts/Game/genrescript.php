@@ -1,5 +1,4 @@
 <?php
-
 class Genre{
     static function getRandomGenre()
     {
@@ -12,7 +11,7 @@ class Genre{
             array('GENREID' => $GenreArray[$randomNumber]['GENREID'], 
             'GENREDESCRIPTOR' => $GenreArray[$randomNumber]['GENREDESCRIPTOR'])
         );
-        return json_encode($categoryToReturn);
+        return $categoryToReturn;
     }
     
     static function getAllGenres()
@@ -26,7 +25,7 @@ class Genre{
             $toReturn[$i] = $temp;
             $i++;
         }
-        return json_encode($toReturn);
+        return $toReturn;
     }
 }
 ?>

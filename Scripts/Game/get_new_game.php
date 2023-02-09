@@ -1,12 +1,6 @@
 <?php
-
-/*Call this Script for API Request*/
-
+header("Content-Type: application/json");
 require 'creategame.php';
-print_r(json_encode(Game::createGame()));
-
-
-
-
-
+$data = Game::createGame();
+echo json_encode($data);
 ?>

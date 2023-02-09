@@ -1,10 +1,6 @@
 <?php
-
-/*Call this Script for API Request*/
-
+header("Content-Type: application/json");
 require 'difficultyscript.php';
 $data = Difficulty::getAllDifficulties();
-print_r($data);
-return $data;
-
+echo json_encode($data);
 ?>

@@ -36,6 +36,7 @@ if (isset($_POST['genre']) && isset($_POST['difficulty'])){
         <select name='genre' id='genre' form='matchSettings'>";
         
     $genres = Genre::getAllGenres();
+    print_r($genres);
     foreach($genres as $genre) {
         $s .= "<option value='" . $genre['GENREID'] . "'>" .  
         $genre['GENREDESCRIPTOR'] . "</option>";

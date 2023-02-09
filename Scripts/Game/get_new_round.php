@@ -1,8 +1,6 @@
 <?php
-
-/*Call this Script for API Request*/
-
+header("Content-Type: application/json");
 require 'creategame.php';
-JSON.string(json_encode(Game::createRound($_GET['gameid'], $_GET['difficulty'], $_GET['genre'])));
-
+$data = Game::createRound($_GET['gameid'], $_GET['difficulty'], $_GET['genre']);
+echo json_encode($data);
 ?>

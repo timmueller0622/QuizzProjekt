@@ -1,7 +1,6 @@
 <?php
-/*Call this Script for API Request*/
+header("Content-Type: application/json");
 require 'genrescript.php';
 $data = Genre::getAllGenres();
-print_r($data);
-return $data;
+echo json_encode($data);
 ?>
