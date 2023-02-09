@@ -54,9 +54,9 @@ class Statistics{
         $questions = $conn->query("SELECT * FROM question WHERE roundid=". $roundid)->fetchAll();
         for($i = 0; $i < sizeof($questions); $i++){
             $toReturn['QUESTION' . $i] = array(
-                'QUESTIONID' => $questions['QUESTIONID'],
-                'QUESTIONDATAID' => $questions['QUESTIONDATAID'],
-                'ANSWEREDCORRECTLY' => $questions['ANSWEREDCORRECTLY']
+                'QUESTIONID' => $questions[$i]['QUESTIONID'],
+                'QUESTIONDATAID' => $questions[$i]['QUESTIONDATAID'],
+                'ANSWEREDCORRECTLY' => $questions[$i]['ANSWEREDCORRECTLY']
             );
         }
         return $toReturn;
