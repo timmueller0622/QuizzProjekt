@@ -14,7 +14,7 @@ class LoginUser
                 return $dataToProof['PLAYERID'];
             } else {
                 //gibt false zurück falls es keinen gibt
-                return "test";
+                return false;
             }
         } catch (Exception $e) {
             print_r($e);

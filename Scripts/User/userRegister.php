@@ -22,6 +22,7 @@ class RegisterUser
         } catch (Exception $e) {
             echo $e;
         }
+        return $id;
     }
 }
 ?>
