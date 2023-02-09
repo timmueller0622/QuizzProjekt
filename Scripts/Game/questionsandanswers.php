@@ -40,9 +40,9 @@ class QuestionData{
     static function getAnswersFromQuestion($questionid){
         require '../connectToDatabase.php';
         $sql = "SELECT answerid, answerdescription, isright FROM question
-        JOIN questiondata ON question.questiondataid = questiondata.questiondataid
-        JOIN answerdata ON questiondata.questiondataid = answerdata.question
-        WHERE question.questionid=" . $questionid;
+            JOIN questiondata ON question.questiondataid = questiondata.questiondataid
+            JOIN answerdata ON questiondata.questiondataid = answerdata.question
+            WHERE question.questionid=" . $questionid;
         $toReturn = $conn->query($sql)->fetchAll();
         return $toReturn;
     }
@@ -50,13 +50,13 @@ class QuestionData{
     static function getQuestionsFromSettings($roundid){
         require '../connectToDatabase.php';
         $settingid = $conn->query("SELECT genre, difficulty FROM roundsetting 
-        JOIN round on round.settingid = roundsetting.settingid
-        WHERE round.roundid =" . $roundid)->fetchAll()[0];
+            JOIN round on round.settingid = roundsetting.settingid
+            WHERE round.roundid =" . $roundid)->fetchAll()[0];
         $genreID = $settingid['GENRE'];
         $difficultyID = $settingid['DIFFICULTY'];
-        $toReturn = $conn->query("SELECT * FROM QUESTIONDATA
-            WHERE GENRE = " . $genreID .
-            "AND DIFFICULTY =" . $difficultyID)->fetchAll();
+        $toReturn = $conn->query("SELECT * FROM questiondata
+            WHERE genre = " . $genreID .
+            "AND difficulty =" . $difficultyID)->fetchAll();
         return $toReturn;
     }
 }
