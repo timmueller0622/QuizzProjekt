@@ -32,17 +32,18 @@ class Game
         $genreid = $conn->query("SELECT genreid FROM genre WHERE genredescriptor='" . $genre . "'")->fetchAll()[0][0];
         $difficultyid = $conn->query("SELECT difficultyid FROM difficulty WHERE difficultydescriptor='" . $difficulty . "'")->fetchAll()[0][0];
         $sql2 = "SELECT * FROM roundsetting WHERE genre ='" . $genreid . "' AND difficulty ='" . $difficultyid . "'";
-        $settingid = $conn->query($sql2)->fetchAll()[0][0];
+        $setting = $conn->query($sql2)->fetchAll()[0];
         $stmt = $conn->prepare($sqlRound);
         try {
-            $stmt->execute([$roundid, $gameid, $settingid]);
+            $stmt->execute([$roundid, $gameid, $setting['SETTINGID']]);
         } catch (Exception $e) {
-            return "ERROR. SOMETHING WENT WRONG.";
+            return array(array('ERROR'=>"Something went wrong."));
         }
         $gameData = $conn->query("SELECT * FROM game WHERE gameid=" . $gameid)->fetchAll()[0];
+        $questionData = Game::createQuestions($setting['QUESTIONSPERROUND'], $roundid);
         array(
             'GAME' => array('GAMEID' => $gameid, 'ROUNDCOUNT' => $gameData['ROUNDCOUNT'], 'GAMETIME' => $gameData['GAMETIME']),
-            'ROUND' => array('ROUNDID' => $roundid, 'GAMEID' => $gameid, 'SETTINGID' => $settingid)
+            'ROUND' => array('ROUNDID' => $roundid, 'GAMEID' => $gameid, 'SETTINGID' => $setting['SETTINGID'])
             
         );
         return array(array('ROUNDID'=>$roundid));
