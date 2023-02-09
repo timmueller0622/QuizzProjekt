@@ -56,6 +56,7 @@ class Game
             $toReturn = $conn->query($getQuestions)->fetchAll();
             return $toReturn;
         }
+        echo 'test1<br>';
         $questiondata = QuestionData::getQuestionFromSettings($roundid);
         $sql = "INSERT INTO question (questionid, answeredcorrectly, roundid, questiondataid) VALUES (?, ?, ?, ?)";
         for ($i=0; $i < $questionsperround; $i++) {
