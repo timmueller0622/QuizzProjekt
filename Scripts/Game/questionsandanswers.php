@@ -7,6 +7,7 @@ class QuestionData{
         WHERE questionid = " . $questionid;
         $question = $conn->query($sqlQuestion)->fetchAll()[0];
         $answers = QuestionData::getAnswersFromQuestion($questionid);
+        print_r($answers);
         $toReturn = array(
                     'QUESTION' => array(
                         'QUESTIONID' => $questionid,
