@@ -14,7 +14,7 @@ class Statistics{
                 'GAME' => array(Statistics::getGame($matchH[$i]['GAMEID']))
             );
         }
-        return $matchH;
+        return $toReturn;
     }
 
     static function getGame($gameid){
