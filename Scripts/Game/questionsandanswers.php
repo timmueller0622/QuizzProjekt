@@ -7,7 +7,6 @@ class QuestionData{
         WHERE questionid = " . $questionid;
         $question = $conn->query($sqlQuestion)->fetchAll()[0];
         $answers = QuestionData::getAnswersFromQuestion($questionid);
-        print_r($answers);
         $toReturn = array(
                     'QUESTION' => array(
                         'QUESTIONID' => $questionid,
@@ -36,7 +35,7 @@ class QuestionData{
   
     static function getAnswersFromQuestion($questionid){
         require '../connectToDatabase.php';
-        $sql = "SELECT answerdescription FROM question
+        $sql = "SELECT answerid, answerdescription FROM question
         JOIN questiondata ON question.questiondataid = questiondata.questiondataid
         JOIN answerdata ON questiondata.questiondataid = answerdata.question
         WHERE question.questionid=" . $questionid;
