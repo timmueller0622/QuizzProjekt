@@ -50,7 +50,7 @@ class Statistics{
         require '../connectToDatabase.php';
         echo 'settingid: ' . $settingid;
         $setting = $conn->query("SELECT * FROM roundsetting WHERE settingid=". $settingid)->fetchAll()[0];
-        echo 'test1<br>';
+        print_r($setting);
         $genre = $conn->query("SELECT genredescriptor FROM genre WHERE genreid=". $setting['GENREID'])->fetchAll()[0][0];
         echo 'test2<br>';
         $difficulty = $conn->query("SELECT difficultydescriptor FROM difficulty WHERE difficultyid=". $setting['DIFFICULTYID'])->fetchAll()[0][0];
