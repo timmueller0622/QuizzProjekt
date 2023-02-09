@@ -93,7 +93,7 @@ class Game
         //use counter to keep track of questions that were already answered correctly
         //use counter to iterate over questiondata array
         //use counter to add unique keys to returning array
-        $sameQuestionCounter = 0;
+        $correctQuestionCounter = 0;
         $qCounter = 0;
         $i = 0;
         while (sizeof($toReturn) < $questionsperround){
@@ -108,11 +108,11 @@ class Game
             $questiondataid = $questiondata[$qCounter++]['QUESTIONDATAID'];
             if ($qCounter >= sizeof($questiondata)) //if questioncounter should go out of bounds reset to 0
                 $qCounter = 0;
-            if (Game::getQuestionAlreadyAnswered($playerid, $questiondataid) == true && $sameQuestionCounter < sizeof($questiondata)){
-                //if the question was already answered correctly and the number of questions already answered is smaller than
-                //the number of questions needed for this round, increment answered question counter by 1
+            if (Game::getQuestionAlreadyAnswered($playerid, $questiondataid) == true && $correctQuestionCounter < sizeof($questiondata)){
+                //if the question was already answered correctly and the number of questions already answered correctly is smaller than
+                //the number of total questions available for this round, increment counter by 1
                 //and skip insert statement and growing and formatting of returning array
-                $sameQuestionCounter++;
+                $correctQuestionCounter++;
                 continue;
             }
             //prepare sql statement
