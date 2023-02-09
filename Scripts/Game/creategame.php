@@ -103,7 +103,7 @@ class Game
             }
             //create variable that holds questiondataid
             $questiondataid = $questiondata[$qCounter++]['QUESTIONDATAID'];
-            if ($qCounter >= sizeof($questiondata))
+            if ($qCounter > sizeof($questiondata))
                 $qCounter = 0;
             if (Game::getQuestionAlreadyAnswered($playerid, $questiondataid) == true && $sameQuestionCounter < 3){
                 $sameQuestionCounter++;
