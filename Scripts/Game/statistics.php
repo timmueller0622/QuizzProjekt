@@ -8,7 +8,7 @@ class Statistics{
         $matchH = $conn->query("SELECT * FROM matchhistory WHERE playerid = ". $playerid)->fetchAll();
         for ($i = 0; $i < sizeof($matchH); $i++){
             $toReturn['MATCH' . $i] = array('PLAYERID' => $matchH[$i]['PLAYERID'], 'WON' => $matchH[$i]['WON'], 'LOST' => $matchH[$i]['LOST'], 'DRAW' => $matchH[$i]['DRAW'],
-                'GAME' => array(Statistics::getGame($matchH[$i]['GAMEID']))
+                'GAME' => Statistics::getGame($matchH[$i]['GAMEID'])
             );
         }
         return $toReturn;
