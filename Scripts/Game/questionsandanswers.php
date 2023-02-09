@@ -2,10 +2,38 @@
 class QuestionData{
     static function getQuestion($questionid){
         require '../connectToDatabase.php';
-        $sql = "SELECT questiondescription FROM question
+        $sqlQuestion = "SELECT questiondataid, questiondescription FROM question
         JOIN questiondata ON question.questiondataid = questiondata.questiondataid
         WHERE questionid = " . $questionid;
-        $toReturn = $conn->query($sql)->fetchAll()[0][0];
+        $question = $conn->query($sqlQuestion)->fetchAll()[0];
+
+        $answers = QuestionData::getAnswersFromQuestion($questionid);
+
+        $toReturn = array(
+                    'QUESTION' => array(
+                        'QUESTIONDATAID' => $question['QUESTIONDATAID'], 
+                        'QUESTIONDESCRIPTION' => $question['QUESTIONDESCRIPTION']
+                        ),
+                    'ANSWER1' => array(
+                        'ANSWERID' => $answers[0]['ANSWERID'],
+                        'ANSWERDESCRIPTION' => $answers[0]['ANSWERDESCRIPTION']
+                        ),
+                    'ANSWER2' => array(
+                        'ANSWERID' => $answers[1]['ANSWERID'],
+                        'ANSWERDESCRIPTION' => $answers[1]['ANSWERDESCRIPTION']
+                        ),
+                    'ANSWER3' => array(
+                        'ANSWERID' => $answers[2]['ANSWERID'],
+                        'ANSWERDESCRIPTION' => $answers[2]['ANSWERDESCRIPTION']
+                        ),
+                    'ANSWER4' => array(
+                        'ANSWERID' => $answers[3]['ANSWERID'],
+                        'ANSWERDESCRIPTION' => $answers[3]['ANSWERDESCRIPTION']
+                        )
+                    );
+
+        print_r($toReturn);
+
         return $toReturn;
     }
   
@@ -26,12 +54,9 @@ class QuestionData{
         WHERE round.roundid =" . $roundid)->fetchAll()[0];
         $genreID = $settingid['GENRE'];
         $difficultyID = $settingid['DIFFICULTY'];
-        $toReturn = array();
-        foreach($conn->query("SELECT * FROM QUESTIONDATA
-        WHERE GENRE = " . $genreID .
-        "AND DIFFICULTY =" . $difficultyID) as $entry){
-            $toReturn[] .= $entry['QUESTIONDATAID'] . ";" . $entry['QUESTIONDESCRIPTION'];
-        }
+        $toReturn = $conn->query("SELECT * FROM QUESTIONDATA
+            WHERE GENRE = " . $genreID .
+            "AND DIFFICULTY =" . $difficultyID)->fetchAll()[0];
         return $toReturn;
     }
 }

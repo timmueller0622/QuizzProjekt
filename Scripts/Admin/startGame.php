@@ -8,9 +8,9 @@ unset($_SESSION['gameid']);
 unset($_SESSION['roundid']);
 if (isset($_POST['genre']) && isset($_POST['difficulty'])){
     if (!isset($_SESSION['gameid']))
-        $_SESSION['gameid'] = Game::createGame();
+        $_SESSION['gameid'] = Game::createGame()[0]['GAMEID'];
     if (!isset($_SESSION['roundid']))
-        $_SESSION['roundid'] = Game::createRound($_SESSION['gameid'], $_POST['difficulty'], $_POST['genre']);
+        $_SESSION['roundid'] = Game::createRound($_SESSION['gameid'], $_POST['difficulty'], $_POST['genre'])[0]['ROUNDID'];
     header('Location:playRound.php');
 }
 
@@ -36,7 +36,6 @@ if (isset($_POST['genre']) && isset($_POST['difficulty'])){
         <select name='genre' id='genre' form='matchSettings'>";
         
     $genres = Genre::getAllGenres();
-    print_r($genres);
     foreach($genres as $genre) {
         $s .= "<option value='" . $genre['GENREID'] . "'>" .  
         $genre['GENREDESCRIPTOR'] . "</option>";
