@@ -7,7 +7,6 @@ class Statistics{
         $toReturn = array();
         $matches = $conn->query("SELECT * FROM matchhistory WHERE playerid = ". $playerid)->fetchAll();
         for ($i = 0; $i < sizeof($matches); $i++){
-            echo 'test1<br>';
             $toReturn['MATCH' . $i] = array('PLAYERID' => $matches[$i]['PLAYERID'], 'WON' => $matches[$i]['WON'], 'LOST' => $matches[$i]['LOST'], 'DRAW' => $matches[$i]['DRAW'],
                 'GAME' => Statistics::getGame($matches[$i]['GAMEID'])
             );
@@ -17,7 +16,6 @@ class Statistics{
 
     static function getGame($gameid){
         require '../connectToDatabase.php';
-        echo 'test2<br>';
         $game = $conn->query("SELECT * FROM game WHERE gameid=". $gameid)->fetchAll()[0];
         $toReturn = array();
         $toReturn['GAMEID'] = $game['GAMEID'];
