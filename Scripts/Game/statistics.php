@@ -9,7 +9,7 @@ class Statistics{
         $matches = $conn->query("SELECT * FROM matchhistory WHERE playerid = ". $playerid)->fetchAll();
         //iterate over all matches and create and format new entry in returning array for all matches
         for ($i = 0; $i < sizeof($matches); $i++){
-            $toReturn['MATCH' . (sizeof($matches)-$i)] = array('PLAYERID' => $matches[$i]['PLAYERID'], 'WON' => $matches[$i]['WON'], 'LOST' => $matches[$i]['LOST'], 'DRAW' => $matches[$i]['DRAW'],
+            $toReturn['MATCH' . $i] = array('PLAYERID' => $matches[$i]['PLAYERID'], 'WON' => $matches[$i]['WON'], 'LOST' => $matches[$i]['LOST'], 'DRAW' => $matches[$i]['DRAW'],
                 'GAME' => Statistics::getGame($matches[$i]['GAMEID']) //get information about game using gameid in match history entry
             );
         }
