@@ -34,9 +34,12 @@ class Statistics{
     static function getRounds($gameid){
         require '../connectToDatabase.php';
         $toReturn = array();
+        echo 'test1<br>';
         $rounds = $conn->query("SELECT * FROM round WHERE gameid=". $gameid)->fetchAll();
+        echo 'test2<br>';
         foreach($rounds as $round){
             $toReturn['ROUNDID'] = $round['ROUNDID'];
+            echo 'test3<br>';
             $toReturn['SETTING'] = Statistics::getSettings($round['SETTINGID']);
             $toReturn['QUESTIONS'] = Statistics::getQuestions($round['ROUNDID']);
         }
