@@ -67,13 +67,8 @@ class Game
                     $questionid++;
             }
             $questiondataid = $questiondata[$i]['QUESTIONDATAID'];
-            print_r($questiondata[$i]);
             $stmt = $conn->prepare($sql);
-            try{
-                $stmt->execute([$questionid, 0, $roundid, $questiondataid]);
-            } catch(Exception $e){
-                echo $e;
-            }
+            $stmt->execute([$questionid, 0, $roundid, $questiondataid]);
             $toReturn['QUESTION' . $i] = QuestionData::getQuestion($questionid);
         }
         return $toReturn;
