@@ -6,7 +6,7 @@ class Setting{
         //get array of all entries in genre table
         $genreArray = $conn->query("SELECT * FROM genre")->fetchAll();
         $min = 0; //minimum genre array index
-        $max = count($GenreArray)-1; //maximum genre array index
+        $max = count($genreArray)-1; //maximum genre array index
         $randomNumber = rand($min, $max); //generate random number between the two
         //create formatted array of random entry in genre table
         $toReturn = array('GENRE' =>
